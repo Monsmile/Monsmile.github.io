@@ -64,12 +64,107 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-过滤器和拦截器的区别" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/12/29/过滤器和拦截器的区别/" class="article-date">
+  <time datetime="2016-12-28T17:43:23.000Z" itemprop="datePublished">2016-12-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/spring/">spring</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/29/过滤器和拦截器的区别/">过滤器和拦截器的区别</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.拦截器基于java的反射机制，过滤器基于函数的回调；</p>
+<p>2.拦截器只对action请求作用，而过滤器对所有的请求都起作用；</p>
+<p>3.拦截器可以对请求action的上下文，值栈里的对象进行访问，而过滤器不能访问；</p>
+<p>4.拦截器不依赖于servlet容器，而过滤器依赖于servlet容器;</p>
+<p>5.拦截器可以在程序运行期间多次调用，而过滤器只在servlet容器初始化时调用一次;</p>
+<p>6.拦截器可以获取ioc容器里的bean，而过滤器不行，在过滤器中注入一个service，可以调用业务逻辑;</p>
+<p>下边有书上的截图可以参考：<br>/<img src="/images/1" alt="图片"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://monsmile.github.io/2016/12/29/过滤器和拦截器的区别/" data-id="cix8rlams0004qkp8jt1snmyy" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-拦截器为什么是基于java反射的" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/12/29/拦截器为什么是基于java反射的/" class="article-date">
+  <time datetime="2016-12-28T17:40:53.000Z" itemprop="datePublished">2016-12-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/spring/">spring</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/29/拦截器为什么是基于java反射的/">拦截器为什么是基于java反射的</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>标签（空格分隔）： spring</p>
+<hr>
+<p>拦截器 ：是在面向切面编程的就是在你的service或者一个方法，前调用一个方法，<br>或者在方法后调用一个方法比如动态代理就是拦截器的简单实现，在你调用方法前打<br>印出字符串（或者做其它业务逻辑的操作），也可以在你调用方法后打印出字符串，<br>甚至在你抛出异常的时候做业务逻辑的操作。</p>
+<p>连接拦截器和拦截器拦截到要执行的类，这两个类要联系，中间需要用到反射;</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://monsmile.github.io/2016/12/29/拦截器为什么是基于java反射的/" data-id="cix8rlamk0001qkp8t0olgvs1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-过滤器是基于函数回调的" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/12/29/过滤器是基于函数回调的/" class="article-date">
   <time datetime="2016-12-28T17:36:02.000Z" itemprop="datePublished">2016-12-28</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/spring/">spring</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -88,11 +183,12 @@
       
         <p>   函数回调:a要调用b中的一个c函数，b中也有调用a的d函数，<br>对于a来说，d函数就是a的回调函数，一般来说a不会主动调用d，<br>d函数就是用来让b调用的；但是b并不知道自己要调用a的哪一个函数具体，<br>所以a会提前通过b中的一个函数s来告诉b要调用a的d函数，这个函数s称为注册函数；</p>
 <p>下面举个通俗的例子：<br>    某天，我打电话向你请教问题，当然是个难题，^_^，你一时想不出解决方法，<br>我又不能拿着电话在那里傻等，于是我们约定：等你想出办法后打手机通知我，<br>这样，我就挂掉电话办其它事情去了。过了XX分钟，我的手机响了，你兴高采烈的说问题已经搞定，<br>应该如此这般处理。故事到此结束。这个例子说明了“异步+回调”的编程模式。其中，你后来打手机<br>告诉我结果便是一个“回调”过程；我的手机号码必须在以前告诉你，这便是注册回调函数；<br>我的手机号码应该有效并且手机能够接收到你的呼叫，这是回调函数必须符合接口规范。</p>
+<p>过滤器的函数回调是在invoke（打包）中再次调用invoke函数，但是在此函数之前和之后可以输出字符，<br>也可以调用其他函数;</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/过滤器是基于函数回调的/" data-id="cix8r0v8d0001p4p811w6bevu" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/过滤器是基于函数回调的/" data-id="cix8rlamt0005qkp880i1nyeo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -136,7 +232,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/过滤策略/" data-id="cix8r0v8j0003p4p8wxvlhke2" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/过滤策略/" data-id="cix8rlan6000cqkp86c9ab8bg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -180,7 +276,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/mongodb常用操作语法/" data-id="cix8r0v8g0002p4p84q83xb6j" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/mongodb常用操作语法/" data-id="cix8rlamo0002qkp8lhr6o6g8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -225,6 +321,14 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/12/29/过滤器和拦截器的区别/">过滤器和拦截器的区别</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/29/拦截器为什么是基于java反射的/">拦截器为什么是基于java反射的</a>
+          </li>
         
           <li>
             <a href="/2016/12/29/过滤器是基于函数回调的/">过滤器是基于函数回调的</a>

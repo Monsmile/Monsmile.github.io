@@ -3,18 +3,35 @@
 <head>
   <meta charset="utf-8">
   
-  <title>mongodb常用操作语法 | blog of Monsmile</title>
+  <title>过滤器和拦截器的区别 | blog of Monsmile</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="SQL术语/概念    MongoDB术语/概念    解释/说明database    database    数据库table    collection    数据库表/集合row    document    数据记录行/文档column    field    数据字段/域index    index    索引table joins         表连接,MongoDB不支持prim">
+  <meta name="description" content="1.拦截器基于java的反射机制，过滤器基于函数的回调；
+2.拦截器只对action请求作用，而过滤器对所有的请求都起作用；
+3.拦截器可以对请求action的上下文，值栈里的对象进行访问，而过滤器不能访问；
+4.拦截器不依赖于servlet容器，而过滤器依赖于servlet容器;
+5.拦截器可以在程序运行期间多次调用，而过滤器只在servlet容器初始化时调用一次;
+6.拦截器可以获取ioc容器">
 <meta property="og:type" content="article">
-<meta property="og:title" content="mongodb常用操作语法">
-<meta property="og:url" content="https://monsmile.github.io/2016/12/29/mongodb常用操作语法/index.html">
+<meta property="og:title" content="过滤器和拦截器的区别">
+<meta property="og:url" content="https://monsmile.github.io/2016/12/29/过滤器和拦截器的区别/index.html">
 <meta property="og:site_name" content="blog of Monsmile">
-<meta property="og:description" content="SQL术语/概念    MongoDB术语/概念    解释/说明database    database    数据库table    collection    数据库表/集合row    document    数据记录行/文档column    field    数据字段/域index    index    索引table joins         表连接,MongoDB不支持prim">
-<meta property="og:updated_time" content="2016-12-28T09:33:26.778Z">
+<meta property="og:description" content="1.拦截器基于java的反射机制，过滤器基于函数的回调；
+2.拦截器只对action请求作用，而过滤器对所有的请求都起作用；
+3.拦截器可以对请求action的上下文，值栈里的对象进行访问，而过滤器不能访问；
+4.拦截器不依赖于servlet容器，而过滤器依赖于servlet容器;
+5.拦截器可以在程序运行期间多次调用，而过滤器只在servlet容器初始化时调用一次;
+6.拦截器可以获取ioc容器">
+<meta property="og:image" content="https://monsmile.github.io/images/1">
+<meta property="og:updated_time" content="2016-12-28T09:53:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="mongodb常用操作语法">
-<meta name="twitter:description" content="SQL术语/概念    MongoDB术语/概念    解释/说明database    database    数据库table    collection    数据库表/集合row    document    数据记录行/文档column    field    数据字段/域index    index    索引table joins         表连接,MongoDB不支持prim">
+<meta name="twitter:title" content="过滤器和拦截器的区别">
+<meta name="twitter:description" content="1.拦截器基于java的反射机制，过滤器基于函数的回调；
+2.拦截器只对action请求作用，而过滤器对所有的请求都起作用；
+3.拦截器可以对请求action的上下文，值栈里的对象进行访问，而过滤器不能访问；
+4.拦截器不依赖于servlet容器，而过滤器依赖于servlet容器;
+5.拦截器可以在程序运行期间多次调用，而过滤器只在servlet容器初始化时调用一次;
+6.拦截器可以获取ioc容器">
+<meta name="twitter:image" content="https://monsmile.github.io/images/1">
   
     <link rel="alternate" href="/atom.xml" title="blog of Monsmile" type="application/atom+xml">
   
@@ -63,14 +80,14 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-mongodb常用操作语法" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-过滤器和拦截器的区别" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/12/29/mongodb常用操作语法/" class="article-date">
-  <time datetime="2016-12-28T16:49:09.000Z" itemprop="datePublished">2016-12-28</time>
+    <a href="/2016/12/29/过滤器和拦截器的区别/" class="article-date">
+  <time datetime="2016-12-28T17:43:23.000Z" itemprop="datePublished">2016-12-28</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/mongodb/">mongodb</a>
+    <a class="article-category-link" href="/categories/spring/">spring</a>
   </div>
 
   </div>
@@ -81,7 +98,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      mongodb常用操作语法
+      过滤器和拦截器的区别
     </h1>
   
 
@@ -89,15 +106,18 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>SQL术语/概念    MongoDB术语/概念    解释/说明<br>database    database    数据库<br>table    collection    数据库表/集合<br>row    document    数据记录行/文档<br>column    field    数据字段/域<br>index    index    索引<br>table joins         表连接,MongoDB不支持<br>primary key    primary key    主键,MongoDB自动将_id字段设置为主键</p>
-<p>需要注意的是：</p>
-<p>文档中的键/值对是有序的。<br>文档中的值不仅可以是在双引号里面的字符串，还可以是其他几种数据类型（甚至可以是整个嵌入的文档)。<br>MongoDB区分类型和大小写。<br>MongoDB的文档不能有重复的键。<br>文档的键是字符串。除了少数例外情况，键可以使用任意UTF-8字符。<br>文档键命名规范：</p>
-<p>键不能含有\0 (空字符)。这个字符用来表示键的结尾。<br>.和$有特别的意义，只有在特定环境下才能使用。<br>以下划线”_”开头的键是保留的(不是严格要求的)</p>
+        <p>1.拦截器基于java的反射机制，过滤器基于函数的回调；</p>
+<p>2.拦截器只对action请求作用，而过滤器对所有的请求都起作用；</p>
+<p>3.拦截器可以对请求action的上下文，值栈里的对象进行访问，而过滤器不能访问；</p>
+<p>4.拦截器不依赖于servlet容器，而过滤器依赖于servlet容器;</p>
+<p>5.拦截器可以在程序运行期间多次调用，而过滤器只在servlet容器初始化时调用一次;</p>
+<p>6.拦截器可以获取ioc容器里的bean，而过滤器不行，在过滤器中注入一个service，可以调用业务逻辑;</p>
+<p>下边有书上的截图可以参考：<br>/<img src="/images/1" alt="图片"></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/mongodb常用操作语法/" data-id="cix8rlamo0002qkp8lhr6o6g8" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/过滤器和拦截器的区别/" data-id="cix8rlams0004qkp8jt1snmyy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -106,15 +126,11 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/12/29/过滤策略/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          过滤策略
-        
-      </div>
-    </a>
   
+    <a href="/2016/12/29/拦截器为什么是基于java反射的/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">拦截器为什么是基于java反射的</div>
+    </a>
   
 </nav>
 
