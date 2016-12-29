@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>ajax框架dwr | blog of Monsmile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一、配置DWR(http://getahead.org/dwr/getstarted)1、将dwr.jar包放在web-info/lib目录下2、编辑web.xml文件，添加servlet
+  dwr-invoker  DWR Servlet  uk.ltd.getahead.dwr.DWRServlet       debug     true  
+  dwr-invoker  /dwr/*3、">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ajax框架dwr">
+<meta property="og:url" content="https://monsmile.github.io/2016/12/29/ajax框架dwr/index.html">
+<meta property="og:site_name" content="blog of Monsmile">
+<meta property="og:description" content="一、配置DWR(http://getahead.org/dwr/getstarted)1、将dwr.jar包放在web-info/lib目录下2、编辑web.xml文件，添加servlet
+  dwr-invoker  DWR Servlet  uk.ltd.getahead.dwr.DWRServlet       debug     true  
+  dwr-invoker  /dwr/*3、">
+<meta property="og:updated_time" content="2016-12-29T03:16:49.069Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ajax框架dwr">
+<meta name="twitter:description" content="一、配置DWR(http://getahead.org/dwr/getstarted)1、将dwr.jar包放在web-info/lib目录下2、编辑web.xml文件，添加servlet
+  dwr-invoker  DWR Servlet  uk.ltd.getahead.dwr.DWRServlet       debug     true  
+  dwr-invoker  /dwr/*3、">
+  
+    <link rel="alternate" href="/atom.xml" title="blog of Monsmile" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">blog of Monsmile</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://monsmile.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-ajax框架dwr" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/12/29/ajax框架dwr/" class="article-date">
+  <time datetime="2016-12-29T11:11:33.000Z" itemprop="datePublished">2016-12-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ajax框架dwr
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一、配置DWR(<a href="http://getahead.org/dwr/getstarted" target="_blank" rel="external">http://getahead.org/dwr/getstarted</a>)<br>1、将dwr.jar包放在web-info/lib目录下<br>2、编辑web.xml文件，添加servlet</p>
+<p><servlet><br>  <servlet-name>dwr-invoker</servlet-name><br>  <display-name>DWR Servlet</display-name><br>  <servlet-class>uk.ltd.getahead.dwr.DWRServlet</servlet-class><br>  <init-param><br>     <param-name>debug</param-name><br>     <param-value>true</param-value><br>  </init-param><br></servlet></p>
+<p><servlet-mapping><br>  <servlet-name>dwr-invoker</servlet-name><br>  <url-pattern>/dwr/*</url-pattern><br></servlet-mapping><br>3、创建dwr.xml配置文件注册Java类和脚本的对应信息。<br>&lt;!DOCTYPE dwr PUBLIC<br>“-//GetAhead Limited//DTD Direct Web Remoting 1.0//EN”<br>“<a href="http://www.getahead.ltd.uk/dwr/dwr10.dtd&quot;&gt;" target="_blank" rel="external">http://www.getahead.ltd.uk/dwr/dwr10.dtd&quot;&gt;</a></p>
+<p><dwr></dwr></p>
+<p><allow><br>&lt;!—<create creator="new" javascript="JDate"></create></allow></p>
+<p><param name="class" value="java.util.Date"><br></p>
+<p><create creator="new" javascript="Demo"></create></p>
+<p><param name="class" value="your.java.Bean"><br>–&gt;<br><br><br>4、通过<a href="http://localhost:8080/[your" target="_blank" rel="external">http://localhost:8080/[your</a> webapp]/dwr可以获取到当前dwr中可以使用的JAVA类。<br>检测用户名是否已经使用例子：<br>1、按照前面两部配置一下DWR。<br>2、编写类：test.CheckUser<br>package test;</p>
+<p>public class CheckUser {<br>public String check(String name){<br>//访问数据库验证信息<br>if(name.startsWith(“aa”)){<br>return “用户已经存在”;<br>}<br>else{<br>return “可以使用该用户”;<br>}<br>}<br>}<br>3、创建配置文件并在配置文件中配置CheckUser类。<br>&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;<br>&lt;!DOCTYPE dwr PUBLIC<br>“-//GetAhead Limited//DTD Direct Web Remoting 2.0//EN”<br>“<a href="http://getahead.org/dwr/dwr20.dtd&quot;&gt;" target="_blank" rel="external">http://getahead.org/dwr/dwr20.dtd&quot;&gt;</a></p>
+<p><dwr></dwr></p>
+<p><allow></allow></p>
+<p><create creator="new" javascript="CheckUser"></create></p>
+<p><param name="class" value="test.CheckUser"><br><br><br><br>4、重启tomcat服务器，通过<a href="http://localhost:8080/[your" target="_blank" rel="external">http://localhost:8080/[your</a> webapp]/dwr可以看到CheckUser类，点击连接可以查看该类的方法和并测试。<br>5、编写index.jsp页面，实现效果。<br>在页面文件中实现效果<br>1）在javascript中通过使用dwr.util.getValue() 来获取页面中某个页面元素的值。<br>2）直接调用后台java类的方法，传递方法参数和“异不调用返回后的处理脚本函数”<br>3）”在处理脚本函数“中我们可以通过dwr.util.setValue（”控件ID”,值）来个控件更新数据。<br>4）为了让javascript脚本中可以调用java类的方法我们需要在dwr.xml文件中申明java类。<br>注意：在页面中需要包含引入：</p>
+<script type="text/javascript" src="/test/dwr/interface/CheckUser.js"></script><!--- dwr.xml中定义的脚本名字-->
+<script type="text/javascript" src="/test/dwr/engine.js"></script><!--- DWR-->
+<script type="text/javascript" src="/test/dwr/util.js"></script><!---可以通过dwr.util.getValue方法获取元素值--->
+否则会出现脚本错误
+
+<html>
+<head>
+<script type="text/javascript" src="/test/dwr/interface/CheckUser.js"></script>
+<script type="text/javascript" src="/test/dwr/engine.js"></script>
+<script type="text/javascript" src="/test/dwr/util.js"></script>
+
+<p><script language="javascript"><br>&lt;!–<br>function check() {<br>  var name = dwr.util.getValue(“username”);<br>  CheckUser.check(name, function(data) );<br>}<br></script><br></p></head><p></p>
+<p><body></body></p>
+<p><input type="text" id="username"></p>
+<p><input value="check" type="button" onclick="check()"><br><br><br> <span id="result"></span><br><br></p></html><p></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://monsmile.github.io/2016/12/29/ajax框架dwr/" data-id="cix9suyfj0002osp87s4xqxzf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/12/29/过滤器，拦截器，监听器/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">过滤器，拦截器，监听器</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/mongodb/">mongodb</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/">spring</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/12/29/ajax框架dwr/">ajax框架dwr</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/29/过滤器，拦截器，监听器/">过滤器，拦截器，监听器</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/29/过滤器和拦截器的区别/">过滤器和拦截器的区别</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/29/拦截器为什么是基于java反射的/">拦截器为什么是基于java反射的</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/29/过滤器是基于函数回调的/">过滤器是基于函数回调的</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 gaolanyu<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
