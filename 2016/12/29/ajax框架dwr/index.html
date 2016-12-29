@@ -15,7 +15,7 @@
 <meta property="og:description" content="一、配置DWR(http://getahead.org/dwr/getstarted)1、将dwr.jar包放在web-info/lib目录下2、编辑web.xml文件，添加servlet
   dwr-invoker  DWR Servlet  uk.ltd.getahead.dwr.DWRServlet       debug     true  
   dwr-invoker  /dwr/*3、">
-<meta property="og:updated_time" content="2016-12-29T03:27:11.613Z">
+<meta property="og:updated_time" content="2016-12-29T03:29:13.544Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ajax框架dwr">
 <meta name="twitter:description" content="一、配置DWR(http://getahead.org/dwr/getstarted)1、将dwr.jar包放在web-info/lib目录下2、编辑web.xml文件，添加servlet
@@ -95,7 +95,7 @@
 <p><servlet><br>  <servlet-name>dwr-invoker</servlet-name><br>  <display-name>DWR Servlet</display-name><br>  <servlet-class>uk.ltd.getahead.dwr.DWRServlet</servlet-class><br>  <init-param><br>     <param-name>debug</param-name><br>     <param-value>true</param-value><br>  </init-param><br></servlet></p>
 <p><servlet-mapping><br>  <servlet-name>dwr-invoker</servlet-name><br>  <url-pattern>/dwr/*</url-pattern><br></servlet-mapping><br>3、创建dwr.xml配置文件注册Java类和脚本的对应信息。<br>&lt;!DOCTYPE dwr PUBLIC<br>“-//GetAhead Limited//DTD Direct Web Remoting 1.0//EN”<br>“<a href="http://www.getahead.ltd.uk/dwr/dwr10.dtd&quot;&gt;" target="_blank" rel="external">http://www.getahead.ltd.uk/dwr/dwr10.dtd&quot;&gt;</a></p>
 <p><dwr></dwr></p>
-<p><allow><br>&lt;!—<create creator="new" javascript="JDate"></create></allow></p>
+<p><allow><br>&lt;—<create creator="new" javascript="JDate"></create></allow></p>
 <p><param name="class" value="java.util.Date"><br></p>
 <p><create creator="new" javascript="Demo"></create></p>
 <p><param name="class" value="your.java.Bean"><br>–&gt;<br><br><br>4、通过<a href="http://localhost:8080/[your" target="_blank" rel="external">http://localhost:8080/[your</a> webapp]/dwr可以获取到当前dwr中可以使用的JAVA类。<br>检测用户名是否已经使用例子：<br>1、按照前面两部配置一下DWR。<br>2、编写类：test.CheckUser<br>package test;</p>
@@ -109,22 +109,22 @@
 <script type="text/javascript" src="/test/dwr/util.js"></script><!---可以通过dwr.util.getValue方法获取元素值--->
 否则会出现脚本错误
 
-<!--
+
 <html>
 <head>
-<script type='text/javascript' src='/test/dwr/interface/CheckUser.js'></script>
-<script type='text/javascript' src='/test/dwr/engine.js'></script>
-<script type='text/javascript' src='/test/dwr/util.js'></script>
+<script type="text/javascript" src="/test/dwr/interface/CheckUser.js"></script>
+<script type="text/javascript" src="/test/dwr/engine.js"></script>
+<script type="text/javascript" src="/test/dwr/util.js"></script>
 
-<p><script LANGUAGE=javascript><br>&lt;!–<br>function check() {<br>  var name = dwr.util.getValue(“username”);<br>  CheckUser.check(name, function(data) );<br>}<br></script><br></head></p>
-<p><body></p>
-<p><input type="text" id="username"/></p>
-<p><input value="check" type="button" onclick="check()"/><br><br/><br> <span id="result"></span><br></body><br></html><br>–!&gt;</p>
--->
+<p><script language="javascript"><br>&lt;!–<br>function check() {<br>  var name = dwr.util.getValue(“username”);<br>  CheckUser.check(name, function(data) );<br>}<br></script><br></p></head><p></p>
+<p><body></body></p>
+<p><input type="text" id="username"></p>
+<p><input value="check" type="button" onclick="check()"><br><br><br> <span id="result"></span><br><br></p></html><p></p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/ajax框架dwr/" data-id="cix9t7yc50002e8p8y5zg9l0s" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/ajax框架dwr/" data-id="cix9tbw0v0001owp8j4296fx3" class="article-share-link">Share</a>
       
       
     </footer>
