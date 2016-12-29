@@ -3,27 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>拦截器为什么是基于java反射的 | blog of Monsmile</title>
+  <title>Spring是如何实现MVC的？ | blog of Monsmile</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="标签（空格分隔）： spring
-
-拦截器 ：是在面向切面编程的就是在你的service或者一个方法，前调用一个方法，或者在方法后调用一个方法比如动态代理就是拦截器的简单实现，在你调用方法前打印出字符串（或者做其它业务逻辑的操作），也可以在你调用方法后打印出字符串，甚至在你抛出异常的时候做业务逻辑的操作。
-连接拦截器和拦截器拦截到要执行的类，这两个类要联系，中间需要用到反射;">
+  <meta name="description" content="spring中有一个核心控制器ServletDispather，该控制器会接受所有的请求，解析请求，将请求分发给对应的controller，controller调用对用的模型层，Controller，返回结果给控制器，控制器调用对应的视图响应给客户端。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="拦截器为什么是基于java反射的">
-<meta property="og:url" content="https://monsmile.github.io/2016/12/29/拦截器为什么是基于java反射的/index.html">
+<meta property="og:title" content="Spring是如何实现MVC的？">
+<meta property="og:url" content="https://monsmile.github.io/2016/12/29/Spring是如何实现MVC的？/index.html">
 <meta property="og:site_name" content="blog of Monsmile">
-<meta property="og:description" content="标签（空格分隔）： spring
-
-拦截器 ：是在面向切面编程的就是在你的service或者一个方法，前调用一个方法，或者在方法后调用一个方法比如动态代理就是拦截器的简单实现，在你调用方法前打印出字符串（或者做其它业务逻辑的操作），也可以在你调用方法后打印出字符串，甚至在你抛出异常的时候做业务逻辑的操作。
-连接拦截器和拦截器拦截到要执行的类，这两个类要联系，中间需要用到反射;">
-<meta property="og:updated_time" content="2016-12-28T09:42:50.038Z">
+<meta property="og:description" content="spring中有一个核心控制器ServletDispather，该控制器会接受所有的请求，解析请求，将请求分发给对应的controller，controller调用对用的模型层，Controller，返回结果给控制器，控制器调用对应的视图响应给客户端。">
+<meta property="og:updated_time" content="2016-12-29T03:33:32.850Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="拦截器为什么是基于java反射的">
-<meta name="twitter:description" content="标签（空格分隔）： spring
-
-拦截器 ：是在面向切面编程的就是在你的service或者一个方法，前调用一个方法，或者在方法后调用一个方法比如动态代理就是拦截器的简单实现，在你调用方法前打印出字符串（或者做其它业务逻辑的操作），也可以在你调用方法后打印出字符串，甚至在你抛出异常的时候做业务逻辑的操作。
-连接拦截器和拦截器拦截到要执行的类，这两个类要联系，中间需要用到反射;">
+<meta name="twitter:title" content="Spring是如何实现MVC的？">
+<meta name="twitter:description" content="spring中有一个核心控制器ServletDispather，该控制器会接受所有的请求，解析请求，将请求分发给对应的controller，controller调用对用的模型层，Controller，返回结果给控制器，控制器调用对应的视图响应给客户端。">
   
     <link rel="alternate" href="/atom.xml" title="blog of Monsmile" type="application/atom+xml">
   
@@ -72,16 +63,12 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-拦截器为什么是基于java反射的" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Spring是如何实现MVC的？" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/12/29/拦截器为什么是基于java反射的/" class="article-date">
-  <time datetime="2016-12-28T17:40:53.000Z" itemprop="datePublished">2016-12-28</time>
+    <a href="/2016/12/29/Spring是如何实现MVC的？/" class="article-date">
+  <time datetime="2016-12-29T11:32:40.000Z" itemprop="datePublished">2016-12-29</time>
 </a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/spring/">spring</a>
-  </div>
-
   </div>
   <div class="article-inner">
     
@@ -90,7 +77,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      拦截器为什么是基于java反射的
+      Spring是如何实现MVC的？
     </h1>
   
 
@@ -98,15 +85,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>标签（空格分隔）： spring</p>
-<hr>
-<p>拦截器 ：是在面向切面编程的就是在你的service或者一个方法，前调用一个方法，<br>或者在方法后调用一个方法比如动态代理就是拦截器的简单实现，在你调用方法前打<br>印出字符串（或者做其它业务逻辑的操作），也可以在你调用方法后打印出字符串，<br>甚至在你抛出异常的时候做业务逻辑的操作。</p>
-<p>连接拦截器和拦截器拦截到要执行的类，这两个类要联系，中间需要用到反射;</p>
+        <p>spring中有一个核心控制器ServletDispather，该控制器会接受所有的请求，解析请求，将请求分发给对应的controller，controller调用对用的模型层，Controller，返回结果给控制器，控制器调用对应的视图响应给客户端。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/拦截器为什么是基于java反射的/" data-id="cix9tg4nu00045gp82f9h7pbr" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/Spring是如何实现MVC的？/" data-id="cix9tg4nm00005gp8a33snzdn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -115,19 +99,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/12/29/过滤器和拦截器的区别/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          过滤器和拦截器的区别
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/12/29/过滤器是基于函数回调的/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2016/12/29/ajax框架dwr/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">过滤器是基于函数回调的</div>
+      <div class="article-nav-title">ajax框架dwr</div>
     </a>
   
 </nav>
