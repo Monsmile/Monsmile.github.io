@@ -3,21 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>过滤器是基于函数回调的 | blog of Monsmile</title>
+  <title>过滤器，拦截器，监听器 | blog of Monsmile</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="函数回调:a要调用b中的一个c函数，b中也有调用a的d函数，对于a来说，d函数就是a的回调函数，一般来说a不会主动调用d，d函数就是用来让b调用的；但是b并不知道自己要调用a的哪一个函数具体，所以a会提前通过b中的一个函数s来告诉b要调用a的d函数，这个函数s称为注册函数；
-下面举个通俗的例子：    某天，我打电话向你请教问题，当然是个难题，^_^，你一时想不出解决方法，我又不能拿着电话在">
+  <meta name="description" content="1.过滤器是在程序启动的时候初始化创建一次，然后在以后程序运行过程中执行过滤操作，只有web应用停止，或者重新部署的时候才销毁，过滤器就像他的名字一样，在程序运行之前，先过滤掉一些不合法的链接，之后再继续执行剩下的步骤，过滤器一般用来设置网页的编码格式，同时还可以判断用户是否登录，有没有权限访问等等，fileter；
+2.拦截器是面向切面编程的时候用的，基于java的反射机制，是在service，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="过滤器是基于函数回调的">
-<meta property="og:url" content="https://monsmile.github.io/2016/12/29/过滤器是基于函数回调的/index.html">
+<meta property="og:title" content="过滤器，拦截器，监听器">
+<meta property="og:url" content="https://monsmile.github.io/2016/12/29/过滤器，拦截器，监听器/index.html">
 <meta property="og:site_name" content="blog of Monsmile">
-<meta property="og:description" content="函数回调:a要调用b中的一个c函数，b中也有调用a的d函数，对于a来说，d函数就是a的回调函数，一般来说a不会主动调用d，d函数就是用来让b调用的；但是b并不知道自己要调用a的哪一个函数具体，所以a会提前通过b中的一个函数s来告诉b要调用a的d函数，这个函数s称为注册函数；
-下面举个通俗的例子：    某天，我打电话向你请教问题，当然是个难题，^_^，你一时想不出解决方法，我又不能拿着电话在">
-<meta property="og:updated_time" content="2016-12-28T09:40:22.878Z">
+<meta property="og:description" content="1.过滤器是在程序启动的时候初始化创建一次，然后在以后程序运行过程中执行过滤操作，只有web应用停止，或者重新部署的时候才销毁，过滤器就像他的名字一样，在程序运行之前，先过滤掉一些不合法的链接，之后再继续执行剩下的步骤，过滤器一般用来设置网页的编码格式，同时还可以判断用户是否登录，有没有权限访问等等，fileter；
+2.拦截器是面向切面编程的时候用的，基于java的反射机制，是在service，">
+<meta property="og:updated_time" content="2016-12-29T02:45:54.109Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="过滤器是基于函数回调的">
-<meta name="twitter:description" content="函数回调:a要调用b中的一个c函数，b中也有调用a的d函数，对于a来说，d函数就是a的回调函数，一般来说a不会主动调用d，d函数就是用来让b调用的；但是b并不知道自己要调用a的哪一个函数具体，所以a会提前通过b中的一个函数s来告诉b要调用a的d函数，这个函数s称为注册函数；
-下面举个通俗的例子：    某天，我打电话向你请教问题，当然是个难题，^_^，你一时想不出解决方法，我又不能拿着电话在">
+<meta name="twitter:title" content="过滤器，拦截器，监听器">
+<meta name="twitter:description" content="1.过滤器是在程序启动的时候初始化创建一次，然后在以后程序运行过程中执行过滤操作，只有web应用停止，或者重新部署的时候才销毁，过滤器就像他的名字一样，在程序运行之前，先过滤掉一些不合法的链接，之后再继续执行剩下的步骤，过滤器一般用来设置网页的编码格式，同时还可以判断用户是否登录，有没有权限访问等等，fileter；
+2.拦截器是面向切面编程的时候用的，基于java的反射机制，是在service，">
   
     <link rel="alternate" href="/atom.xml" title="blog of Monsmile" type="application/atom+xml">
   
@@ -66,10 +66,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-过滤器是基于函数回调的" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-过滤器，拦截器，监听器" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/12/29/过滤器是基于函数回调的/" class="article-date">
-  <time datetime="2016-12-28T17:36:02.000Z" itemprop="datePublished">2016-12-28</time>
+    <a href="/2016/12/29/过滤器，拦截器，监听器/" class="article-date">
+  <time datetime="2016-12-28T17:58:01.000Z" itemprop="datePublished">2016-12-28</time>
 </a>
     
   <div class="article-category">
@@ -84,7 +84,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      过滤器是基于函数回调的
+      过滤器，拦截器，监听器
     </h1>
   
 
@@ -92,14 +92,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>   函数回调:a要调用b中的一个c函数，b中也有调用a的d函数，<br>对于a来说，d函数就是a的回调函数，一般来说a不会主动调用d，<br>d函数就是用来让b调用的；但是b并不知道自己要调用a的哪一个函数具体，<br>所以a会提前通过b中的一个函数s来告诉b要调用a的d函数，这个函数s称为注册函数；</p>
-<p>下面举个通俗的例子：<br>    某天，我打电话向你请教问题，当然是个难题，^_^，你一时想不出解决方法，<br>我又不能拿着电话在那里傻等，于是我们约定：等你想出办法后打手机通知我，<br>这样，我就挂掉电话办其它事情去了。过了XX分钟，我的手机响了，你兴高采烈的说问题已经搞定，<br>应该如此这般处理。故事到此结束。这个例子说明了“异步+回调”的编程模式。其中，你后来打手机<br>告诉我结果便是一个“回调”过程；我的手机号码必须在以前告诉你，这便是注册回调函数；<br>我的手机号码应该有效并且手机能够接收到你的呼叫，这是回调函数必须符合接口规范。</p>
-<p>过滤器的函数回调是在invoke（打包）中再次调用invoke函数，但是在此函数之前和之后可以输出字符，<br>也可以调用其他函数;</p>
+        <p>1.过滤器是在程序启动的时候初始化创建一次，然后在以后程序运行过程中执行过滤操作，只有web应用停止，或者重新部署的时候才销毁，过滤器就像他的名字一样，在程序运行之前，先过滤掉一些不合法的链接，之后再继续执行剩下的步骤，过滤器一般用来设置网页的编码格式，同时还可以判断用户是否登录，有没有权限访问等等，fileter；</p>
+<p>2.拦截器是面向切面编程的时候用的，基于java的反射机制，是在service，或者一个方法执行之前执行的操作，一个方法执行之后执行的操作，有前置通知，后置通知，异常通知，环绕通知;spring只支持方法拦截,后置通知可以获取方法的返回值，但是无法对其参数，进行实质性的改变，只有环绕通知可以，异常通知可以抛出异常;</p>
+<p>public Object invoke(Object proxy, Method method, Object[] args) throws Throwable<br>{<br>Object result = null;<br>System.out.println(“before invoke method :” + method.getName());<br>result = method.invoke(this.targetObj, args);<br>System.out.println(“after invoke method : “ + method.getName());<br>return result;<br>}<br>3.监听器，的作用是在java程序中，如果另一个java对象程序的属性改变，或者方法执行，则监听器中的方法立即执行，可用于监听网站的人数；</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/过滤器是基于函数回调的/" data-id="cix9rqxa40006x0p8h6qjyzn8" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/过滤器，拦截器，监听器/" data-id="cix9rqxa20005x0p857s4gy21" class="article-share-link">Share</a>
       
       
     </footer>
@@ -108,19 +108,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/12/29/拦截器为什么是基于java反射的/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          拦截器为什么是基于java反射的
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/12/29/过滤策略/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2016/12/29/过滤器和拦截器的区别/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">过滤策略</div>
+      <div class="article-nav-title">过滤器和拦截器的区别</div>
     </a>
   
 </nav>
