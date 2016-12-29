@@ -3,35 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>过滤器和拦截器的区别 | blog of Monsmile</title>
+  <title>spring如何管理对象 | blog of Monsmile</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.拦截器基于java的反射机制，过滤器基于函数的回调；
-2.拦截器只对action请求作用，而过滤器对所有的请求都起作用；
-3.拦截器可以对请求action的上下文，值栈里的对象进行访问，而过滤器不能访问；
-4.拦截器不依赖于servlet容器，而过滤器依赖于servlet容器;
-5.拦截器可以在程序运行期间多次调用，而过滤器只在servlet容器初始化时调用一次;
-6.拦截器可以获取ioc容器">
+  <meta name="description" content="首先说一下什么是spring，spring是一个对象仓库（容器）,spring的目的是为了解耦,减少类与类之间的耦合度;
+spring如何管理对象呢？
+1.spring通过反射创建对象，a.在spring容器初始化时，默认会创建所有对象，                                                                b.如果配置了lazy-init延">
 <meta property="og:type" content="article">
-<meta property="og:title" content="过滤器和拦截器的区别">
-<meta property="og:url" content="https://monsmile.github.io/2016/12/29/过滤器和拦截器的区别/index.html">
+<meta property="og:title" content="spring如何管理对象">
+<meta property="og:url" content="https://monsmile.github.io/2016/12/29/spring如何管理对象/index.html">
 <meta property="og:site_name" content="blog of Monsmile">
-<meta property="og:description" content="1.拦截器基于java的反射机制，过滤器基于函数的回调；
-2.拦截器只对action请求作用，而过滤器对所有的请求都起作用；
-3.拦截器可以对请求action的上下文，值栈里的对象进行访问，而过滤器不能访问；
-4.拦截器不依赖于servlet容器，而过滤器依赖于servlet容器;
-5.拦截器可以在程序运行期间多次调用，而过滤器只在servlet容器初始化时调用一次;
-6.拦截器可以获取ioc容器">
-<meta property="og:image" content="https://monsmile.github.io/images/1">
-<meta property="og:updated_time" content="2016-12-28T09:55:47.855Z">
+<meta property="og:description" content="首先说一下什么是spring，spring是一个对象仓库（容器）,spring的目的是为了解耦,减少类与类之间的耦合度;
+spring如何管理对象呢？
+1.spring通过反射创建对象，a.在spring容器初始化时，默认会创建所有对象，                                                                b.如果配置了lazy-init延">
+<meta property="og:updated_time" content="2016-12-29T03:45:27.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="过滤器和拦截器的区别">
-<meta name="twitter:description" content="1.拦截器基于java的反射机制，过滤器基于函数的回调；
-2.拦截器只对action请求作用，而过滤器对所有的请求都起作用；
-3.拦截器可以对请求action的上下文，值栈里的对象进行访问，而过滤器不能访问；
-4.拦截器不依赖于servlet容器，而过滤器依赖于servlet容器;
-5.拦截器可以在程序运行期间多次调用，而过滤器只在servlet容器初始化时调用一次;
-6.拦截器可以获取ioc容器">
-<meta name="twitter:image" content="https://monsmile.github.io/images/1">
+<meta name="twitter:title" content="spring如何管理对象">
+<meta name="twitter:description" content="首先说一下什么是spring，spring是一个对象仓库（容器）,spring的目的是为了解耦,减少类与类之间的耦合度;
+spring如何管理对象呢？
+1.spring通过反射创建对象，a.在spring容器初始化时，默认会创建所有对象，                                                                b.如果配置了lazy-init延">
   
     <link rel="alternate" href="/atom.xml" title="blog of Monsmile" type="application/atom+xml">
   
@@ -80,16 +69,12 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-过滤器和拦截器的区别" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-spring如何管理对象" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/12/29/过滤器和拦截器的区别/" class="article-date">
-  <time datetime="2016-12-28T17:43:23.000Z" itemprop="datePublished">2016-12-28</time>
+    <a href="/2016/12/29/spring如何管理对象/" class="article-date">
+  <time datetime="2016-12-29T11:37:57.000Z" itemprop="datePublished">2016-12-29</time>
 </a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/spring/">spring</a>
-  </div>
-
   </div>
   <div class="article-inner">
     
@@ -98,7 +83,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      过滤器和拦截器的区别
+      spring如何管理对象
     </h1>
   
 
@@ -106,18 +91,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1.拦截器基于java的反射机制，过滤器基于函数的回调；</p>
-<p>2.拦截器只对action请求作用，而过滤器对所有的请求都起作用；</p>
-<p>3.拦截器可以对请求action的上下文，值栈里的对象进行访问，而过滤器不能访问；</p>
-<p>4.拦截器不依赖于servlet容器，而过滤器依赖于servlet容器;</p>
-<p>5.拦截器可以在程序运行期间多次调用，而过滤器只在servlet容器初始化时调用一次;</p>
-<p>6.拦截器可以获取ioc容器里的bean，而过滤器不行，在过滤器中注入一个service，可以调用业务逻辑;</p>
-<p>下边有书上的截图可以参考：<br><img src="/images/1" alt="图片"></p>
+        <p>首先说一下什么是spring，spring是一个对象仓库（容器）,spring的目的是为了解耦,减少类与类之间的耦合度;</p>
+<p>spring如何管理对象呢？</p>
+<p>1.spring通过反射创建对象，a.在spring容器初始化时，默认会创建所有对象，                                                                b.如果配置了lazy-init延迟创建，初始化时不创建，需要创                                                     建的时候再创建。                                                                   2.装配         a.手动装配。手动装配有两种方式，一种是beanFactory，另一种是应用上                                             下文（ApplicationContext;                                                                               b.自动装配;</p>
+<p>3.对象的获取:默认是单例的，多线程修改单例的bean的属性会造成线程安全问题，设置属性为protoType原型复制副本，解决线程安全问题;</p>
+<p>4、容器销毁时，销毁所有的对象。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/过滤器和拦截器的区别/" data-id="cix9tvjpp0007qkp8p2hbfnyt" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/spring如何管理对象/" data-id="cix9tvjpk0005qkp8lai4g83b" class="article-share-link">Share</a>
       
       
     </footer>
@@ -126,19 +109,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/12/29/过滤器，拦截器，监听器/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          过滤器，拦截器，监听器
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/12/29/拦截器为什么是基于java反射的/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2016/12/29/Spring是如何实现MVC的？/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">拦截器为什么是基于java反射的</div>
+      <div class="article-nav-title">Spring是如何实现MVC的？</div>
     </a>
   
 </nav>
