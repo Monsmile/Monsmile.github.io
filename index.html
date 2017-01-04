@@ -64,6 +64,94 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Spring-依赖注入四种方式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/05/Spring-依赖注入四种方式/" class="article-date">
+  <time datetime="2017-01-04T16:00:53.000Z" itemprop="datePublished">2017-01-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/05/Spring-依赖注入四种方式/">Spring-依赖注入四种方式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>标签（空格分隔）： spring</p>
+<hr>
+<p>平常的java开发中，程序员在某个类中需要依赖其它类的方法，则通常是new一个依赖类再调用类实例的方法，这种开发存在的问题是new的类实例不好统一管理，spring提出了依赖注入的思想，即依赖类不由程序员实例化，而是通过spring容器帮我们new指定实例并且将实例注入到需要该对象的类中。依赖注入的另一种说法是“控制反转”，通俗的理解是：平常我们new一个实例，这个实例的控制权是我们程序员，而控制反转是指new实例工作不由我们程序员来做而是交给spring容器来做。</p>
+<p>spring有多种依赖注入的形式，下面仅介绍spring通过xml进行IOC配置的方式：<br>Set注入<br>这是最简单的注入方式，假设有一个SpringAction，类中需要实例化一个SpringDao对象，那么就可以定义一个private的SpringDao成员变量，然后创建SpringDao的set方法（这是ioc的注入入口）：<br>Java代码  收藏代码<br>package com.bless.springdemo.action;<br>public class SpringAction {<br>        //注入对象springDao<br>    private SpringDao springDao;<br>        //一定要写被注入对象的set方法<br>        public void setSpringDao(SpringDao springDao) {<br>        this.springDao = springDao;<br>    }<br>        public void ok(){<br>        springDao.ok();<br>    }<br>}</p>
+<p>随后编写spring的xml文件，<bean>中的name属性是class属性的一个别名，class属性指类的全名，因为在SpringAction中有一个公共属性Springdao，所以要在<bean>标签中创建一个<property>标签指定SpringDao。<property>标签中的name就是SpringAction类中的SpringDao属性名，ref指下面<bean name="springDao" ...="">，这样其实是spring将SpringDaoImpl对象实例化并且调用SpringAction的setSpringDao方法将SpringDao注入：<br>Java代码</bean></property></property></bean></bean></p>
+<pre><code>&lt;!--配置bean,配置后该类由spring管理--&gt;
+    &lt;bean name=&quot;springAction&quot; class=&quot;com.bless.springdemo.action.SpringAction&quot;&gt;
+        &lt;!--(1)依赖注入,配置当前类中相应的属性--&gt;
+        &lt;property name=&quot;springDao&quot; ref=&quot;springDao&quot;&gt;&lt;/property&gt;
+    &lt;/bean&gt;
+&lt;bean name=&quot;springDao&quot; class=&quot;com.bless.springdemo.dao.impl.SpringDaoImpl&quot;&gt;&lt;/bean&gt;
+</code></pre><p>构造器注入<br>这种方式的注入是指带有参数的构造函数注入，看下面的例子，我创建了两个成员变量SpringDao和User，但是并未设置对象的set方法，所以就不能支持第一种注入方式，这里的注入方式是在SpringAction的构造函数中注入，也就是说在创建SpringAction对象时要将SpringDao和User两个参数值传进来：<br>Java代码<br>public class SpringAction {<br>    //注入对象springDao<br>    private SpringDao springDao;<br>    private User user;<br>    public SpringAction(SpringDao springDao,User user){<br>        this.springDao = springDao;<br>        this.user = user;<br>        System.out.println(“构造方法调用springDao和user”);<br>    }<br>        public void save(){<br>        user.setName(“卡卡”);<br>        springDao.save(user);<br>    }<br>}</p>
+<p>在XML文件中同样不用<property>的形式，而是使用<constructor-arg>标签，ref属性同样指向其它<bean>标签的name属性：<br>Xml代码</bean></constructor-arg></property></p>
+<pre><code>&lt;!--配置bean,配置后该类由spring管理--&gt;
+    &lt;bean name=&quot;springAction&quot; class=&quot;com.bless.springdemo.action.SpringAction&quot;&gt;
+        &lt;!--(2)创建构造器注入,如果主类有带参的构造方法则需添加此配置--&gt;
+        &lt;constructor-arg ref=&quot;springDao&quot;&gt;&lt;/constructor-arg&gt;
+        &lt;constructor-arg ref=&quot;user&quot;&gt;&lt;/constructor-arg&gt;
+    &lt;/bean&gt;
+        &lt;bean name=&quot;springDao&quot; class=&quot;com.bless.springdemo.dao.impl.SpringDaoImpl&quot;&gt;&lt;/bean&gt;
+         &lt;bean name=&quot;user&quot; class=&quot;com.bless.springdemo.vo.User&quot;&gt;&lt;/bean&gt;
+</code></pre><p>  解决构造方法参数的不确定性，你可能会遇到构造方法传入的两参数都是同类型的，为了分清哪个该赋对应值，则需要进行一些小处理：<br>下面是设置index，就是参数位置：<br>Xml代码  收藏代码</p>
+<pre><code>&lt;bean name=&quot;springAction&quot; class=&quot;com.bless.springdemo.action.SpringAction&quot;&gt;
+        &lt;constructor-arg index=&quot;0&quot; ref=&quot;springDao&quot;&gt;&lt;/constructor-arg&gt;
+        &lt;constructor-arg index=&quot;1&quot; ref=&quot;user&quot;&gt;&lt;/constructor-arg&gt;
+    &lt;/bean&gt;
+  另一种是设置参数类型：
+Xml代码
+&lt;constructor-arg type=&quot;java.lang.String&quot; ref=&quot;&quot;/&gt;
+</code></pre><p>静态工厂的方法注入<br>静态工厂顾名思义，就是通过调用静态工厂的方法来获取自己需要的对象，为了让spring管理所有对象，我们不能直接通过”工程类.静态方法()”来获取对象，而是依然通过spring注入的形式获取：<br>Java代码  收藏代码<br>package com.bless.springdemo.factory;<br>import com.bless.springdemo.dao.FactoryDao;<br>import com.bless.springdemo.dao.impl.FactoryDaoImpl;<br>import com.bless.springdemo.dao.impl.StaticFacotryDaoImpl;<br>public class DaoFactory {<br>    //静态工厂<br>    public static final FactoryDao getStaticFactoryDaoImpl(){<br>        return new StaticFacotryDaoImpl();<br>    }<br>}</p>
+<p>同样看关键类，这里我需要注入一个FactoryDao对象，这里看起来跟第一种注入一模一样，但是看随后的xml会发现有很大差别:<br>Java代码<br> public class SpringAction {<br>        //注入对象<br>    private FactoryDao staticFactoryDao;<br>    public void staticFactoryOk(){<br>        staticFactoryDao.saveFactory();<br>    }<br>    //注入对象的set方法<br>    public void setStaticFactoryDao(FactoryDao staticFactoryDao) {<br>        this.staticFactoryDao = staticFactoryDao;<br>    }<br>}</p>
+<p>Spring的IOC配置文件，注意看<code>&lt;bean name=&quot;staticFactoryDao&quot;&gt;</code>指向的class并不是FactoryDao的实现类，而是指向静态工厂DaoFactory，并且配置 factory-method=”getStaticFactoryDaoImpl”指定调用哪个工厂方法：<br>Xml代码</p>
+<pre><code>&lt;!--配置bean,配置后该类由spring管理--&gt;
+    &lt;bean name=&quot;springAction&quot; class=&quot;com.bless.springdemo.action.SpringAction&quot; &gt;
+        &lt;!--(3)使用静态工厂的方法注入对象,对应下面的配置文件(3)--&gt;
+        &lt;property name=&quot;staticFactoryDao&quot; ref=&quot;staticFactoryDao&quot;&gt;&lt;/property&gt;
+                &lt;/property&gt;
+    &lt;/bean&gt;
+    &lt;!--(3)此处获取对象的方式是从工厂类中获取静态方法--&gt;
+    &lt;bean name=&quot;staticFactoryDao&quot; class=&quot;com.bless.springdemo.factory.DaoFactory&quot; factory-method=&quot;getStaticFactoryDaoImpl&quot;&gt;&lt;/bean&gt;
+</code></pre><p>实例工厂的方法注入<br>实例工厂的意思是获取对象实例的方法不是静态的，所以你需要首先new工厂类，再调用普通的实例方法：<br>Java代码<br>public class DaoFactory {<br>    //实例工厂<br>    public FactoryDao getFactoryDaoImpl(){<br>        return new FactoryDaoImpl();<br>    }<br>}<br>那么下面这个类没什么说的，跟前面也很相似，但是我们需要通过实例工厂类创建FactoryDao对象：<br>Java代码<br>public class SpringAction {<br>    //注入对象<br>    private FactoryDao factoryDao;<br>    public void factoryOk(){<br>        factoryDao.saveFactory();<br>    }<br>    public void setFactoryDao(FactoryDao factoryDao) {<br>        this.factoryDao = factoryDao;<br>    }<br>}</p>
+<p>最后看spring配置文件：<br>Xml代码</p>
+<pre><code>&lt;!--配置bean,配置后该类由spring管理--&gt;
+    &lt;bean name=&quot;springAction&quot; class=&quot;com.bless.springdemo.action.SpringAction&quot;&gt;
+        &lt;!--(4)使用实例工厂的方法注入对象,对应下面的配置文件(4)--&gt;
+        &lt;property name=&quot;factoryDao&quot; ref=&quot;factoryDao&quot;&gt;&lt;/property&gt;
+    &lt;/bean&gt;
+    &lt;!--(4)此处获取对象的方式是从工厂类中获取实例方法--&gt;
+    &lt;bean name=&quot;daoFactory&quot; class=&quot;com.bless.springdemo.factory.DaoFactory&quot;&gt;&lt;/bean&gt;
+    &lt;bean name=&quot;factoryDao&quot; factory-bean=&quot;daoFactory&quot; factory-method=&quot;getFactoryDaoImpl&quot;&gt;&lt;/bean&gt;
+</code></pre><p>总结<br>Spring IOC注入方式用得最多的是(1)(2)种，多谢多练就会非常熟练。<br>        另外注意：通过Spring创建的对象默认是单例的，如果需要创建多实例对象可以在<code>&lt;bean&gt;</code>标签后面添加一个属性：<br>Java代码</p>
+<pre><code>&lt;bean name=&quot;...&quot; class=&quot;...&quot; scope=&quot;prototype&quot;&gt;
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://monsmile.github.io/2017/01/05/Spring-依赖注入四种方式/" data-id="cixio62vy00009gp8p51ovu6d" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-spring如何管理对象" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/12/29/spring如何管理对象/" class="article-date">
@@ -95,7 +183,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/spring如何管理对象/" data-id="cix9tvjpk0005qkp8lai4g83b" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/spring如何管理对象/" data-id="cixio62wc00039gp8cbko9vl3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -132,7 +220,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/Spring是如何实现MVC的？/" data-id="cix9tvjp80000qkp85mtfv03p" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/Spring是如何实现MVC的？/" data-id="cixio62w700019gp8jo3o3blj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -197,7 +285,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/ajax框架dwr/" data-id="cix9tvjpg0003qkp8zjske4gj" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/ajax框架dwr/" data-id="cixio62wa00029gp877frwyy7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -240,7 +328,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/过滤器，拦截器，监听器/" data-id="cix9tvjps000bqkp8gnye2kk7" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/过滤器，拦截器，监听器/" data-id="cixio62x0000d9gp8z41kivm6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -287,7 +375,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/过滤器和拦截器的区别/" data-id="cix9tvjpp0007qkp8p2hbfnyt" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/过滤器和拦截器的区别/" data-id="cixio62x1000f9gp8ez98aiux" class="article-share-link">Share</a>
       
       
     </footer>
@@ -331,7 +419,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/拦截器为什么是基于java反射的/" data-id="cix9tvjpl0006qkp8i82a3umo" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/拦截器为什么是基于java反射的/" data-id="cixio62wj00059gp8cnoy2d7j" class="article-share-link">Share</a>
       
       
     </footer>
@@ -374,7 +462,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/过滤器是基于函数回调的/" data-id="cix9tvjpq0009qkp8wmfbvaxt" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/过滤器是基于函数回调的/" data-id="cixio62wr00079gp8bm5pvuzn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -418,7 +506,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/过滤策略/" data-id="cix9tvjpt000cqkp80w10fopx" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/过滤策略/" data-id="cixio62x3000g9gp8tn49p196" class="article-share-link">Share</a>
       
       
     </footer>
@@ -462,7 +550,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/mongodb常用操作语法/" data-id="cix9tvjpd0002qkp82d4k3lnk" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/mongodb常用操作语法/" data-id="cixio62wh00049gp8mkqzghla" class="article-share-link">Share</a>
       
       
     </footer>
@@ -496,7 +584,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li></ul>
     </div>
   </div>
 
@@ -507,6 +595,10 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/01/05/Spring-依赖注入四种方式/">Spring-依赖注入四种方式</a>
+          </li>
         
           <li>
             <a href="/2016/12/29/spring如何管理对象/">spring如何管理对象</a>
@@ -524,10 +616,6 @@
             <a href="/2016/12/29/过滤器，拦截器，监听器/">过滤器，拦截器，监听器</a>
           </li>
         
-          <li>
-            <a href="/2016/12/29/过滤器和拦截器的区别/">过滤器和拦截器的区别</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -540,7 +628,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2016 gaolanyu<br>
+      &copy; 2017 gaolanyu<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
