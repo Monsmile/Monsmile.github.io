@@ -64,6 +64,49 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-过滤器，拦截器，监听器" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/12/29/过滤器，拦截器，监听器/" class="article-date">
+  <time datetime="2016-12-28T17:58:01.000Z" itemprop="datePublished">2016-12-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/spring/">spring</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/29/过滤器，拦截器，监听器/">过滤器，拦截器，监听器</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.过滤器是在程序启动的时候初始化创建一次，然后在以后程序运行过程中执行过滤操作，只有web应用停止，或者重新部署的时候才销毁，过滤器就像他的名字一样，在程序运行之前，先过滤掉一些不合法的链接，之后再继续执行剩下的步骤，过滤器一般用来设置网页的编码格式，同时还可以判断用户是否登录，有没有权限访问等等，fileter；</p>
+<p>2.拦截器是面向切面编程的时候用的，基于java的反射机制，是在service，或者一个方法执行之前执行的操作，一个方法执行之后执行的操作，有前置通知，后置通知，异常通知，环绕通知;spring只支持方法拦截,后置通知可以获取方法的返回值，但是无法对其参数，进行实质性的改变，只有环绕通知可以，异常通知可以抛出异常;</p>
+<p>public Object invoke(Object proxy, Method method, Object[] args) throws Throwable<br>{<br>Object result = null;<br>System.out.println(“before invoke method :” + method.getName());<br>result = method.invoke(this.targetObj, args);<br>System.out.println(“after invoke method : “ + method.getName());<br>return result;<br>}<br>3.监听器，的作用是在java程序中，如果另一个java对象程序的属性改变，或者方法执行，则监听器中的方法立即执行，可用于监听网站的人数；</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://monsmile.github.io/2016/12/29/过滤器，拦截器，监听器/" data-id="cixiqsitv000o50p8sssoawpe" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-过滤器和拦截器的区别" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/12/29/过滤器和拦截器的区别/" class="article-date">
@@ -101,7 +144,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/过滤器和拦截器的区别/" data-id="cixiqp7xe000ju8p8k9zjdfuf" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/过滤器和拦截器的区别/" data-id="cixiqsitt000m50p8cq7wv3fv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -145,7 +188,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/拦截器为什么是基于java反射的/" data-id="cixiqp7xb000fu8p8i5l54n9y" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/拦截器为什么是基于java反射的/" data-id="cixiqsitq000i50p84j3tpaj7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -188,7 +231,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/过滤器是基于函数回调的/" data-id="cixiqp7xf000lu8p8ly1ti9t4" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/过滤器是基于函数回调的/" data-id="cixiqsitw000p50p83uttfem5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -232,7 +275,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/过滤策略/" data-id="cixiqp7xg000nu8p8cgwd8t0i" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/过滤策略/" data-id="cixiqsitx000r50p8rlkq4oql" class="article-share-link">Share</a>
       
       
     </footer>
@@ -276,7 +319,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/mongodb常用操作语法/" data-id="cixiqp7x50007u8p8imtmfjj1" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/mongodb常用操作语法/" data-id="cixiqsitf000850p84pum1br0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -327,6 +370,10 @@
       <ul>
         
           <li>
+            <a href="/2017/01/05/MySQL修改root密码的多种方法/">MySQL修改root密码的多种方法</a>
+          </li>
+        
+          <li>
             <a href="/2017/01/05/mysql数据库备份与恢复操作/">mysql数据库备份与恢复操作</a>
           </li>
         
@@ -340,10 +387,6 @@
         
           <li>
             <a href="/2017/01/05/Spring-自动装配/">Spring-自动装配</a>
-          </li>
-        
-          <li>
-            <a href="/2017/01/05/Spring单例详解与线程安全问题/">Spring单例详解与线程安全问题</a>
           </li>
         
       </ul>

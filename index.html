@@ -64,6 +64,65 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-MySQL修改root密码的多种方法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/05/MySQL修改root密码的多种方法/" class="article-date">
+  <time datetime="2017-01-04T17:27:51.000Z" itemprop="datePublished">2017-01-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/spring/">spring</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/05/MySQL修改root密码的多种方法/">MySQL修改root密码的多种方法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>标签（空格分隔）： spring</p>
+<hr>
+<p>方法1： 用SET PASSWORD命令</p>
+<p>mysql -u root</p>
+<p>mysql&gt; SET PASSWORD FOR ‘root’@’localhost’ = PASSWORD(‘newpass’);</p>
+<p>方法2：用mysqladmin</p>
+<p>mysqladmin -u root password “newpass”</p>
+<p>如果root已经设置过密码，采用如下方法</p>
+<p>mysqladmin -u root password oldpass “newpass”</p>
+<p>方法3： 用UPDATE直接编辑user表</p>
+<p>mysql -u root</p>
+<p>mysql&gt; use mysql;</p>
+<p>mysql&gt; UPDATE user SET Password = PASSWORD(‘newpass’) WHERE user = ‘root’;</p>
+<p>mysql&gt; FLUSH PRIVILEGES;</p>
+<p>在丢失root密码的时候，可以这样</p>
+<p>mysqld_safe –skip-grant-tables&amp;</p>
+<p>mysql -u root mysql</p>
+<p>mysql&gt; UPDATE user SET password=PASSWORD(“new password”) WHERE user=’root’;</p>
+<p>mysql&gt; FLUSH PRIVILEGES;</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://monsmile.github.io/2017/01/05/MySQL修改root密码的多种方法/" data-id="cixiqsit8000450p8szojg8vu" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-mysql数据库备份与恢复操作" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/01/05/mysql数据库备份与恢复操作/" class="article-date">
@@ -116,7 +175,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/mysql数据库备份与恢复操作/" data-id="cixiqp7x70008u8p86pl08det" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/mysql数据库备份与恢复操作/" data-id="cixiqsiti000a50p8tz4tdwcz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -156,7 +215,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/springMVC过滤器中的url-pattern/" data-id="cixiqp7x9000au8p8wg037jo9" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/springMVC过滤器中的url-pattern/" data-id="cixiqsito000f50p8dcfvz43c" class="article-share-link">Share</a>
       
       
     </footer>
@@ -265,7 +324,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/spring-手动装配javabean的两种方式/" data-id="cixiqp7xa000cu8p8nvg2y3qs" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/spring-手动装配javabean的两种方式/" data-id="cixiqsitp000h50p8mj5ev9zq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -324,7 +383,7 @@ default-autowire=&quot;x&quot;
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/Spring-自动装配/" data-id="cixiqp7wu0003u8p8oqg2tghu" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/Spring-自动装配/" data-id="cixiqsisz000050p8th7vp3h3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -374,7 +433,7 @@ default-autowire=&quot;x&quot;
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/Spring单例详解与线程安全问题/" data-id="cixiqp7x30006u8p8uzweltky" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/Spring单例详解与线程安全问题/" data-id="cixiqsitb000550p8pvkdoin3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -462,7 +521,7 @@ Xml代码
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/Spring-依赖注入四种方式/" data-id="cixiqp7wp0001u8p8hdpqcz3e" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/Spring-依赖注入四种方式/" data-id="cixiqsit4000250p8kmnhyp96" class="article-share-link">Share</a>
       
       
     </footer>
@@ -503,7 +562,7 @@ Xml代码
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/spring如何管理对象/" data-id="cixiqp7xc000hu8p847af7pkg" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/spring如何管理对象/" data-id="cixiqsits000k50p8yhooavlo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -540,7 +599,7 @@ Xml代码
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/Spring是如何实现MVC的？/" data-id="cixiqp7ws0002u8p8ob1nrz5u" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/Spring是如何实现MVC的？/" data-id="cixiqsitd000650p8y19ru4pn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -605,50 +664,7 @@ Xml代码
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/ajax框架dwr/" data-id="cixiqp7wv0004u8p8of38s96v" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-过滤器，拦截器，监听器" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/12/29/过滤器，拦截器，监听器/" class="article-date">
-  <time datetime="2016-12-28T17:58:01.000Z" itemprop="datePublished">2016-12-28</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/spring/">spring</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/29/过滤器，拦截器，监听器/">过滤器，拦截器，监听器</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1.过滤器是在程序启动的时候初始化创建一次，然后在以后程序运行过程中执行过滤操作，只有web应用停止，或者重新部署的时候才销毁，过滤器就像他的名字一样，在程序运行之前，先过滤掉一些不合法的链接，之后再继续执行剩下的步骤，过滤器一般用来设置网页的编码格式，同时还可以判断用户是否登录，有没有权限访问等等，fileter；</p>
-<p>2.拦截器是面向切面编程的时候用的，基于java的反射机制，是在service，或者一个方法执行之前执行的操作，一个方法执行之后执行的操作，有前置通知，后置通知，异常通知，环绕通知;spring只支持方法拦截,后置通知可以获取方法的返回值，但是无法对其参数，进行实质性的改变，只有环绕通知可以，异常通知可以抛出异常;</p>
-<p>public Object invoke(Object proxy, Method method, Object[] args) throws Throwable<br>{<br>Object result = null;<br>System.out.println(“before invoke method :” + method.getName());<br>result = method.invoke(this.targetObj, args);<br>System.out.println(“after invoke method : “ + method.getName());<br>return result;<br>}<br>3.监听器，的作用是在java程序中，如果另一个java对象程序的属性改变，或者方法执行，则监听器中的方法立即执行，可用于监听网站的人数；</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/过滤器，拦截器，监听器/" data-id="cixiqp7xh000pu8p82jg6d9an" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/ajax框架dwr/" data-id="cixiqsitl000d50p8a32gz6ro" class="article-share-link">Share</a>
       
       
     </footer>
@@ -699,6 +715,10 @@ Xml代码
       <ul>
         
           <li>
+            <a href="/2017/01/05/MySQL修改root密码的多种方法/">MySQL修改root密码的多种方法</a>
+          </li>
+        
+          <li>
             <a href="/2017/01/05/mysql数据库备份与恢复操作/">mysql数据库备份与恢复操作</a>
           </li>
         
@@ -712,10 +732,6 @@ Xml代码
         
           <li>
             <a href="/2017/01/05/Spring-自动装配/">Spring-自动装配</a>
-          </li>
-        
-          <li>
-            <a href="/2017/01/05/Spring单例详解与线程安全问题/">Spring单例详解与线程安全问题</a>
           </li>
         
       </ul>

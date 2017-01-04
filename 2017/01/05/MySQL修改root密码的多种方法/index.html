@@ -3,24 +3,42 @@
 <head>
   <meta charset="utf-8">
   
-  <title>springMVC过滤器中的url-pattern | blog of Monsmile</title>
+  <title>MySQL修改root密码的多种方法 | blog of Monsmile</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="标签（空格分隔）： spring
 
-/和/的区别：&amp;lt; url-pattern &amp;gt; / &amp;lt;/ url-pattern &amp;gt;   不会匹配到.jsp，即：.jsp不会进入spring的 DispatcherServlet类 。&amp;lt; url-pattern &amp;gt; / &amp;lt;/ url-pattern &amp;gt; 会匹配*.jsp，会出现返回jsp视图时再次进入spring的">
+方法1： 用SET PASSWORD命令
+mysql -u root
+mysql&amp;gt; SET PASSWORD FOR ‘root’@’localhost’ = PASSWORD(‘newpass’);
+方法2：用mysqladmin
+mysqladmin -u root password “newpass”
+如果root已经设置过密码，采用如下方法
+mys">
 <meta property="og:type" content="article">
-<meta property="og:title" content="springMVC过滤器中的url-pattern">
-<meta property="og:url" content="https://monsmile.github.io/2017/01/05/springMVC过滤器中的url-pattern/index.html">
+<meta property="og:title" content="MySQL修改root密码的多种方法">
+<meta property="og:url" content="https://monsmile.github.io/2017/01/05/MySQL修改root密码的多种方法/index.html">
 <meta property="og:site_name" content="blog of Monsmile">
 <meta property="og:description" content="标签（空格分隔）： spring
 
-/和/的区别：&amp;lt; url-pattern &amp;gt; / &amp;lt;/ url-pattern &amp;gt;   不会匹配到.jsp，即：.jsp不会进入spring的 DispatcherServlet类 。&amp;lt; url-pattern &amp;gt; / &amp;lt;/ url-pattern &amp;gt; 会匹配*.jsp，会出现返回jsp视图时再次进入spring的">
-<meta property="og:updated_time" content="2017-01-04T08:43:37.215Z">
+方法1： 用SET PASSWORD命令
+mysql -u root
+mysql&amp;gt; SET PASSWORD FOR ‘root’@’localhost’ = PASSWORD(‘newpass’);
+方法2：用mysqladmin
+mysqladmin -u root password “newpass”
+如果root已经设置过密码，采用如下方法
+mys">
+<meta property="og:updated_time" content="2017-01-04T09:28:48.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="springMVC过滤器中的url-pattern">
+<meta name="twitter:title" content="MySQL修改root密码的多种方法">
 <meta name="twitter:description" content="标签（空格分隔）： spring
 
-/和/的区别：&amp;lt; url-pattern &amp;gt; / &amp;lt;/ url-pattern &amp;gt;   不会匹配到.jsp，即：.jsp不会进入spring的 DispatcherServlet类 。&amp;lt; url-pattern &amp;gt; / &amp;lt;/ url-pattern &amp;gt; 会匹配*.jsp，会出现返回jsp视图时再次进入spring的">
+方法1： 用SET PASSWORD命令
+mysql -u root
+mysql&amp;gt; SET PASSWORD FOR ‘root’@’localhost’ = PASSWORD(‘newpass’);
+方法2：用mysqladmin
+mysqladmin -u root password “newpass”
+如果root已经设置过密码，采用如下方法
+mys">
   
     <link rel="alternate" href="/atom.xml" title="blog of Monsmile" type="application/atom+xml">
   
@@ -69,12 +87,16 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-springMVC过滤器中的url-pattern" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-MySQL修改root密码的多种方法" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/01/05/springMVC过滤器中的url-pattern/" class="article-date">
-  <time datetime="2017-01-04T16:42:09.000Z" itemprop="datePublished">2017-01-04</time>
+    <a href="/2017/01/05/MySQL修改root密码的多种方法/" class="article-date">
+  <time datetime="2017-01-04T17:27:51.000Z" itemprop="datePublished">2017-01-04</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/spring/">spring</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -83,7 +105,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      springMVC过滤器中的url-pattern
+      MySQL修改root密码的多种方法
     </h1>
   
 
@@ -93,13 +115,28 @@
       
         <p>标签（空格分隔）： spring</p>
 <hr>
-<p>/和/<em>的区别：<br>&lt; url-pattern &gt; / &lt;/ url-pattern &gt;   不会匹配到</em>.jsp，即：<em>.jsp不会进入spring的 DispatcherServlet类 。<br>&lt; url-pattern &gt; /</em> &lt;/ url-pattern &gt; 会匹配*.jsp，会出现返回jsp视图时再次进入spring的DispatcherServlet 类，导致找不到对应的controller所以报404错。</p>
-<p>总之，关于web.xml的url映射的小知识:<br><code>&lt;url-pattern&gt;/&lt;/url-pattern&gt;</code>  会匹配到/login这样的路径型url，不会匹配到模式为<em>.jsp这样的后缀型url<br>`<url-pattern>/</url-pattern></em>` 会匹配所有url：路径型的和后缀型的url(包括/login,<em>.jsp,</em>.js和*.html等)</p>
+<p>方法1： 用SET PASSWORD命令</p>
+<p>mysql -u root</p>
+<p>mysql&gt; SET PASSWORD FOR ‘root’@’localhost’ = PASSWORD(‘newpass’);</p>
+<p>方法2：用mysqladmin</p>
+<p>mysqladmin -u root password “newpass”</p>
+<p>如果root已经设置过密码，采用如下方法</p>
+<p>mysqladmin -u root password oldpass “newpass”</p>
+<p>方法3： 用UPDATE直接编辑user表</p>
+<p>mysql -u root</p>
+<p>mysql&gt; use mysql;</p>
+<p>mysql&gt; UPDATE user SET Password = PASSWORD(‘newpass’) WHERE user = ‘root’;</p>
+<p>mysql&gt; FLUSH PRIVILEGES;</p>
+<p>在丢失root密码的时候，可以这样</p>
+<p>mysqld_safe –skip-grant-tables&amp;</p>
+<p>mysql -u root mysql</p>
+<p>mysql&gt; UPDATE user SET password=PASSWORD(“new password”) WHERE user=’root’;</p>
+<p>mysql&gt; FLUSH PRIVILEGES;</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/springMVC过滤器中的url-pattern/" data-id="cixiqsito000f50p8dcfvz43c" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/MySQL修改root密码的多种方法/" data-id="cixiqsit8000450p8szojg8vu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -108,19 +145,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2017/01/05/mysql数据库备份与恢复操作/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          mysql数据库备份与恢复操作
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/01/05/spring-手动装配javabean的两种方式/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/01/05/mysql数据库备份与恢复操作/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">spring-手动装配javabean的两种方式</div>
+      <div class="article-nav-title">mysql数据库备份与恢复操作</div>
     </a>
   
 </nav>
