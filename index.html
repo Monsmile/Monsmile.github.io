@@ -64,6 +64,54 @@
       <div class="outer">
         <section id="main">
   
+    <article id="mybatis-获取insert数据的主键" class="article article-type-mybatis" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/05/获取insert数据的主键/" class="article-date">
+  <time datetime="2017-01-04T17:34:51.000Z" itemprop="datePublished">2017-01-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/spring/">spring</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/05/获取insert数据的主键/">获取insert数据的主键</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>标签（空格分隔）： spring</p>
+<hr>
+<p>在mapper.xml文件中的中添加属性useGeneratedKeys=”true” keyProperty=”主键的对应的实体类中的属性”。<br>举个例子</p>
+<pre><code> 执行insert操作之后mybatis会自动把主键赋给对象
+
+&lt;insert id=&quot;save&quot; parameterType=&quot;com.igeekhome.ex.pojo.ClassInfo&quot; useGeneratedKeys=&quot;true&quot; keyProperty=&quot;classId&quot;&gt;
+insert into classInfo(className) values(#{className})
+&lt;/insert&gt;
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://monsmile.github.io/2017/01/05/获取insert数据的主键/" data-id="cixir3n8j000ojcp8sk8mmf3m" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-springMVC常用注解" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/01/05/springMVC常用注解/" class="article-date">
@@ -127,7 +175,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/springMVC常用注解/" data-id="cixiqy6w7000fhop8h3p51oib" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/springMVC常用注解/" data-id="cixir3n8c000hjcp887vpyb0o" class="article-share-link">Share</a>
       
       
     </footer>
@@ -186,7 +234,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/MySQL修改root密码的多种方法/" data-id="cixiqy6vm0001hop8w082t67p" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/MySQL修改root密码的多种方法/" data-id="cixir3n7s0001jcp82tvxi9c5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -248,7 +296,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/mysql数据库备份与恢复操作/" data-id="cixiqy6w6000ehop8aedlipbj" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/mysql数据库备份与恢复操作/" data-id="cixir3n89000ajcp86mvgynad" class="article-share-link">Share</a>
       
       
     </footer>
@@ -288,7 +336,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/springMVC过滤器中的url-pattern/" data-id="cixiqy6wc000lhop8d4x420n2" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/springMVC过滤器中的url-pattern/" data-id="cixir3n8e000ijcp865hetazl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -397,7 +445,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/spring-手动装配javabean的两种方式/" data-id="cixiqy6w5000chop8vnu26l82" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/spring-手动装配javabean的两种方式/" data-id="cixir3n8b000ejcp8jis6y6vr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -456,7 +504,7 @@ default-autowire=&quot;x&quot;
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/Spring-自动装配/" data-id="cixiqy6vx0005hop8to0jott3" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/Spring-自动装配/" data-id="cixir3n7z0004jcp8gk1x5qur" class="article-share-link">Share</a>
       
       
     </footer>
@@ -506,7 +554,7 @@ default-autowire=&quot;x&quot;
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/Spring单例详解与线程安全问题/" data-id="cixiqy6vz0006hop8idb12898" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/Spring单例详解与线程安全问题/" data-id="cixir3n820005jcp8miys1wqx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -594,7 +642,7 @@ Xml代码
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/Spring-依赖注入四种方式/" data-id="cixiqy6vq0002hop8qv44tsm6" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/Spring-依赖注入四种方式/" data-id="cixir3n7v0002jcp84kazlyk2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -635,44 +683,7 @@ Xml代码
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/spring如何管理对象/" data-id="cixiqy6w9000hhop8m39xyh4t" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Spring是如何实现MVC的？" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/12/29/Spring是如何实现MVC的？/" class="article-date">
-  <time datetime="2016-12-29T11:32:40.000Z" itemprop="datePublished">2016-12-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/29/Spring是如何实现MVC的？/">Spring是如何实现MVC的？</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>spring中有一个核心控制器ServletDispather，该控制器会接受所有的请求，解析请求，将请求分发给对应的controller，controller调用对用的模型层，Controller，返回结果给控制器，控制器调用对应的视图响应给客户端。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/Spring是如何实现MVC的？/" data-id="cixiqy6vu0004hop8sghmw9fu" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/spring如何管理对象/" data-id="cixir3n8h000mjcp86jtr8bud" class="article-share-link">Share</a>
       
       
     </footer>
@@ -723,6 +734,10 @@ Xml代码
       <ul>
         
           <li>
+            <a href="/2017/01/05/获取insert数据的主键/">获取insert数据的主键</a>
+          </li>
+        
+          <li>
             <a href="/2017/01/05/springMVC常用注解/">springMVC常用注解</a>
           </li>
         
@@ -736,10 +751,6 @@ Xml代码
         
           <li>
             <a href="/2017/01/05/springMVC过滤器中的url-pattern/">springMVC过滤器中的url-pattern</a>
-          </li>
-        
-          <li>
-            <a href="/2017/01/05/spring-手动装配javabean的两种方式/">spring-手动装配javabean的两种方式</a>
           </li>
         
       </ul>
