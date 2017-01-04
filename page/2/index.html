@@ -64,6 +64,49 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-过滤器是基于函数回调的" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/12/29/过滤器是基于函数回调的/" class="article-date">
+  <time datetime="2016-12-28T17:36:02.000Z" itemprop="datePublished">2016-12-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/spring/">spring</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/29/过滤器是基于函数回调的/">过滤器是基于函数回调的</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>   函数回调:a要调用b中的一个c函数，b中也有调用a的d函数，<br>对于a来说，d函数就是a的回调函数，一般来说a不会主动调用d，<br>d函数就是用来让b调用的；但是b并不知道自己要调用a的哪一个函数具体，<br>所以a会提前通过b中的一个函数s来告诉b要调用a的d函数，这个函数s称为注册函数；</p>
+<p>下面举个通俗的例子：<br>    某天，我打电话向你请教问题，当然是个难题，^_^，你一时想不出解决方法，<br>我又不能拿着电话在那里傻等，于是我们约定：等你想出办法后打手机通知我，<br>这样，我就挂掉电话办其它事情去了。过了XX分钟，我的手机响了，你兴高采烈的说问题已经搞定，<br>应该如此这般处理。故事到此结束。这个例子说明了“异步+回调”的编程模式。其中，你后来打手机<br>告诉我结果便是一个“回调”过程；我的手机号码必须在以前告诉你，这便是注册回调函数；<br>我的手机号码应该有效并且手机能够接收到你的呼叫，这是回调函数必须符合接口规范。</p>
+<p>过滤器的函数回调是在invoke（打包）中再次调用invoke函数，但是在此函数之前和之后可以输出字符，<br>也可以调用其他函数;</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://monsmile.github.io/2016/12/29/过滤器是基于函数回调的/" data-id="cixip0rfl000gt4p8x8ssak13" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-过滤策略" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/12/29/过滤策略/" class="article-date">
@@ -98,7 +141,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/过滤策略/" data-id="cixiok0z4000ji4p8okr5mcj1" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/过滤策略/" data-id="cixip0rfn000it4p89ccjepkc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -142,7 +185,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/mongodb常用操作语法/" data-id="cixiok0yo0005i4p8qqjuobym" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/mongodb常用操作语法/" data-id="cixip0rfh0008t4p8tbnr6il0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -193,6 +236,10 @@
       <ul>
         
           <li>
+            <a href="/2017/01/05/spring-手动装配javabean的两种方式/">spring-手动装配javabean的两种方式</a>
+          </li>
+        
+          <li>
             <a href="/2017/01/05/Spring-自动装配/">Spring-自动装配</a>
           </li>
         
@@ -206,10 +253,6 @@
         
           <li>
             <a href="/2016/12/29/spring如何管理对象/">spring如何管理对象</a>
-          </li>
-        
-          <li>
-            <a href="/2016/12/29/Spring是如何实现MVC的？/">Spring是如何实现MVC的？</a>
           </li>
         
       </ul>

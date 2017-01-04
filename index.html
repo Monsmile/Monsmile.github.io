@@ -64,6 +64,115 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-spring-手动装配javabean的两种方式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/05/spring-手动装配javabean的两种方式/" class="article-date">
+  <time datetime="2017-01-04T16:36:00.000Z" itemprop="datePublished">2017-01-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/spring/">spring</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/05/spring-手动装配javabean的两种方式/">spring-手动装配javabean的两种方式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>标签（空格分隔）： spring</p>
+<hr>
+<p>有两种方式装配Bean（也算是spring提供的两种容器：beanfactory和applicationcontext）：</p>
+<p>1）Bean工厂(Beanfactory)</p>
+<p>2)应用上下文（ApplicationContext）</p>
+<p>第一种方法使用org.springframework.beans.factory.BeanFactory接口来获得Bean对象实例。在Spring中有很多BeanFactory接口的实现，单最常用的是org.springframework.beans.factory.xml.XmlBeanFactory。通过XmlBeanFactory类可以从XML配置文件中读取Bean的装配信息，并在Spring容器中建立相应的JavaBean对象实例，并返回该JavaBean对象实例。</p>
+<p>要想建立一个XmlBeanFactory对象实例，需要将配置文件通过FileSystemResource对象传入XmlBeanFactory类的构造方法。并通过BeanFactory类的getBean方法获得Bean的对象实例。eg:</p>
+<p>package edu.xaut.jzd.spring;</p>
+<p>import org.springframework.beans.factory.BeanFactory;<br>import org.springframework.beans.factory.xml.XmlBeanFactory;</p>
+<p>import org.springframework.core.io.FileSystemResource;</p>
+<p>public class HelloWorldTest {<br>public static void main(String[] args){<br>//装配applicationContext.xml文件<br>BeanFactory factory=new XmlBeanFactory(“src\applicationContext.xml”);<br>//获得被装配的HelloWorld对象实例<br>HelloWorld helloWorld = (HelloWorld)factory.getBean(“helloworld”);<br>System.out.println(helloWorld.getGreeting());<br>}<br>}</p>
+<p>第二种方法通过org.springframework.context.ApplicationContext接口来装配Bean。在Spring中有如下两种ApplicationContext的实现经常用到。</p>
+<p>FileSystemXmlApplicationContext：通过绝对或相对路径指定XML配置文件，并装载xml文件的配置信息。</p>
+<p>ClassPathXmlApplicationContext：从类路径中搜索xml配置文件。可以使用FileSystemXmlApplicationContext类替换ClassPathXmlApplicationContext，但要将构造方法的参数值改为“applicationContext.xml”。</p>
+<p>单从装配Bean上看，ApplicationContext和Beanfactory类似，但ApplicationContext比Beanfactory提供了更多的功能，如国际化、装载文件资源、向监听器Bean发送事件等。因此，如果要使用更多的功能，最好使用ApplicationContext来装配Bean。</p>
+<p>装配普通属性时使用<code>&lt;property&gt;</code>和<code>&lt;value&gt;</code>标签即可完成装配工作。eg:</p>
+<pre><code>&lt;bean id=&quot;helloworld&quot; class=&quot;edu.xaut.jzd.spring.HelloWorld&quot;&gt;
+&lt;property name=&quot;greeting&quot; &gt;
+&lt;value&gt;xautjzd&lt;/value&gt;
+&lt;/property&gt;
+&lt;/bean&gt;
+</code></pre><p>一般不需要指定属性的类型（Spring会通过Java的反射机制确定属性的类型），单如果需要，可以使用<value>标签的type属性来指定属性类型。</value></p>
+<p>如果属性类型是另外一个被装载的类，则有两种方法装配其属性值：</p>
+<p>1）使用bean标签：</p>
+<pre><code>&lt;bean id=&quot;helloworld&quot; class=&quot;edu.xaut.jzd.spring.HelloWorldImpl&quot;&gt;
+&lt;property name=&quot;greeting&quot; &gt;
+&lt;bean&gt;
+&lt;property name=&quot;hello&quot;&gt;
+&lt;value&gt;xautjzd&lt;/value&gt;
+&lt;/property&gt;
+&lt;/bean&gt;
+&lt;/property&gt;
+&lt;/bean&gt;
+</code></pre><p>2)使用ref标签：</p>
+<pre><code>&lt;bean id=&quot;collectionBean&quot; class=&quot;com.tyq.collection.CollectionBean&quot;
+            parent=&quot;abstractCollectionBean&quot;&gt;
+            &lt;property name=&quot;list&quot;&gt;
+                &lt;list merge=&quot;true&quot; value-type=&quot;java.lang.Object&quot;&gt;
+                    &lt;value&gt;list1&lt;/value&gt;
+                    &lt;ref local=&quot;collectionBean&quot; /&gt;
+                    &lt;null&gt;&lt;/null&gt;
+                &lt;/list&gt;
+            &lt;/property&gt;
+    &lt;/bean&gt;
+</code></pre><p>ref标签容易和idref标签混淆。在spring 中idref是得到一个bean的id的string值而ref得到的是一个bean的实例</p>
+<pre><code>&lt;bean id=&quot;collectionBean&quot; class=&quot;com.tyq.collection.CollectionBean&quot;
+            parent=&quot;abstractCollectionBean&quot;&gt;
+            &lt;property name=&quot;list&quot;&gt;
+                &lt;list merge=&quot;true&quot; value-type=&quot;java.lang.String&quot;&gt;
+                    &lt;value&gt;list1&lt;/value&gt;
+                    &lt;idref local=&quot;collectionBean&quot; /&gt;
+                    &lt;null&gt;&lt;/null&gt;
+                &lt;/list&gt;
+            &lt;/property&gt;
+    &lt;/bean&gt;
+</code></pre><p>这时加入list中的只是一个值为collectionBean的String实例而上面的ref标签加入的才是一个CollectionBean实例</p>
+<p>在Spring中也可以装配集合类型属性，Spring支持的集合属性有：List、Set、Map和Properties。与这四种集合类型相对应的标签是list、set、map和pros。在装配集合类型属性时注意两点：<br>1）Bean的集合属性不需要使用new来建立对象实例，spring容器根据xml配置文件中的装配信息自动来实例化这些属性。<br>2）Spring分别为上述四种集合类型指定了如下的特定集合类来实例化。<br>list:java.util.ArrayList;<br>set:java.util.LinkedHashSet;<br>map:java.util.LinkedHashMap;<br>props:java.util.Properties;<br>Spring容器在自动实例化集合属性时，将使用上面的相应集合类来实例化相应的属性，读者在进行类型转换时应注意这一点。</p>
+<p>装配构造方法<br>并不是每个JavaBean都只有一个无参构造方法，如果一个JavaBean的构造方法的参数有一个或多个，就需要使用constructor-arg标签来为这些构造方法设置相应的参数值。Spring搜索Bean的构造方法时，会将参数值都当成String类型数据看，除非明确指定了某一参数的类型。默认情况下，spring会根据constructor-arg的type属性来确定参数类型。同时也可以改变传递参数的顺序，用constructor-arg标签的index属性来指定，从0开始。eg:</p>
+<pre><code>&lt;bean id=&quot;helloworld&quot; class=&quot;edu.xaut.jzd.spring.HelloWorld&quot;&gt;
+&lt;property name=&quot;greeting&quot; &gt;
+&lt;value&gt;xautjzd&lt;/value&gt;
+&lt;/property&gt;
+&lt;constructor-arg index=&quot;1&quot;&gt;
+&lt;value&gt;hello&lt;/value&gt;
+&lt;/constructor-arg&gt;
+&lt;constructor-arg index=&quot;0&quot;&gt;
+&lt;value&gt;xautjzd&lt;/value&gt;
+&lt;/constructor-arg&gt;
+&lt;/bean&gt;
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://monsmile.github.io/2017/01/05/spring-手动装配javabean的两种方式/" data-id="cixip0rff0007t4p8iofv0sff" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Spring-自动装配" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/01/05/Spring-自动装配/" class="article-date">
@@ -113,7 +222,7 @@ default-autowire=&quot;x&quot;
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/Spring-自动装配/" data-id="cixiok0yd0000i4p8kcaby05k" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/Spring-自动装配/" data-id="cixip0rf10002t4p8ilgl6fxw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -163,7 +272,7 @@ default-autowire=&quot;x&quot;
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/Spring单例详解与线程安全问题/" data-id="cixiok0yq0006i4p8pjoo650o" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/Spring单例详解与线程安全问题/" data-id="cixip0rfb0006t4p8tvytmizi" class="article-share-link">Share</a>
       
       
     </footer>
@@ -251,7 +360,7 @@ Xml代码
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/Spring-依赖注入四种方式/" data-id="cixiok0yj0002i4p82biupsqd" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/Spring-依赖注入四种方式/" data-id="cixip0rew0000t4p8j2bsxdu8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -292,7 +401,7 @@ Xml代码
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/spring如何管理对象/" data-id="cixiok0z0000ei4p85yxm9lix" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/spring如何管理对象/" data-id="cixip0rfi000at4p8r8bhxrt9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -329,7 +438,7 @@ Xml代码
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/Spring是如何实现MVC的？/" data-id="cixiok0ym0004i4p8ro4gqata" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/Spring是如何实现MVC的？/" data-id="cixip0rf40003t4p86uh414x0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -394,7 +503,7 @@ Xml代码
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/ajax框架dwr/" data-id="cixiok0yx000ai4p873oczlyi" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/ajax框架dwr/" data-id="cixip0rfa0005t4p8rjh7cr2z" class="article-share-link">Share</a>
       
       
     </footer>
@@ -437,7 +546,7 @@ Xml代码
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/过滤器，拦截器，监听器/" data-id="cixiok0z3000ii4p8temv5dg8" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/过滤器，拦截器，监听器/" data-id="cixip0rfk000ft4p8qaivjovr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -484,7 +593,7 @@ Xml代码
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/过滤器和拦截器的区别/" data-id="cixiok0yu0008i4p8whilpymm" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/过滤器和拦截器的区别/" data-id="cixip0rfj000dt4p89bjy5ai8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -528,50 +637,7 @@ Xml代码
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/拦截器为什么是基于java反射的/" data-id="cixiok0yz000ci4p8sn4xp3e8" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-过滤器是基于函数回调的" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/12/29/过滤器是基于函数回调的/" class="article-date">
-  <time datetime="2016-12-28T17:36:02.000Z" itemprop="datePublished">2016-12-28</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/spring/">spring</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/29/过滤器是基于函数回调的/">过滤器是基于函数回调的</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>   函数回调:a要调用b中的一个c函数，b中也有调用a的d函数，<br>对于a来说，d函数就是a的回调函数，一般来说a不会主动调用d，<br>d函数就是用来让b调用的；但是b并不知道自己要调用a的哪一个函数具体，<br>所以a会提前通过b中的一个函数s来告诉b要调用a的d函数，这个函数s称为注册函数；</p>
-<p>下面举个通俗的例子：<br>    某天，我打电话向你请教问题，当然是个难题，^_^，你一时想不出解决方法，<br>我又不能拿着电话在那里傻等，于是我们约定：等你想出办法后打手机通知我，<br>这样，我就挂掉电话办其它事情去了。过了XX分钟，我的手机响了，你兴高采烈的说问题已经搞定，<br>应该如此这般处理。故事到此结束。这个例子说明了“异步+回调”的编程模式。其中，你后来打手机<br>告诉我结果便是一个“回调”过程；我的手机号码必须在以前告诉你，这便是注册回调函数；<br>我的手机号码应该有效并且手机能够接收到你的呼叫，这是回调函数必须符合接口规范。</p>
-<p>过滤器的函数回调是在invoke（打包）中再次调用invoke函数，但是在此函数之前和之后可以输出字符，<br>也可以调用其他函数;</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/过滤器是基于函数回调的/" data-id="cixiok0z1000gi4p8uo513bbr" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/拦截器为什么是基于java反射的/" data-id="cixip0rfo000kt4p8q3pecbhj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -622,6 +688,10 @@ Xml代码
       <ul>
         
           <li>
+            <a href="/2017/01/05/spring-手动装配javabean的两种方式/">spring-手动装配javabean的两种方式</a>
+          </li>
+        
+          <li>
             <a href="/2017/01/05/Spring-自动装配/">Spring-自动装配</a>
           </li>
         
@@ -635,10 +705,6 @@ Xml代码
         
           <li>
             <a href="/2016/12/29/spring如何管理对象/">spring如何管理对象</a>
-          </li>
-        
-          <li>
-            <a href="/2016/12/29/Spring是如何实现MVC的？/">Spring是如何实现MVC的？</a>
           </li>
         
       </ul>
