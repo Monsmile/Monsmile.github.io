@@ -3,36 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Spring单例详解与线程安全问题 | blog of Monsmile</title>
+  <title>springMVC过滤器中的url-pattern | blog of Monsmile</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="标签（空格分隔）： spring
 
-Spring框架里的bean，或者称为组件，默认都是单例的。
-单例模式意思就是一个类只有一个实例，自行实例化并且向整个系统提供这个实例；
-如果多用户同时请求一个服务时，容器会给每一个请求分配一个线程，这时如果多线程并发的执行逻辑方法，并发的对单例的成员属性进行修改的时候，就要考虑多线程安全问题了，
-线程安全问题都是由全局变量及静态变量引起的。
-1） 常量始终是线">
+/和/的区别：&amp;lt; url-pattern &amp;gt; / &amp;lt;/ url-pattern &amp;gt;   不会匹配到.jsp，即：.jsp不会进入spring的 DispatcherServlet类 。&amp;lt; url-pattern &amp;gt; / &amp;lt;/ url-pattern &amp;gt; 会匹配*.jsp，会出现返回jsp视图时再次进入spring的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Spring单例详解与线程安全问题">
-<meta property="og:url" content="https://monsmile.github.io/2017/01/05/Spring单例详解与线程安全问题/index.html">
+<meta property="og:title" content="springMVC过滤器中的url-pattern">
+<meta property="og:url" content="https://monsmile.github.io/2017/01/05/springMVC过滤器中的url-pattern/index.html">
 <meta property="og:site_name" content="blog of Monsmile">
 <meta property="og:description" content="标签（空格分隔）： spring
 
-Spring框架里的bean，或者称为组件，默认都是单例的。
-单例模式意思就是一个类只有一个实例，自行实例化并且向整个系统提供这个实例；
-如果多用户同时请求一个服务时，容器会给每一个请求分配一个线程，这时如果多线程并发的执行逻辑方法，并发的对单例的成员属性进行修改的时候，就要考虑多线程安全问题了，
-线程安全问题都是由全局变量及静态变量引起的。
-1） 常量始终是线">
-<meta property="og:updated_time" content="2017-01-04T08:22:22.184Z">
+/和/的区别：&amp;lt; url-pattern &amp;gt; / &amp;lt;/ url-pattern &amp;gt;   不会匹配到.jsp，即：.jsp不会进入spring的 DispatcherServlet类 。&amp;lt; url-pattern &amp;gt; / &amp;lt;/ url-pattern &amp;gt; 会匹配*.jsp，会出现返回jsp视图时再次进入spring的">
+<meta property="og:updated_time" content="2017-01-04T08:43:37.215Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Spring单例详解与线程安全问题">
+<meta name="twitter:title" content="springMVC过滤器中的url-pattern">
 <meta name="twitter:description" content="标签（空格分隔）： spring
 
-Spring框架里的bean，或者称为组件，默认都是单例的。
-单例模式意思就是一个类只有一个实例，自行实例化并且向整个系统提供这个实例；
-如果多用户同时请求一个服务时，容器会给每一个请求分配一个线程，这时如果多线程并发的执行逻辑方法，并发的对单例的成员属性进行修改的时候，就要考虑多线程安全问题了，
-线程安全问题都是由全局变量及静态变量引起的。
-1） 常量始终是线">
+/和/的区别：&amp;lt; url-pattern &amp;gt; / &amp;lt;/ url-pattern &amp;gt;   不会匹配到.jsp，即：.jsp不会进入spring的 DispatcherServlet类 。&amp;lt; url-pattern &amp;gt; / &amp;lt;/ url-pattern &amp;gt; 会匹配*.jsp，会出现返回jsp视图时再次进入spring的">
   
     <link rel="alternate" href="/atom.xml" title="blog of Monsmile" type="application/atom+xml">
   
@@ -81,16 +69,12 @@ Spring框架里的bean，或者称为组件，默认都是单例的。
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-Spring单例详解与线程安全问题" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-springMVC过滤器中的url-pattern" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/01/05/Spring单例详解与线程安全问题/" class="article-date">
-  <time datetime="2017-01-04T16:19:16.000Z" itemprop="datePublished">2017-01-04</time>
+    <a href="/2017/01/05/springMVC过滤器中的url-pattern/" class="article-date">
+  <time datetime="2017-01-04T16:42:09.000Z" itemprop="datePublished">2017-01-04</time>
 </a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/spring/">spring</a>
-  </div>
-
   </div>
   <div class="article-inner">
     
@@ -99,7 +83,7 @@ Spring框架里的bean，或者称为组件，默认都是单例的。
         
   
     <h1 class="article-title" itemprop="name">
-      Spring单例详解与线程安全问题
+      springMVC过滤器中的url-pattern
     </h1>
   
 
@@ -109,19 +93,13 @@ Spring框架里的bean，或者称为组件，默认都是单例的。
       
         <p>标签（空格分隔）： spring</p>
 <hr>
-<p>Spring框架里的bean，或者称为组件，默认都是单例的。</p>
-<p>单例模式意思就是一个类只有一个实例，自行实例化并且向整个系统提供这个实例；</p>
-<p>如果多用户同时请求一个服务时，容器会给每一个请求分配一个线程，这时如果多线程并发的执行逻辑方法，并发的对单例的成员属性进行修改的时候，就要考虑多线程安全问题了，</p>
-<p>线程安全问题都是由全局变量及静态变量引起的。</p>
-<p>1） 常量始终是线程安全的，因为只存在读操作。<br>2）每次调用方法前都新建一个实例是线程安全的，因为不会访问共享的资源。<br>3）局部变量是线程安全的。因为每执行一个方法，都会在独立的空间创建局部变量，它不是共享的资源。局部变量包括方法的参数变量和方法内变量。</p>
-<p>解决线程安全问题的两种方法:</p>
-<p>1.线程同步机制：通过对象的锁机制保证同一时间只有一个线程访问变量。这时该变量是多个线程共享的，使用同步机制要求程序慎密地分析什么时候对变量进行读写，什么时候需要锁定某个对象，什么时候释放对象锁等繁杂的问题，程序设计和编写难度相对较大。</p>
-<p>2.ThreadLocal：ThreadLocal则从另一个角度来解决多线程的并发访问。ThreadLocal会为每一个线程提供一个独立的变量副本，从而隔离了多个线程对数据的访问冲突。因为每一个线程都拥有自己的变量副本，从而也就没有必要对该变量进行同步了。ThreadLocal提供了线程安全的共享对象，在编写多线程代码时，可以把不安全的变量封装进ThreadLocal。</p>
+<p>/和/<em>的区别：<br>&lt; url-pattern &gt; / &lt;/ url-pattern &gt;   不会匹配到</em>.jsp，即：<em>.jsp不会进入spring的 DispatcherServlet类 。<br>&lt; url-pattern &gt; /</em> &lt;/ url-pattern &gt; 会匹配*.jsp，会出现返回jsp视图时再次进入spring的DispatcherServlet 类，导致找不到对应的controller所以报404错。</p>
+<p>总之，关于web.xml的url映射的小知识:<br><code>&lt;url-pattern&gt;/&lt;/url-pattern&gt;</code>  会匹配到/login这样的路径型url，不会匹配到模式为<em>.jsp这样的后缀型url<br>`<url-pattern>/</url-pattern></em>` 会匹配所有url：路径型的和后缀型的url(包括/login,<em>.jsp,</em>.js和*.html等)</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/Spring单例详解与线程安全问题/" data-id="cixip63au00031op8o6wm6gwz" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/springMVC过滤器中的url-pattern/" data-id="cixip63bb000e1op8xlkqbpwo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -130,19 +108,10 @@ Spring框架里的bean，或者称为组件，默认都是单例的。
     
 <nav id="article-nav">
   
-    <a href="/2017/01/05/Spring-自动装配/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Spring-自动装配
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/01/05/Spring-依赖注入四种方式/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/01/05/spring-手动装配javabean的两种方式/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Spring-依赖注入四种方式</div>
+      <div class="article-nav-title">spring-手动装配javabean的两种方式</div>
     </a>
   
 </nav>
