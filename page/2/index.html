@@ -64,6 +64,71 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-ajax框架dwr" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/12/29/ajax框架dwr/" class="article-date">
+  <time datetime="2016-12-29T11:11:33.000Z" itemprop="datePublished">2016-12-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/29/ajax框架dwr/">ajax框架dwr</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一、配置DWR(<a href="http://getahead.org/dwr/getstarted" target="_blank" rel="external">http://getahead.org/dwr/getstarted</a>)<br>1、将dwr.jar包放在web-info/lib目录下<br>2、编辑web.xml文件，添加servlet</p>
+<p><servlet><br>  <servlet-name>dwr-invoker</servlet-name><br>  <display-name>DWR Servlet</display-name><br>  <servlet-class>uk.ltd.getahead.dwr.DWRServlet</servlet-class><br>  <init-param><br>     <param-name>debug</param-name><br>     <param-value>true</param-value><br>  </init-param><br></servlet></p>
+<p><servlet-mapping><br>  <servlet-name>dwr-invoker</servlet-name><br>  <url-pattern>/dwr/*</url-pattern><br></servlet-mapping><br>3、创建dwr.xml配置文件注册Java类和脚本的对应信息。<br>&lt;!DOCTYPE dwr PUBLIC<br>“-//GetAhead Limited//DTD Direct Web Remoting 1.0//EN”<br>“<a href="http://www.getahead.ltd.uk/dwr/dwr10.dtd&quot;&gt;" target="_blank" rel="external">http://www.getahead.ltd.uk/dwr/dwr10.dtd&quot;&gt;</a></p>
+<p><dwr></dwr></p>
+<p><allow><br>&lt;—<create creator="new" javascript="JDate"></create></allow></p>
+<p><param name="class" value="java.util.Date"><br></p>
+<p><create creator="new" javascript="Demo"></create></p>
+<p><param name="class" value="your.java.Bean"><br>–&gt;<br><br><br>4、通过<a href="http://localhost:8080/[your" target="_blank" rel="external">http://localhost:8080/[your</a> webapp]/dwr可以获取到当前dwr中可以使用的JAVA类。<br>检测用户名是否已经使用例子：<br>1、按照前面两部配置一下DWR。<br>2、编写类：test.CheckUser<br>package test;</p>
+<p>public class CheckUser {<br>public String check(String name){<br>//访问数据库验证信息<br>if(name.startsWith(“aa”)){<br>return “用户已经存在”;<br>}<br>else{<br>return “可以使用该用户”;<br>}<br>}<br>}<br>3、创建配置文件并在配置文件中配置CheckUser类。<br>&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;<br>&lt;!DOCTYPE dwr PUBLIC<br>“-//GetAhead Limited//DTD Direct Web Remoting 2.0//EN”<br>“<a href="http://getahead.org/dwr/dwr20.dtd&quot;&gt;" target="_blank" rel="external">http://getahead.org/dwr/dwr20.dtd&quot;&gt;</a></p>
+<p><dwr></dwr></p>
+<p><allow></allow></p>
+<p><create creator="new" javascript="CheckUser"></create></p>
+<p><param name="class" value="test.CheckUser"><br><br><br><br>4、重启tomcat服务器，通过<a href="http://localhost:8080/[your" target="_blank" rel="external">http://localhost:8080/[your</a> webapp]/dwr可以看到CheckUser类，点击连接可以查看该类的方法和并测试。<br>5、编写index.jsp页面，实现效果。<br>在页面文件中实现效果<br>1）在javascript中通过使用dwr.util.getValue() 来获取页面中某个页面元素的值。<br>2）直接调用后台java类的方法，传递方法参数和“异不调用返回后的处理脚本函数”<br>3）”在处理脚本函数“中我们可以通过dwr.util.setValue（”控件ID”,值）来个控件更新数据。<br>4）为了让javascript脚本中可以调用java类的方法我们需要在dwr.xml文件中申明java类。<br>注意：在页面中需要包含引入：</p>
+<script type="text/javascript" src="/test/dwr/interface/CheckUser.js"></script><!--- dwr.xml中定义的脚本名字-->
+<script type="text/javascript" src="/test/dwr/engine.js"></script><!--- DWR-->
+<script type="text/javascript" src="/test/dwr/util.js"></script><!---可以通过dwr.util.getValue方法获取元素值--->
+否则会出现脚本错误
+
+
+<html>
+<head>
+<script type="text/javascript" src="/test/dwr/interface/CheckUser.js"></script>
+<script type="text/javascript" src="/test/dwr/engine.js"></script>
+<script type="text/javascript" src="/test/dwr/util.js"></script>
+
+<p><script language="javascript"><br>&lt;!–<br>function check() {<br>  var name = dwr.util.getValue(“username”);<br>  CheckUser.check(name, function(data) );<br>}<br></script><br></p></head><p></p>
+<p><body></body></p>
+<p><input type="text" id="username"></p>
+<p><input value="check" type="button" onclick="check()"><br><br><br> <span id="result"></span><br><br></p></html><p></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://monsmile.github.io/2016/12/29/ajax框架dwr/" data-id="cixiqy6w20009hop8wpdxkjza" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-过滤器，拦截器，监听器" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/12/29/过滤器，拦截器，监听器/" class="article-date">
@@ -97,7 +162,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/过滤器，拦截器，监听器/" data-id="cixiqsitv000o50p8sssoawpe" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/过滤器，拦截器，监听器/" data-id="cixiqy6wi000shop885j9n7x7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -144,7 +209,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/过滤器和拦截器的区别/" data-id="cixiqsitt000m50p8cq7wv3fv" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/过滤器和拦截器的区别/" data-id="cixiqy6wd000nhop8lpec7n2p" class="article-share-link">Share</a>
       
       
     </footer>
@@ -188,7 +253,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/拦截器为什么是基于java反射的/" data-id="cixiqsitq000i50p84j3tpaj7" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/拦截器为什么是基于java反射的/" data-id="cixiqy6wa000jhop8jmrhw52t" class="article-share-link">Share</a>
       
       
     </footer>
@@ -231,7 +296,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/过滤器是基于函数回调的/" data-id="cixiqsitw000p50p83uttfem5" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/过滤器是基于函数回调的/" data-id="cixiqy6we000phop8ho0baw3j" class="article-share-link">Share</a>
       
       
     </footer>
@@ -275,7 +340,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/过滤策略/" data-id="cixiqsitx000r50p8rlkq4oql" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/过滤策略/" data-id="cixiqy6wg000qhop8dl21ec41" class="article-share-link">Share</a>
       
       
     </footer>
@@ -319,7 +384,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/mongodb常用操作语法/" data-id="cixiqsitf000850p84pum1br0" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/mongodb常用操作语法/" data-id="cixiqy6w00007hop8lxvwss9i" class="article-share-link">Share</a>
       
       
     </footer>
@@ -370,6 +435,10 @@
       <ul>
         
           <li>
+            <a href="/2017/01/05/springMVC常用注解/">springMVC常用注解</a>
+          </li>
+        
+          <li>
             <a href="/2017/01/05/MySQL修改root密码的多种方法/">MySQL修改root密码的多种方法</a>
           </li>
         
@@ -383,10 +452,6 @@
         
           <li>
             <a href="/2017/01/05/spring-手动装配javabean的两种方式/">spring-手动装配javabean的两种方式</a>
-          </li>
-        
-          <li>
-            <a href="/2017/01/05/Spring-自动装配/">Spring-自动装配</a>
           </li>
         
       </ul>

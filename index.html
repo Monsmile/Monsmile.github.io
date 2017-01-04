@@ -64,6 +64,79 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-springMVC常用注解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/05/springMVC常用注解/" class="article-date">
+  <time datetime="2017-01-04T17:32:03.000Z" itemprop="datePublished">2017-01-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/spring/">spring</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/05/springMVC常用注解/">springMVC常用注解</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>标签（空格分隔）： spring</p>
+<hr>
+<p>spring mvc常用的注解： 介绍。</p>
+<p>@Controller</p>
+<p>@Controller 负责注册一个bean 到spring 上下文中，bean 的ID 默认为 类名称开头字母小写,你也可以自己指定，如下</p>
+<p>方法一： @Controller public class TestController {}</p>
+<p>方法二： @Controller(“tmpController”) public class TestController {} @RequestMapping</p>
+<p>1.@RequestMapping用来定义访问的URL，你可以为整个类定义一个 @RequestMapping，或者为每个方法指定一个。 把@RequestMapping放在类级别上，这可令它与方法级别上的 @RequestMapping注解协同工作，取得缩小选择范围的效果。</p>
+<p>例如： @RequestMapping(“/test”)</p>
+<p>public class TestController {} 则，该类下的所有访问路径都在/test之下。</p>
+<p>2.将@RequestMapping用于整个类不是必须的，如果没有配置，所有的方法 的访问路径配置将是完全独立的，没有任何关联。</p>
+<p>3.完整的参数项为：@RequestMapping(value=””,method = {“”,””},headers={},params={“”,””})，</p>
+<p>各参数说明如下： value :String[] 设置访问地址 method: RequestMethod[]设置访问方式，字符数组，查看RequestMethod 类，</p>
+<p>包括GET, HEAD, POST, PUT, DELETE, OPTIONS, TRACE,常用 RequestMethod.GET，RequestMethod.POST headers:String[] headers一般结合method = RequestMethod.POST使用 params: String[] 访问参数设置，字符数组</p>
+<p>例如：userId=id</p>
+<p>4.value的配置还可以采用模版变量的形式，例如：</p>
+<p>@RequestMapping (value=”/owners/{ownerId}”, method=RequestMethod.GET)</p>
+<p>，这点将在介绍@PathVariable中详细说明。</p>
+<p>5.@RequestMapping params的补充说明，你可以通过设置参数条件来限制访问地址，例如params=”myParam=myValue”表达式，访问地址中参数只有包含了该规定的值”myParam=myValue”才能匹配得上，类似”myParam”之类的表达式也是支持的，表示当前请求的地址必须有该参数(参数的值可以是任意)，”!myParam”之类的表达式表明当前请求的地址不能包含具体指定的参数”myParam”。</p>
+<p>6.有一点需要注意的，如果为类定义了访问地址为<em>.do,</em>.html之类的，则在方法级的@RequestMapping，不能再定义value值，否则会报错，例如Java代码</p>
+<p>@RequestMapping(“/bbs.do”)</p>
+<p>public class BbsController {</p>
+<p> @RequestMapping(params = “method=getList”)</p>
+<p>public String getList() {  return “list”; }</p>
+<p> @RequestMapping(value= “/spList”)</p>
+<p>public String getSpecialList() {  return “splist”;  }</p>
+<p> }</p>
+<p>如上例：</p>
+<p>/bbs.do?method=getList 可以访问到方法getList() ；而访问/bbs.do/spList</p>
+<p>则会报错.</p>
+<p>@PathVariable</p>
+<p> 1.@PathVariable用于方法中的参数，表示方法参数绑定到地址URL的模板变量。例如：</p>
+<p>@RequestMapping(value=”/owners/{ownerId}”,    method=RequestMethod.GET)    public String findOwner(@PathVariable String ownerId, Model    model) {      Owner owner = ownerService.findOwner(ownerId);       model.addAttribute(“owner”, owner);       return “displayOwner”;   } </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://monsmile.github.io/2017/01/05/springMVC常用注解/" data-id="cixiqy6w7000fhop8h3p51oib" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-MySQL修改root密码的多种方法" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/01/05/MySQL修改root密码的多种方法/" class="article-date">
@@ -113,7 +186,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/MySQL修改root密码的多种方法/" data-id="cixiqsit8000450p8szojg8vu" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/MySQL修改root密码的多种方法/" data-id="cixiqy6vm0001hop8w082t67p" class="article-share-link">Share</a>
       
       
     </footer>
@@ -175,7 +248,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/mysql数据库备份与恢复操作/" data-id="cixiqsiti000a50p8tz4tdwcz" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/mysql数据库备份与恢复操作/" data-id="cixiqy6w6000ehop8aedlipbj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -215,7 +288,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/springMVC过滤器中的url-pattern/" data-id="cixiqsito000f50p8dcfvz43c" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/springMVC过滤器中的url-pattern/" data-id="cixiqy6wc000lhop8d4x420n2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -324,7 +397,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/spring-手动装配javabean的两种方式/" data-id="cixiqsitp000h50p8mj5ev9zq" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/spring-手动装配javabean的两种方式/" data-id="cixiqy6w5000chop8vnu26l82" class="article-share-link">Share</a>
       
       
     </footer>
@@ -383,7 +456,7 @@ default-autowire=&quot;x&quot;
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/Spring-自动装配/" data-id="cixiqsisz000050p8th7vp3h3" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/Spring-自动装配/" data-id="cixiqy6vx0005hop8to0jott3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -433,7 +506,7 @@ default-autowire=&quot;x&quot;
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/Spring单例详解与线程安全问题/" data-id="cixiqsitb000550p8pvkdoin3" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/Spring单例详解与线程安全问题/" data-id="cixiqy6vz0006hop8idb12898" class="article-share-link">Share</a>
       
       
     </footer>
@@ -521,7 +594,7 @@ Xml代码
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/Spring-依赖注入四种方式/" data-id="cixiqsit4000250p8kmnhyp96" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/Spring-依赖注入四种方式/" data-id="cixiqy6vq0002hop8qv44tsm6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -562,7 +635,7 @@ Xml代码
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/spring如何管理对象/" data-id="cixiqsits000k50p8yhooavlo" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/spring如何管理对象/" data-id="cixiqy6w9000hhop8m39xyh4t" class="article-share-link">Share</a>
       
       
     </footer>
@@ -599,72 +672,7 @@ Xml代码
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/Spring是如何实现MVC的？/" data-id="cixiqsitd000650p8y19ru4pn" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-ajax框架dwr" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/12/29/ajax框架dwr/" class="article-date">
-  <time datetime="2016-12-29T11:11:33.000Z" itemprop="datePublished">2016-12-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/29/ajax框架dwr/">ajax框架dwr</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>一、配置DWR(<a href="http://getahead.org/dwr/getstarted" target="_blank" rel="external">http://getahead.org/dwr/getstarted</a>)<br>1、将dwr.jar包放在web-info/lib目录下<br>2、编辑web.xml文件，添加servlet</p>
-<p><servlet><br>  <servlet-name>dwr-invoker</servlet-name><br>  <display-name>DWR Servlet</display-name><br>  <servlet-class>uk.ltd.getahead.dwr.DWRServlet</servlet-class><br>  <init-param><br>     <param-name>debug</param-name><br>     <param-value>true</param-value><br>  </init-param><br></servlet></p>
-<p><servlet-mapping><br>  <servlet-name>dwr-invoker</servlet-name><br>  <url-pattern>/dwr/*</url-pattern><br></servlet-mapping><br>3、创建dwr.xml配置文件注册Java类和脚本的对应信息。<br>&lt;!DOCTYPE dwr PUBLIC<br>“-//GetAhead Limited//DTD Direct Web Remoting 1.0//EN”<br>“<a href="http://www.getahead.ltd.uk/dwr/dwr10.dtd&quot;&gt;" target="_blank" rel="external">http://www.getahead.ltd.uk/dwr/dwr10.dtd&quot;&gt;</a></p>
-<p><dwr></dwr></p>
-<p><allow><br>&lt;—<create creator="new" javascript="JDate"></create></allow></p>
-<p><param name="class" value="java.util.Date"><br></p>
-<p><create creator="new" javascript="Demo"></create></p>
-<p><param name="class" value="your.java.Bean"><br>–&gt;<br><br><br>4、通过<a href="http://localhost:8080/[your" target="_blank" rel="external">http://localhost:8080/[your</a> webapp]/dwr可以获取到当前dwr中可以使用的JAVA类。<br>检测用户名是否已经使用例子：<br>1、按照前面两部配置一下DWR。<br>2、编写类：test.CheckUser<br>package test;</p>
-<p>public class CheckUser {<br>public String check(String name){<br>//访问数据库验证信息<br>if(name.startsWith(“aa”)){<br>return “用户已经存在”;<br>}<br>else{<br>return “可以使用该用户”;<br>}<br>}<br>}<br>3、创建配置文件并在配置文件中配置CheckUser类。<br>&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;<br>&lt;!DOCTYPE dwr PUBLIC<br>“-//GetAhead Limited//DTD Direct Web Remoting 2.0//EN”<br>“<a href="http://getahead.org/dwr/dwr20.dtd&quot;&gt;" target="_blank" rel="external">http://getahead.org/dwr/dwr20.dtd&quot;&gt;</a></p>
-<p><dwr></dwr></p>
-<p><allow></allow></p>
-<p><create creator="new" javascript="CheckUser"></create></p>
-<p><param name="class" value="test.CheckUser"><br><br><br><br>4、重启tomcat服务器，通过<a href="http://localhost:8080/[your" target="_blank" rel="external">http://localhost:8080/[your</a> webapp]/dwr可以看到CheckUser类，点击连接可以查看该类的方法和并测试。<br>5、编写index.jsp页面，实现效果。<br>在页面文件中实现效果<br>1）在javascript中通过使用dwr.util.getValue() 来获取页面中某个页面元素的值。<br>2）直接调用后台java类的方法，传递方法参数和“异不调用返回后的处理脚本函数”<br>3）”在处理脚本函数“中我们可以通过dwr.util.setValue（”控件ID”,值）来个控件更新数据。<br>4）为了让javascript脚本中可以调用java类的方法我们需要在dwr.xml文件中申明java类。<br>注意：在页面中需要包含引入：</p>
-<script type="text/javascript" src="/test/dwr/interface/CheckUser.js"></script><!--- dwr.xml中定义的脚本名字-->
-<script type="text/javascript" src="/test/dwr/engine.js"></script><!--- DWR-->
-<script type="text/javascript" src="/test/dwr/util.js"></script><!---可以通过dwr.util.getValue方法获取元素值--->
-否则会出现脚本错误
-
-
-<html>
-<head>
-<script type="text/javascript" src="/test/dwr/interface/CheckUser.js"></script>
-<script type="text/javascript" src="/test/dwr/engine.js"></script>
-<script type="text/javascript" src="/test/dwr/util.js"></script>
-
-<p><script language="javascript"><br>&lt;!–<br>function check() {<br>  var name = dwr.util.getValue(“username”);<br>  CheckUser.check(name, function(data) );<br>}<br></script><br></p></head><p></p>
-<p><body></body></p>
-<p><input type="text" id="username"></p>
-<p><input value="check" type="button" onclick="check()"><br><br><br> <span id="result"></span><br><br></p></html><p></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/ajax框架dwr/" data-id="cixiqsitl000d50p8a32gz6ro" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/Spring是如何实现MVC的？/" data-id="cixiqy6vu0004hop8sghmw9fu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -715,6 +723,10 @@ Xml代码
       <ul>
         
           <li>
+            <a href="/2017/01/05/springMVC常用注解/">springMVC常用注解</a>
+          </li>
+        
+          <li>
             <a href="/2017/01/05/MySQL修改root密码的多种方法/">MySQL修改root密码的多种方法</a>
           </li>
         
@@ -728,10 +740,6 @@ Xml代码
         
           <li>
             <a href="/2017/01/05/spring-手动装配javabean的两种方式/">spring-手动装配javabean的两种方式</a>
-          </li>
-        
-          <li>
-            <a href="/2017/01/05/Spring-自动装配/">Spring-自动装配</a>
           </li>
         
       </ul>

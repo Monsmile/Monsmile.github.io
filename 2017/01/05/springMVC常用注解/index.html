@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>springMVC常用注解 | blog of Monsmile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="标签（空格分隔）： spring
+
+spring mvc常用的注解： 介绍。
+@Controller
+@Controller 负责注册一个bean 到spring 上下文中，bean 的ID 默认为 类名称开头字母小写,你也可以自己指定，如下
+方法一： @Controller public class TestController {}
+方法二： @Controller(“tmpControlle">
+<meta property="og:type" content="article">
+<meta property="og:title" content="springMVC常用注解">
+<meta property="og:url" content="https://monsmile.github.io/2017/01/05/springMVC常用注解/index.html">
+<meta property="og:site_name" content="blog of Monsmile">
+<meta property="og:description" content="标签（空格分隔）： spring
+
+spring mvc常用的注解： 介绍。
+@Controller
+@Controller 负责注册一个bean 到spring 上下文中，bean 的ID 默认为 类名称开头字母小写,你也可以自己指定，如下
+方法一： @Controller public class TestController {}
+方法二： @Controller(“tmpControlle">
+<meta property="og:updated_time" content="2017-01-04T09:33:26.363Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="springMVC常用注解">
+<meta name="twitter:description" content="标签（空格分隔）： spring
+
+spring mvc常用的注解： 介绍。
+@Controller
+@Controller 负责注册一个bean 到spring 上下文中，bean 的ID 默认为 类名称开头字母小写,你也可以自己指定，如下
+方法一： @Controller public class TestController {}
+方法二： @Controller(“tmpControlle">
+  
+    <link rel="alternate" href="/atom.xml" title="blog of Monsmile" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">blog of Monsmile</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://monsmile.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-springMVC常用注解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/05/springMVC常用注解/" class="article-date">
+  <time datetime="2017-01-04T17:32:03.000Z" itemprop="datePublished">2017-01-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/spring/">spring</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      springMVC常用注解
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>标签（空格分隔）： spring</p>
+<hr>
+<p>spring mvc常用的注解： 介绍。</p>
+<p>@Controller</p>
+<p>@Controller 负责注册一个bean 到spring 上下文中，bean 的ID 默认为 类名称开头字母小写,你也可以自己指定，如下</p>
+<p>方法一： @Controller public class TestController {}</p>
+<p>方法二： @Controller(“tmpController”) public class TestController {} @RequestMapping</p>
+<p>1.@RequestMapping用来定义访问的URL，你可以为整个类定义一个 @RequestMapping，或者为每个方法指定一个。 把@RequestMapping放在类级别上，这可令它与方法级别上的 @RequestMapping注解协同工作，取得缩小选择范围的效果。</p>
+<p>例如： @RequestMapping(“/test”)</p>
+<p>public class TestController {} 则，该类下的所有访问路径都在/test之下。</p>
+<p>2.将@RequestMapping用于整个类不是必须的，如果没有配置，所有的方法 的访问路径配置将是完全独立的，没有任何关联。</p>
+<p>3.完整的参数项为：@RequestMapping(value=””,method = {“”,””},headers={},params={“”,””})，</p>
+<p>各参数说明如下： value :String[] 设置访问地址 method: RequestMethod[]设置访问方式，字符数组，查看RequestMethod 类，</p>
+<p>包括GET, HEAD, POST, PUT, DELETE, OPTIONS, TRACE,常用 RequestMethod.GET，RequestMethod.POST headers:String[] headers一般结合method = RequestMethod.POST使用 params: String[] 访问参数设置，字符数组</p>
+<p>例如：userId=id</p>
+<p>4.value的配置还可以采用模版变量的形式，例如：</p>
+<p>@RequestMapping (value=”/owners/{ownerId}”, method=RequestMethod.GET)</p>
+<p>，这点将在介绍@PathVariable中详细说明。</p>
+<p>5.@RequestMapping params的补充说明，你可以通过设置参数条件来限制访问地址，例如params=”myParam=myValue”表达式，访问地址中参数只有包含了该规定的值”myParam=myValue”才能匹配得上，类似”myParam”之类的表达式也是支持的，表示当前请求的地址必须有该参数(参数的值可以是任意)，”!myParam”之类的表达式表明当前请求的地址不能包含具体指定的参数”myParam”。</p>
+<p>6.有一点需要注意的，如果为类定义了访问地址为<em>.do,</em>.html之类的，则在方法级的@RequestMapping，不能再定义value值，否则会报错，例如Java代码</p>
+<p>@RequestMapping(“/bbs.do”)</p>
+<p>public class BbsController {</p>
+<p> @RequestMapping(params = “method=getList”)</p>
+<p>public String getList() {  return “list”; }</p>
+<p> @RequestMapping(value= “/spList”)</p>
+<p>public String getSpecialList() {  return “splist”;  }</p>
+<p> }</p>
+<p>如上例：</p>
+<p>/bbs.do?method=getList 可以访问到方法getList() ；而访问/bbs.do/spList</p>
+<p>则会报错.</p>
+<p>@PathVariable</p>
+<p> 1.@PathVariable用于方法中的参数，表示方法参数绑定到地址URL的模板变量。例如：</p>
+<p>@RequestMapping(value=”/owners/{ownerId}”,    method=RequestMethod.GET)    public String findOwner(@PathVariable String ownerId, Model    model) {      Owner owner = ownerService.findOwner(ownerId);       model.addAttribute(“owner”, owner);       return “displayOwner”;   } </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://monsmile.github.io/2017/01/05/springMVC常用注解/" data-id="cixiqy6w7000fhop8h3p51oib" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/01/05/MySQL修改root密码的多种方法/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">MySQL修改root密码的多种方法</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/mongodb/">mongodb</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/">spring</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/01/05/springMVC常用注解/">springMVC常用注解</a>
+          </li>
+        
+          <li>
+            <a href="/2017/01/05/MySQL修改root密码的多种方法/">MySQL修改root密码的多种方法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/01/05/mysql数据库备份与恢复操作/">mysql数据库备份与恢复操作</a>
+          </li>
+        
+          <li>
+            <a href="/2017/01/05/springMVC过滤器中的url-pattern/">springMVC过滤器中的url-pattern</a>
+          </li>
+        
+          <li>
+            <a href="/2017/01/05/spring-手动装配javabean的两种方式/">spring-手动装配javabean的两种方式</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 gaolanyu<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
