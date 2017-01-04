@@ -3,18 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>mongodb常用操作语法 | blog of Monsmile</title>
+  <title>Spring-自动装配 | blog of Monsmile</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="SQL术语/概念    MongoDB术语/概念    解释/说明database    database    数据库table    collection    数据库表/集合row    document    数据记录行/文档column    field    数据字段/域index    index    索引table joins         表连接,MongoDB不支持prim">
+  <meta name="description" content="标签（空格分隔）： spring
+
+自动装配:spring IOC容器可以自动装配（autowire），相互协作的bean之间的依赖关系,可以自动让spring查找beanFactory中的内容，来替我们指定bean的协作者，也就是其他被依赖的bean，autowire可以在单个bean中进行配置，所以可以给有的bean配置，给有的bean不配置，autowire的好处是可以减少或者消除属性和构造">
 <meta property="og:type" content="article">
-<meta property="og:title" content="mongodb常用操作语法">
-<meta property="og:url" content="https://monsmile.github.io/2016/12/29/mongodb常用操作语法/index.html">
+<meta property="og:title" content="Spring-自动装配">
+<meta property="og:url" content="https://monsmile.github.io/2017/01/05/Spring-自动装配/index.html">
 <meta property="og:site_name" content="blog of Monsmile">
-<meta property="og:description" content="SQL术语/概念    MongoDB术语/概念    解释/说明database    database    数据库table    collection    数据库表/集合row    document    数据记录行/文档column    field    数据字段/域index    index    索引table joins         表连接,MongoDB不支持prim">
-<meta property="og:updated_time" content="2016-12-28T09:33:26.778Z">
+<meta property="og:description" content="标签（空格分隔）： spring
+
+自动装配:spring IOC容器可以自动装配（autowire），相互协作的bean之间的依赖关系,可以自动让spring查找beanFactory中的内容，来替我们指定bean的协作者，也就是其他被依赖的bean，autowire可以在单个bean中进行配置，所以可以给有的bean配置，给有的bean不配置，autowire的好处是可以减少或者消除属性和构造">
+<meta property="og:updated_time" content="2017-01-04T08:26:15.032Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="mongodb常用操作语法">
-<meta name="twitter:description" content="SQL术语/概念    MongoDB术语/概念    解释/说明database    database    数据库table    collection    数据库表/集合row    document    数据记录行/文档column    field    数据字段/域index    index    索引table joins         表连接,MongoDB不支持prim">
+<meta name="twitter:title" content="Spring-自动装配">
+<meta name="twitter:description" content="标签（空格分隔）： spring
+
+自动装配:spring IOC容器可以自动装配（autowire），相互协作的bean之间的依赖关系,可以自动让spring查找beanFactory中的内容，来替我们指定bean的协作者，也就是其他被依赖的bean，autowire可以在单个bean中进行配置，所以可以给有的bean配置，给有的bean不配置，autowire的好处是可以减少或者消除属性和构造">
   
     <link rel="alternate" href="/atom.xml" title="blog of Monsmile" type="application/atom+xml">
   
@@ -63,14 +69,14 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-mongodb常用操作语法" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Spring-自动装配" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/12/29/mongodb常用操作语法/" class="article-date">
-  <time datetime="2016-12-28T16:49:09.000Z" itemprop="datePublished">2016-12-28</time>
+    <a href="/2017/01/05/Spring-自动装配/" class="article-date">
+  <time datetime="2017-01-04T16:24:31.000Z" itemprop="datePublished">2017-01-04</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/mongodb/">mongodb</a>
+    <a class="article-category-link" href="/categories/spring/">spring</a>
   </div>
 
   </div>
@@ -81,7 +87,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      mongodb常用操作语法
+      Spring-自动装配
     </h1>
   
 
@@ -89,15 +95,30 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>SQL术语/概念    MongoDB术语/概念    解释/说明<br>database    database    数据库<br>table    collection    数据库表/集合<br>row    document    数据记录行/文档<br>column    field    数据字段/域<br>index    index    索引<br>table joins         表连接,MongoDB不支持<br>primary key    primary key    主键,MongoDB自动将_id字段设置为主键</p>
-<p>需要注意的是：</p>
-<p>文档中的键/值对是有序的。<br>文档中的值不仅可以是在双引号里面的字符串，还可以是其他几种数据类型（甚至可以是整个嵌入的文档)。<br>MongoDB区分类型和大小写。<br>MongoDB的文档不能有重复的键。<br>文档的键是字符串。除了少数例外情况，键可以使用任意UTF-8字符。<br>文档键命名规范：</p>
-<p>键不能含有\0 (空字符)。这个字符用来表示键的结尾。<br>.和$有特别的意义，只有在特定环境下才能使用。<br>以下划线”_”开头的键是保留的(不是严格要求的)</p>
+        <p>标签（空格分隔）： spring</p>
+<hr>
+<p>自动装配:spring IOC容器可以自动装配（autowire），相互协作的bean之间的依赖关系,可以自动让spring查找beanFactory中的内容，来替我们指定bean的协作者，也就是其他被依赖的bean，autowire可以在单个bean中进行配置，所以可以给有的bean配置，给有的bean不配置，autowire的好处是可以减少或者消除属性和构造器参数的个数,其实就是减少几个ref；</p>
+<p>当然,自动装配必须满足两点</p>
+<p>(1)bean里面的属性名字必须和applicationContext.xml里面对应的bean id的名字相同..</p>
+<p>(2)在申明里配置一个属性.default-autowire=”byName”(通过名字自动装配)</p>
+<p>配置文件为.</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
+
+http://www.springframework.org/schema/beans/spring-beans-2.0.xsd&quot;
+default-autowire=&quot;byName&quot;&gt;
+
+default-autowire=&quot;x&quot;
+</code></pre><p>x有4个选择：byName,byType,constructor和autodetect</p>
+<p>autodetect：首先尝试使用construtor，然后使用byType方式;</p>
+<p>constructor:<br>试图在容器中寻找与需要自动装配的bean的构造函数参数一致的一个或多个bean，如果没找到则抛出异常;</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/mongodb常用操作语法/" data-id="cixiok0yo0005i4p8qqjuobym" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/Spring-自动装配/" data-id="cixiok0yd0000i4p8kcaby05k" class="article-share-link">Share</a>
       
       
     </footer>
@@ -106,15 +127,11 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/12/29/过滤策略/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          过滤策略
-        
-      </div>
-    </a>
   
+    <a href="/2017/01/05/Spring单例详解与线程安全问题/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Spring单例详解与线程安全问题</div>
+    </a>
   
 </nav>
 
