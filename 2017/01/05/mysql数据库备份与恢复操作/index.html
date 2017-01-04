@@ -3,21 +3,30 @@
 <head>
   <meta charset="utf-8">
   
-  <title>过滤器是基于函数回调的 | blog of Monsmile</title>
+  <title>mysql数据库备份与恢复操作 | blog of Monsmile</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="函数回调:a要调用b中的一个c函数，b中也有调用a的d函数，对于a来说，d函数就是a的回调函数，一般来说a不会主动调用d，d函数就是用来让b调用的；但是b并不知道自己要调用a的哪一个函数具体，所以a会提前通过b中的一个函数s来告诉b要调用a的d函数，这个函数s称为注册函数；
-下面举个通俗的例子：    某天，我打电话向你请教问题，当然是个难题，^_^，你一时想不出解决方法，我又不能拿着电话在">
+  <meta name="description" content="备份数据库：
+[sql] view plain copy备份MySQL数据库的命令
+mysqldump -hhostname -uusername -ppassword databasename &amp;gt; backupfile.sql
+备份MySQL数据库为带删除表的格式备份MySQL数据库为带删除表的格式，能够让该备份覆盖已有数据库而不需要手动删除原有数据库。
+mysqldump -–add-d">
 <meta property="og:type" content="article">
-<meta property="og:title" content="过滤器是基于函数回调的">
-<meta property="og:url" content="https://monsmile.github.io/2016/12/29/过滤器是基于函数回调的/index.html">
+<meta property="og:title" content="mysql数据库备份与恢复操作">
+<meta property="og:url" content="https://monsmile.github.io/2017/01/05/mysql数据库备份与恢复操作/index.html">
 <meta property="og:site_name" content="blog of Monsmile">
-<meta property="og:description" content="函数回调:a要调用b中的一个c函数，b中也有调用a的d函数，对于a来说，d函数就是a的回调函数，一般来说a不会主动调用d，d函数就是用来让b调用的；但是b并不知道自己要调用a的哪一个函数具体，所以a会提前通过b中的一个函数s来告诉b要调用a的d函数，这个函数s称为注册函数；
-下面举个通俗的例子：    某天，我打电话向你请教问题，当然是个难题，^_^，你一时想不出解决方法，我又不能拿着电话在">
-<meta property="og:updated_time" content="2016-12-28T09:40:22.878Z">
+<meta property="og:description" content="备份数据库：
+[sql] view plain copy备份MySQL数据库的命令
+mysqldump -hhostname -uusername -ppassword databasename &amp;gt; backupfile.sql
+备份MySQL数据库为带删除表的格式备份MySQL数据库为带删除表的格式，能够让该备份覆盖已有数据库而不需要手动删除原有数据库。
+mysqldump -–add-d">
+<meta property="og:updated_time" content="2017-01-04T09:26:30.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="过滤器是基于函数回调的">
-<meta name="twitter:description" content="函数回调:a要调用b中的一个c函数，b中也有调用a的d函数，对于a来说，d函数就是a的回调函数，一般来说a不会主动调用d，d函数就是用来让b调用的；但是b并不知道自己要调用a的哪一个函数具体，所以a会提前通过b中的一个函数s来告诉b要调用a的d函数，这个函数s称为注册函数；
-下面举个通俗的例子：    某天，我打电话向你请教问题，当然是个难题，^_^，你一时想不出解决方法，我又不能拿着电话在">
+<meta name="twitter:title" content="mysql数据库备份与恢复操作">
+<meta name="twitter:description" content="备份数据库：
+[sql] view plain copy备份MySQL数据库的命令
+mysqldump -hhostname -uusername -ppassword databasename &amp;gt; backupfile.sql
+备份MySQL数据库为带删除表的格式备份MySQL数据库为带删除表的格式，能够让该备份覆盖已有数据库而不需要手动删除原有数据库。
+mysqldump -–add-d">
   
     <link rel="alternate" href="/atom.xml" title="blog of Monsmile" type="application/atom+xml">
   
@@ -66,10 +75,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-过滤器是基于函数回调的" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-mysql数据库备份与恢复操作" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/12/29/过滤器是基于函数回调的/" class="article-date">
-  <time datetime="2016-12-28T17:36:02.000Z" itemprop="datePublished">2016-12-28</time>
+    <a href="/2017/01/05/mysql数据库备份与恢复操作/" class="article-date">
+  <time datetime="2017-01-04T17:24:49.000Z" itemprop="datePublished">2017-01-04</time>
 </a>
     
   <div class="article-category">
@@ -84,7 +93,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      过滤器是基于函数回调的
+      mysql数据库备份与恢复操作
     </h1>
   
 
@@ -92,14 +101,33 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>   函数回调:a要调用b中的一个c函数，b中也有调用a的d函数，<br>对于a来说，d函数就是a的回调函数，一般来说a不会主动调用d，<br>d函数就是用来让b调用的；但是b并不知道自己要调用a的哪一个函数具体，<br>所以a会提前通过b中的一个函数s来告诉b要调用a的d函数，这个函数s称为注册函数；</p>
-<p>下面举个通俗的例子：<br>    某天，我打电话向你请教问题，当然是个难题，^_^，你一时想不出解决方法，<br>我又不能拿着电话在那里傻等，于是我们约定：等你想出办法后打手机通知我，<br>这样，我就挂掉电话办其它事情去了。过了XX分钟，我的手机响了，你兴高采烈的说问题已经搞定，<br>应该如此这般处理。故事到此结束。这个例子说明了“异步+回调”的编程模式。其中，你后来打手机<br>告诉我结果便是一个“回调”过程；我的手机号码必须在以前告诉你，这便是注册回调函数；<br>我的手机号码应该有效并且手机能够接收到你的呼叫，这是回调函数必须符合接口规范。</p>
-<p>过滤器的函数回调是在invoke（打包）中再次调用invoke函数，但是在此函数之前和之后可以输出字符，<br>也可以调用其他函数;</p>
+        <p>备份数据库：</p>
+<p>[sql] view plain copy<br>备份MySQL数据库的命令</p>
+<p>mysqldump -hhostname -uusername -ppassword databasename &gt; backupfile.sql</p>
+<p>备份MySQL数据库为带删除表的格式<br>备份MySQL数据库为带删除表的格式，能够让该备份覆盖已有数据库而不需要手动删除原有数据库。</p>
+<p>mysqldump -–add-drop-table -uusername -ppassword databasename &gt; backupfile.sql</p>
+<p>直接将MySQL数据库压缩备份</p>
+<p>mysqldump -hhostname -uusername -ppassword databasename | gzip &gt; backupfile.sql.gz</p>
+<p>备份MySQL数据库某个(些)表</p>
+<p>mysqldump -hhostname -uusername -ppassword databasename specific_table1 specific_table2 &gt; backupfile.sql</p>
+<p>同时备份多个MySQL数据库</p>
+<p>mysqldump -hhostname -uusername -ppassword –databases databasename1 databasename2 databasename3 &gt; multibackupfile.sql</p>
+<p>仅仅备份数据库结构</p>
+<p>mysqldump –no-data –databases databasename1 databasename2 databasename3 &gt; structurebackupfile.sql</p>
+<p>备份服务器上所有数据库</p>
+<p>mysqldump –all-databases &gt; allbackupfile.sql</p>
+<p>还原MySQL数据库的命令</p>
+<p>mysql -hhostname -uusername -ppassword databasename &lt; backupfile.sql</p>
+<p>还原压缩的MySQL数据库</p>
+<p>gunzip &lt; backupfile.sql.gz | mysql -uusername -ppassword databasename</p>
+<p>将数据库转移到新服务器</p>
+<p>mysqldump -uusername -ppassword databasename | mysql –host=<em>.</em>.<em>.</em> -C databasename<br>try {<br>Runtime rt = Runtime.getRuntime();<br>String cmd =”mysqldump -h localhost -uroot -p1234 test blog_user &gt; e:/mysql.sql”; //一定要加 -h localhost(或是服务器IP地址)<br>rt.exec(“cmd /c “ + cmd);<br>System.out.println(“备份成功!”);<br>} catch (IOException e) {<br>System.out.println(“备份失败!”);<br>e.printStackTrace();<br>}</p>
+<p>try {<br>Runtime rt = Runtime.getRuntime();<br>String cmd =”mysqldump -h localhost -uroot -p1234 test blog_user &gt; e:/mysql.sql”; //一定要加 -h localhost(或是服务器IP地址)<br>Process process =rt.exec(“cmd /c “ + cmd);<br>InputStreamReader isr = new InputStreamReader(process.getErrorStream());<br>LineNumberReader input = new LineNumberReader(isr);<br>String line;<br>while((line = input.readLine())!= null){<br>System.out.println(line+”<del>~</del><del>~</del>“);<br>}<br>System.out.println(“备份成功!”);<br>} catch (IOException e) {<br>System.out.println(“备份失败!”);<br>e.printStackTrace();<br>}</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/过滤器是基于函数回调的/" data-id="cixiqp7xf000lu8p8ly1ti9t4" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/mysql数据库备份与恢复操作/" data-id="cixiqp7x70008u8p86pl08det" class="article-share-link">Share</a>
       
       
     </footer>
@@ -108,19 +136,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/12/29/拦截器为什么是基于java反射的/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          拦截器为什么是基于java反射的
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/12/29/过滤策略/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/01/05/springMVC过滤器中的url-pattern/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">过滤策略</div>
+      <div class="article-nav-title">springMVC过滤器中的url-pattern</div>
     </a>
   
 </nav>

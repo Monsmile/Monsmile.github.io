@@ -64,6 +64,68 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-mysql数据库备份与恢复操作" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/05/mysql数据库备份与恢复操作/" class="article-date">
+  <time datetime="2017-01-04T17:24:49.000Z" itemprop="datePublished">2017-01-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/spring/">spring</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/05/mysql数据库备份与恢复操作/">mysql数据库备份与恢复操作</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>备份数据库：</p>
+<p>[sql] view plain copy<br>备份MySQL数据库的命令</p>
+<p>mysqldump -hhostname -uusername -ppassword databasename &gt; backupfile.sql</p>
+<p>备份MySQL数据库为带删除表的格式<br>备份MySQL数据库为带删除表的格式，能够让该备份覆盖已有数据库而不需要手动删除原有数据库。</p>
+<p>mysqldump -–add-drop-table -uusername -ppassword databasename &gt; backupfile.sql</p>
+<p>直接将MySQL数据库压缩备份</p>
+<p>mysqldump -hhostname -uusername -ppassword databasename | gzip &gt; backupfile.sql.gz</p>
+<p>备份MySQL数据库某个(些)表</p>
+<p>mysqldump -hhostname -uusername -ppassword databasename specific_table1 specific_table2 &gt; backupfile.sql</p>
+<p>同时备份多个MySQL数据库</p>
+<p>mysqldump -hhostname -uusername -ppassword –databases databasename1 databasename2 databasename3 &gt; multibackupfile.sql</p>
+<p>仅仅备份数据库结构</p>
+<p>mysqldump –no-data –databases databasename1 databasename2 databasename3 &gt; structurebackupfile.sql</p>
+<p>备份服务器上所有数据库</p>
+<p>mysqldump –all-databases &gt; allbackupfile.sql</p>
+<p>还原MySQL数据库的命令</p>
+<p>mysql -hhostname -uusername -ppassword databasename &lt; backupfile.sql</p>
+<p>还原压缩的MySQL数据库</p>
+<p>gunzip &lt; backupfile.sql.gz | mysql -uusername -ppassword databasename</p>
+<p>将数据库转移到新服务器</p>
+<p>mysqldump -uusername -ppassword databasename | mysql –host=<em>.</em>.<em>.</em> -C databasename<br>try {<br>Runtime rt = Runtime.getRuntime();<br>String cmd =”mysqldump -h localhost -uroot -p1234 test blog_user &gt; e:/mysql.sql”; //一定要加 -h localhost(或是服务器IP地址)<br>rt.exec(“cmd /c “ + cmd);<br>System.out.println(“备份成功!”);<br>} catch (IOException e) {<br>System.out.println(“备份失败!”);<br>e.printStackTrace();<br>}</p>
+<p>try {<br>Runtime rt = Runtime.getRuntime();<br>String cmd =”mysqldump -h localhost -uroot -p1234 test blog_user &gt; e:/mysql.sql”; //一定要加 -h localhost(或是服务器IP地址)<br>Process process =rt.exec(“cmd /c “ + cmd);<br>InputStreamReader isr = new InputStreamReader(process.getErrorStream());<br>LineNumberReader input = new LineNumberReader(isr);<br>String line;<br>while((line = input.readLine())!= null){<br>System.out.println(line+”<del>~</del><del>~</del>“);<br>}<br>System.out.println(“备份成功!”);<br>} catch (IOException e) {<br>System.out.println(“备份失败!”);<br>e.printStackTrace();<br>}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://monsmile.github.io/2017/01/05/mysql数据库备份与恢复操作/" data-id="cixiqp7x70008u8p86pl08det" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-springMVC过滤器中的url-pattern" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/01/05/springMVC过滤器中的url-pattern/" class="article-date">
@@ -94,7 +156,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/springMVC过滤器中的url-pattern/" data-id="cixip63bb000e1op8xlkqbpwo" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/springMVC过滤器中的url-pattern/" data-id="cixiqp7x9000au8p8wg037jo9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -203,7 +265,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/spring-手动装配javabean的两种方式/" data-id="cixip63b500071op8mvvb3tda" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/spring-手动装配javabean的两种方式/" data-id="cixiqp7xa000cu8p8nvg2y3qs" class="article-share-link">Share</a>
       
       
     </footer>
@@ -262,7 +324,7 @@ default-autowire=&quot;x&quot;
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/Spring-自动装配/" data-id="cixip63as00021op8rvt178om" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/Spring-自动装配/" data-id="cixiqp7wu0003u8p8oqg2tghu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -312,7 +374,7 @@ default-autowire=&quot;x&quot;
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/Spring单例详解与线程安全问题/" data-id="cixip63au00031op8o6wm6gwz" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/Spring单例详解与线程安全问题/" data-id="cixiqp7x30006u8p8uzweltky" class="article-share-link">Share</a>
       
       
     </footer>
@@ -400,7 +462,7 @@ Xml代码
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/Spring-依赖注入四种方式/" data-id="cixip63an00001op8p0sboz8w" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/Spring-依赖注入四种方式/" data-id="cixiqp7wp0001u8p8hdpqcz3e" class="article-share-link">Share</a>
       
       
     </footer>
@@ -441,7 +503,7 @@ Xml代码
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/spring如何管理对象/" data-id="cixip63b9000b1op8ca1kmnm7" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/spring如何管理对象/" data-id="cixiqp7xc000hu8p847af7pkg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -478,7 +540,7 @@ Xml代码
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/Spring是如何实现MVC的？/" data-id="cixip63b100061op84yt03aff" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/Spring是如何实现MVC的？/" data-id="cixiqp7ws0002u8p8ob1nrz5u" class="article-share-link">Share</a>
       
       
     </footer>
@@ -543,7 +605,7 @@ Xml代码
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/ajax框架dwr/" data-id="cixip63az00051op8b091vmf1" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/ajax框架dwr/" data-id="cixiqp7wv0004u8p8of38s96v" class="article-share-link">Share</a>
       
       
     </footer>
@@ -586,54 +648,7 @@ Xml代码
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/过滤器，拦截器，监听器/" data-id="cixip63bi000k1op8iplehnih" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-过滤器和拦截器的区别" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/12/29/过滤器和拦截器的区别/" class="article-date">
-  <time datetime="2016-12-28T17:43:23.000Z" itemprop="datePublished">2016-12-28</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/spring/">spring</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/29/过滤器和拦截器的区别/">过滤器和拦截器的区别</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1.拦截器基于java的反射机制，过滤器基于函数的回调；</p>
-<p>2.拦截器只对action请求作用，而过滤器对所有的请求都起作用；</p>
-<p>3.拦截器可以对请求action的上下文，值栈里的对象进行访问，而过滤器不能访问；</p>
-<p>4.拦截器不依赖于servlet容器，而过滤器依赖于servlet容器;</p>
-<p>5.拦截器可以在程序运行期间多次调用，而过滤器只在servlet容器初始化时调用一次;</p>
-<p>6.拦截器可以获取ioc容器里的bean，而过滤器不行，在过滤器中注入一个service，可以调用业务逻辑;</p>
-<p>下边有书上的截图可以参考：<br><img src="/images/1" alt="图片"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/过滤器和拦截器的区别/" data-id="cixip63bf000h1op844vu1i4h" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/过滤器，拦截器，监听器/" data-id="cixiqp7xh000pu8p82jg6d9an" class="article-share-link">Share</a>
       
       
     </footer>
@@ -684,6 +699,10 @@ Xml代码
       <ul>
         
           <li>
+            <a href="/2017/01/05/mysql数据库备份与恢复操作/">mysql数据库备份与恢复操作</a>
+          </li>
+        
+          <li>
             <a href="/2017/01/05/springMVC过滤器中的url-pattern/">springMVC过滤器中的url-pattern</a>
           </li>
         
@@ -697,10 +716,6 @@ Xml代码
         
           <li>
             <a href="/2017/01/05/Spring单例详解与线程安全问题/">Spring单例详解与线程安全问题</a>
-          </li>
-        
-          <li>
-            <a href="/2017/01/05/Spring-依赖注入四种方式/">Spring-依赖注入四种方式</a>
           </li>
         
       </ul>
