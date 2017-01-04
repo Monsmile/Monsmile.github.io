@@ -3,18 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Spring是如何实现MVC的？ | blog of Monsmile</title>
+  <title>blog of Monsmile</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="spring中有一个核心控制器ServletDispather，该控制器会接受所有的请求，解析请求，将请求分发给对应的controller，controller调用对用的模型层，Controller，返回结果给控制器，控制器调用对应的视图响应给客户端。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Spring是如何实现MVC的？">
-<meta property="og:url" content="https://monsmile.github.io/2016/12/29/Spring是如何实现MVC的？/index.html">
+  <meta name="description" content="blog of gaolanyu">
+<meta property="og:type" content="website">
+<meta property="og:title" content="blog of Monsmile">
+<meta property="og:url" content="https://monsmile.github.io/page/2/index.html">
 <meta property="og:site_name" content="blog of Monsmile">
-<meta property="og:description" content="spring中有一个核心控制器ServletDispather，该控制器会接受所有的请求，解析请求，将请求分发给对应的controller，controller调用对用的模型层，Controller，返回结果给控制器，控制器调用对应的视图响应给客户端。">
-<meta property="og:updated_time" content="2016-12-29T03:33:32.850Z">
+<meta property="og:description" content="blog of gaolanyu">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Spring是如何实现MVC的？">
-<meta name="twitter:description" content="spring中有一个核心控制器ServletDispather，该控制器会接受所有的请求，解析请求，将请求分发给对应的controller，controller调用对用的模型层，Controller，返回结果给控制器，控制器调用对应的视图响应给客户端。">
+<meta name="twitter:title" content="blog of Monsmile">
+<meta name="twitter:description" content="blog of gaolanyu">
   
     <link rel="alternate" href="/atom.xml" title="blog of Monsmile" type="application/atom+xml">
   
@@ -63,12 +62,18 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-Spring是如何实现MVC的？" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main">
+  
+    <article id="post-mongodb常用操作语法" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/12/29/Spring是如何实现MVC的？/" class="article-date">
-  <time datetime="2016-12-29T11:32:40.000Z" itemprop="datePublished">2016-12-29</time>
+    <a href="/2016/12/29/mongodb常用操作语法/" class="article-date">
+  <time datetime="2016-12-28T16:49:09.000Z" itemprop="datePublished">2016-12-28</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/mongodb/">mongodb</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -76,8 +81,8 @@
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      Spring是如何实现MVC的？
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/29/mongodb常用操作语法/">mongodb常用操作语法</a>
     </h1>
   
 
@@ -85,40 +90,29 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>spring中有一个核心控制器ServletDispather，该控制器会接受所有的请求，解析请求，将请求分发给对应的controller，controller调用对用的模型层，Controller，返回结果给控制器，控制器调用对应的视图响应给客户端。</p>
+        <p>SQL术语/概念    MongoDB术语/概念    解释/说明<br>database    database    数据库<br>table    collection    数据库表/集合<br>row    document    数据记录行/文档<br>column    field    数据字段/域<br>index    index    索引<br>table joins         表连接,MongoDB不支持<br>primary key    primary key    主键,MongoDB自动将_id字段设置为主键</p>
+<p>需要注意的是：</p>
+<p>文档中的键/值对是有序的。<br>文档中的值不仅可以是在双引号里面的字符串，还可以是其他几种数据类型（甚至可以是整个嵌入的文档)。<br>MongoDB区分类型和大小写。<br>MongoDB的文档不能有重复的键。<br>文档的键是字符串。除了少数例外情况，键可以使用任意UTF-8字符。<br>文档键命名规范：</p>
+<p>键不能含有\0 (空字符)。这个字符用来表示键的结尾。<br>.和$有特别的意义，只有在特定环境下才能使用。<br>以下划线”_”开头的键是保留的(不是严格要求的)</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/Spring是如何实现MVC的？/" data-id="cixioeu7y000444p89lrmyqzo" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/mongodb常用操作语法/" data-id="cixioeu83000644p8bio1edh8" class="article-share-link">Share</a>
       
       
     </footer>
   </div>
   
-    
-<nav id="article-nav">
-  
-    <a href="/2016/12/29/spring如何管理对象/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          spring如何管理对象
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2016/12/29/ajax框架dwr/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">ajax框架dwr</div>
-    </a>
-  
-</nav>
-
-  
 </article>
 
+
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
 </section>
         
           <aside id="sidebar">
