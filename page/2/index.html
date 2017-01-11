@@ -64,6 +64,56 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Spring单例详解与线程安全问题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/05/Spring单例详解与线程安全问题/" class="article-date">
+  <time datetime="2017-01-04T16:19:16.000Z" itemprop="datePublished">2017-01-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/spring/">spring</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/05/Spring单例详解与线程安全问题/">Spring单例详解与线程安全问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>标签（空格分隔）： spring</p>
+<hr>
+<p>Spring框架里的bean，或者称为组件，默认都是单例的。</p>
+<p>单例模式意思就是一个类只有一个实例，自行实例化并且向整个系统提供这个实例；</p>
+<p>如果多用户同时请求一个服务时，容器会给每一个请求分配一个线程，这时如果多线程并发的执行逻辑方法，并发的对单例的成员属性进行修改的时候，就要考虑多线程安全问题了，</p>
+<p>线程安全问题都是由全局变量及静态变量引起的。</p>
+<p>1） 常量始终是线程安全的，因为只存在读操作。<br>2）每次调用方法前都新建一个实例是线程安全的，因为不会访问共享的资源。<br>3）局部变量是线程安全的。因为每执行一个方法，都会在独立的空间创建局部变量，它不是共享的资源。局部变量包括方法的参数变量和方法内变量。</p>
+<p>解决线程安全问题的两种方法:</p>
+<p>1.线程同步机制：通过对象的锁机制保证同一时间只有一个线程访问变量。这时该变量是多个线程共享的，使用同步机制要求程序慎密地分析什么时候对变量进行读写，什么时候需要锁定某个对象，什么时候释放对象锁等繁杂的问题，程序设计和编写难度相对较大。</p>
+<p>2.ThreadLocal：ThreadLocal则从另一个角度来解决多线程的并发访问。ThreadLocal会为每一个线程提供一个独立的变量副本，从而隔离了多个线程对数据的访问冲突。因为每一个线程都拥有自己的变量副本，从而也就没有必要对该变量进行同步了。ThreadLocal提供了线程安全的共享对象，在编写多线程代码时，可以把不安全的变量封装进ThreadLocal。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://monsmile.github.io/2017/01/05/Spring单例详解与线程安全问题/" data-id="cixsr1j8i000350p8b32no4no" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Spring-依赖注入四种方式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/01/05/Spring-依赖注入四种方式/" class="article-date">
@@ -142,7 +192,7 @@ Xml代码
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/Spring-依赖注入四种方式/" data-id="cixsqvqo400027gp8rrci4xar" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/Spring-依赖注入四种方式/" data-id="cixsr1j8c000050p8kcp3n0ya" class="article-share-link">Share</a>
       
       
     </footer>
@@ -183,7 +233,7 @@ Xml代码
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/spring如何管理对象/" data-id="cixsqvqol000i7gp88zbqlzco" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/spring如何管理对象/" data-id="cixsr1j95000r50p8qpuplvyc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -220,7 +270,7 @@ Xml代码
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/Spring是如何实现MVC的？/" data-id="cixsqvqod00087gp8kkcrpe9k" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/Spring是如何实现MVC的？/" data-id="cixsr1j8f000150p8w92khfqk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -285,7 +335,7 @@ Xml代码
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/ajax框架dwr/" data-id="cixsqvqob00067gp8it11m95k" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/ajax框架dwr/" data-id="cixsr1j8u000950p86eu3glsj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -328,7 +378,7 @@ Xml代码
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/过滤器，拦截器，监听器/" data-id="cixsqvqoz000z7gp84b7d8ds7" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/过滤器，拦截器，监听器/" data-id="cixsr1j9w001750p8rce1gttt" class="article-share-link">Share</a>
       
       
     </footer>
@@ -375,7 +425,7 @@ Xml代码
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/过滤器和拦截器的区别/" data-id="cixsqvqot000u7gp8uqfi5dxa" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/过滤器和拦截器的区别/" data-id="cixsr1j9u001550p8xdtf2huq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -419,7 +469,7 @@ Xml代码
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/拦截器为什么是基于java反射的/" data-id="cixsqvqor000r7gp87gxyvxbc" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/拦截器为什么是基于java反射的/" data-id="cixsr1j90000h50p82hrhs625" class="article-share-link">Share</a>
       
       
     </footer>
@@ -462,7 +512,7 @@ Xml代码
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/过滤器是基于函数回调的/" data-id="cixsqvqov000v7gp8dumfb10s" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/过滤器是基于函数回调的/" data-id="cixsr1j99000v50p8jj3gcibt" class="article-share-link">Share</a>
       
       
     </footer>
@@ -506,51 +556,7 @@ Xml代码
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/过滤策略/" data-id="cixsqvqp000127gp8abbvkxiy" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-mongodb常用操作语法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/12/29/mongodb常用操作语法/" class="article-date">
-  <time datetime="2016-12-28T16:49:09.000Z" itemprop="datePublished">2016-12-28</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/mongodb/">mongodb</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/29/mongodb常用操作语法/">mongodb常用操作语法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>SQL术语/概念    MongoDB术语/概念    解释/说明<br>database    database    数据库<br>table    collection    数据库表/集合<br>row    document    数据记录行/文档<br>column    field    数据字段/域<br>index    index    索引<br>table joins         表连接,MongoDB不支持<br>primary key    primary key    主键,MongoDB自动将_id字段设置为主键</p>
-<p>需要注意的是：</p>
-<p>文档中的键/值对是有序的。<br>文档中的值不仅可以是在双引号里面的字符串，还可以是其他几种数据类型（甚至可以是整个嵌入的文档)。<br>MongoDB区分类型和大小写。<br>MongoDB的文档不能有重复的键。<br>文档的键是字符串。除了少数例外情况，键可以使用任意UTF-8字符。<br>文档键命名规范：</p>
-<p>键不能含有\0 (空字符)。这个字符用来表示键的结尾。<br>.和$有特别的意义，只有在特定环境下才能使用。<br>以下划线”_”开头的键是保留的(不是严格要求的)</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/mongodb常用操作语法/" data-id="cixsqvqof000a7gp8mi972y79" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/过滤策略/" data-id="cixsr1j9a000x50p8uk152smd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -563,7 +569,7 @@ Xml代码
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">__('next') &raquo;</a>
   </nav>
 </section>
         
@@ -601,6 +607,10 @@ Xml代码
       <ul>
         
           <li>
+            <a href="/2017/01/12/mysql数据库连接池的配置/">mysql数据库连接池的配置</a>
+          </li>
+        
+          <li>
             <a href="/2017/01/12/在linux系统的服务器下部署项目/">在linux系统的服务器下部署项目</a>
           </li>
         
@@ -614,10 +624,6 @@ Xml代码
         
           <li>
             <a href="/2017/01/05/springMVC常用注解/">springMVC常用注解</a>
-          </li>
-        
-          <li>
-            <a href="/2017/01/05/MySQL修改root密码的多种方法/">MySQL修改root密码的多种方法</a>
           </li>
         
       </ul>

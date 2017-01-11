@@ -64,6 +64,87 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-mysql数据库连接池的配置" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/12/mysql数据库连接池的配置/" class="article-date">
+  <time datetime="2017-01-11T17:32:27.000Z" itemprop="datePublished">2017-01-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/mysql/">mysql</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/12/mysql数据库连接池的配置/">mysql数据库连接池的配置</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>mysql数据库连接池c3p0的c3p0-config.xml文件配置;</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;c3p0-config&gt;
+&lt;named-config name=&quot;userApp&quot;&gt;
+&lt;property name=&quot;driverClass&quot;&gt;com.mysql.jdbc.Driver&lt;/property&gt;nm
+&lt;property name=&quot;jdbcUrl&quot;&gt;jdbc:mysql://localhost:3306/group8?characterEncoding=utf8&lt;/property&gt;
+&lt;property name=&quot;user&quot;&gt;root&lt;/property&gt;
+&lt;property name=&quot;password&quot;&gt;&lt;/property&gt;
+&lt;property name=&quot;acquireIncrement&quot;&gt;5&lt;/property&gt;
+&lt;property name=&quot;initialPoolSize&quot;&gt;5&lt;/property&gt;
+&lt;property name=&quot;minPoolSize&quot;&gt;5&lt;/property&gt;
+&lt;property name=&quot;maxPoolSize&quot;&gt;10&lt;/property&gt;&lt;!-- intergalactoApp adopts a different approach to
+configuring statement caching --&gt;
+&lt;property name=&quot;maxStatements&quot;&gt;0&lt;/property&gt;
+&lt;property name=&quot;maxStatementsPerConnection&quot;&gt;5&lt;/property&gt;
+&lt;!-- he&apos;s important, but there&apos;s only one of him --&gt;
+&lt;user-overrides user=&quot;master-of-the-universe&quot;&gt;
+&lt;property name=&quot;acquireIncrement&quot;&gt;1&lt;/property&gt;
+&lt;property name=&quot;initialPoolSize&quot;&gt;1&lt;/property&gt;
+&lt;property name=&quot;minPoolSize&quot;&gt;1&lt;/property&gt;
+&lt;property name=&quot;maxPoolSize&quot;&gt;5&lt;/property&gt;
+&lt;property name=&quot;maxStatementsPerConnection&quot;&gt;50&lt;/property&gt;
+&lt;/user-overrides&gt;
+&lt;/named-config&gt;
+&lt;/c3p0-config&gt;
+</code></pre><p>数据库中的baseDAO的配置代码:</p>
+<p>private static DataSource dataSource;<br>    static {<br>        dataSource = new ComboPooledDataSource(“userApp”);<br>    }</p>
+<pre><code>/**
+ * 获取一个可用的连接
+ * 
+ * @return
+ */
+public Connection getCon() {
+    Connection con = null;
+    try {
+        con = dataSource.getConnection();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return con;
+}
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://monsmile.github.io/2017/01/12/mysql数据库连接池的配置/" data-id="cixsr1j8s000750p8ike2zv8u" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-在linux系统的服务器下部署项目" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/01/12/在linux系统的服务器下部署项目/" class="article-date">
@@ -95,7 +176,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/12/在linux系统的服务器下部署项目/" data-id="cixsqvqop000p7gp8slwxbbjo" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/12/在linux系统的服务器下部署项目/" data-id="cixsr1j91000j50p8h1ad2nj4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -136,7 +217,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/a标签中的target属性/" data-id="cixsqvqoi000d7gp8law41p1c" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/a标签中的target属性/" data-id="cixsr1j8h000250p8ye4b0muu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -184,7 +265,7 @@ insert into classInfo(className) values(#{className})
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/获取insert数据的主键/" data-id="cixsqvqox000x7gp8zum502jx" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/获取insert数据的主键/" data-id="cixsr1j93000m50p85toygcvk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -257,7 +338,7 @@ insert into classInfo(className) values(#{className})
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/springMVC常用注解/" data-id="cixsqvqon000l7gp888v6hp72" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/springMVC常用注解/" data-id="cixsr1j94000o50p8px2gw9ta" class="article-share-link">Share</a>
       
       
     </footer>
@@ -316,7 +397,7 @@ insert into classInfo(className) values(#{className})
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/MySQL修改root密码的多种方法/" data-id="cixsqvqo000007gp8wdvwcn9x" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/MySQL修改root密码的多种方法/" data-id="cixsr1j8n000550p84zatth87" class="article-share-link">Share</a>
       
       
     </footer>
@@ -378,7 +459,7 @@ insert into classInfo(className) values(#{className})
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/mysql数据库备份与恢复操作/" data-id="cixsqvqoh000c7gp82s7vxbo2" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/mysql数据库备份与恢复操作/" data-id="cixsr1j8v000b50p8m4ci1g2h" class="article-share-link">Share</a>
       
       
     </footer>
@@ -418,7 +499,7 @@ insert into classInfo(className) values(#{className})
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/springMVC过滤器中的url-pattern/" data-id="cixsqvqoo000n7gp8vi8lg5w2" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/springMVC过滤器中的url-pattern/" data-id="cixsr1j8y000e50p85krgqv60" class="article-share-link">Share</a>
       
       
     </footer>
@@ -527,7 +608,7 @@ insert into classInfo(className) values(#{className})
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/spring-手动装配javabean的两种方式/" data-id="cixsqvqok000g7gp8cra8x2lj" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/spring-手动装配javabean的两种方式/" data-id="cixsr1j97000s50p8xyk6m8ko" class="article-share-link">Share</a>
       
       
     </footer>
@@ -586,57 +667,7 @@ default-autowire=&quot;x&quot;
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/Spring-自动装配/" data-id="cixsqvqo700047gp80vizo00c" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Spring单例详解与线程安全问题" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/01/05/Spring单例详解与线程安全问题/" class="article-date">
-  <time datetime="2017-01-04T16:19:16.000Z" itemprop="datePublished">2017-01-04</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/spring/">spring</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/05/Spring单例详解与线程安全问题/">Spring单例详解与线程安全问题</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>标签（空格分隔）： spring</p>
-<hr>
-<p>Spring框架里的bean，或者称为组件，默认都是单例的。</p>
-<p>单例模式意思就是一个类只有一个实例，自行实例化并且向整个系统提供这个实例；</p>
-<p>如果多用户同时请求一个服务时，容器会给每一个请求分配一个线程，这时如果多线程并发的执行逻辑方法，并发的对单例的成员属性进行修改的时候，就要考虑多线程安全问题了，</p>
-<p>线程安全问题都是由全局变量及静态变量引起的。</p>
-<p>1） 常量始终是线程安全的，因为只存在读操作。<br>2）每次调用方法前都新建一个实例是线程安全的，因为不会访问共享的资源。<br>3）局部变量是线程安全的。因为每执行一个方法，都会在独立的空间创建局部变量，它不是共享的资源。局部变量包括方法的参数变量和方法内变量。</p>
-<p>解决线程安全问题的两种方法:</p>
-<p>1.线程同步机制：通过对象的锁机制保证同一时间只有一个线程访问变量。这时该变量是多个线程共享的，使用同步机制要求程序慎密地分析什么时候对变量进行读写，什么时候需要锁定某个对象，什么时候释放对象锁等繁杂的问题，程序设计和编写难度相对较大。</p>
-<p>2.ThreadLocal：ThreadLocal则从另一个角度来解决多线程的并发访问。ThreadLocal会为每一个线程提供一个独立的变量副本，从而隔离了多个线程对数据的访问冲突。因为每一个线程都拥有自己的变量副本，从而也就没有必要对该变量进行同步了。ThreadLocal提供了线程安全的共享对象，在编写多线程代码时，可以把不安全的变量封装进ThreadLocal。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/Spring单例详解与线程安全问题/" data-id="cixsqvqo900057gp83l8qashx" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/Spring-自动装配/" data-id="cixsr1j8r000650p8uayd3qhr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -649,7 +680,7 @@ default-autowire=&quot;x&quot;
 
 
   <nav id="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">__('next') &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">__('next') &raquo;</a>
   </nav>
 </section>
         
@@ -687,6 +718,10 @@ default-autowire=&quot;x&quot;
       <ul>
         
           <li>
+            <a href="/2017/01/12/mysql数据库连接池的配置/">mysql数据库连接池的配置</a>
+          </li>
+        
+          <li>
             <a href="/2017/01/12/在linux系统的服务器下部署项目/">在linux系统的服务器下部署项目</a>
           </li>
         
@@ -700,10 +735,6 @@ default-autowire=&quot;x&quot;
         
           <li>
             <a href="/2017/01/05/springMVC常用注解/">springMVC常用注解</a>
-          </li>
-        
-          <li>
-            <a href="/2017/01/05/MySQL修改root密码的多种方法/">MySQL修改root密码的多种方法</a>
           </li>
         
       </ul>

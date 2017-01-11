@@ -3,27 +3,30 @@
 <head>
   <meta charset="utf-8">
   
-  <title>拦截器为什么是基于java反射的 | blog of Monsmile</title>
+  <title>mysql数据库连接池的配置 | blog of Monsmile</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="标签（空格分隔）： spring
-
-拦截器 ：是在面向切面编程的就是在你的service或者一个方法，前调用一个方法，或者在方法后调用一个方法比如动态代理就是拦截器的简单实现，在你调用方法前打印出字符串（或者做其它业务逻辑的操作），也可以在你调用方法后打印出字符串，甚至在你抛出异常的时候做业务逻辑的操作。
-连接拦截器和拦截器拦截到要执行的类，这两个类要联系，中间需要用到反射;">
+  <meta name="description" content="mysql数据库连接池c3p0的c3p0-config.xml文件配置;
+&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;c3p0-config&amp;gt;
+&amp;lt;named-config name=&amp;quot;userApp&amp;quot;&amp;gt;
+&amp;lt;property name=&amp;quot;driverCl">
 <meta property="og:type" content="article">
-<meta property="og:title" content="拦截器为什么是基于java反射的">
-<meta property="og:url" content="https://monsmile.github.io/2016/12/29/拦截器为什么是基于java反射的/index.html">
+<meta property="og:title" content="mysql数据库连接池的配置">
+<meta property="og:url" content="https://monsmile.github.io/2017/01/12/mysql数据库连接池的配置/index.html">
 <meta property="og:site_name" content="blog of Monsmile">
-<meta property="og:description" content="标签（空格分隔）： spring
-
-拦截器 ：是在面向切面编程的就是在你的service或者一个方法，前调用一个方法，或者在方法后调用一个方法比如动态代理就是拦截器的简单实现，在你调用方法前打印出字符串（或者做其它业务逻辑的操作），也可以在你调用方法后打印出字符串，甚至在你抛出异常的时候做业务逻辑的操作。
-连接拦截器和拦截器拦截到要执行的类，这两个类要联系，中间需要用到反射;">
-<meta property="og:updated_time" content="2016-12-28T09:42:50.038Z">
+<meta property="og:description" content="mysql数据库连接池c3p0的c3p0-config.xml文件配置;
+&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;c3p0-config&amp;gt;
+&amp;lt;named-config name=&amp;quot;userApp&amp;quot;&amp;gt;
+&amp;lt;property name=&amp;quot;driverCl">
+<meta property="og:updated_time" content="2017-01-11T09:33:54.880Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="拦截器为什么是基于java反射的">
-<meta name="twitter:description" content="标签（空格分隔）： spring
-
-拦截器 ：是在面向切面编程的就是在你的service或者一个方法，前调用一个方法，或者在方法后调用一个方法比如动态代理就是拦截器的简单实现，在你调用方法前打印出字符串（或者做其它业务逻辑的操作），也可以在你调用方法后打印出字符串，甚至在你抛出异常的时候做业务逻辑的操作。
-连接拦截器和拦截器拦截到要执行的类，这两个类要联系，中间需要用到反射;">
+<meta name="twitter:title" content="mysql数据库连接池的配置">
+<meta name="twitter:description" content="mysql数据库连接池c3p0的c3p0-config.xml文件配置;
+&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;c3p0-config&amp;gt;
+&amp;lt;named-config name=&amp;quot;userApp&amp;quot;&amp;gt;
+&amp;lt;property name=&amp;quot;driverCl">
   
     <link rel="alternate" href="/atom.xml" title="blog of Monsmile" type="application/atom+xml">
   
@@ -72,14 +75,14 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-拦截器为什么是基于java反射的" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-mysql数据库连接池的配置" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/12/29/拦截器为什么是基于java反射的/" class="article-date">
-  <time datetime="2016-12-28T17:40:53.000Z" itemprop="datePublished">2016-12-28</time>
+    <a href="/2017/01/12/mysql数据库连接池的配置/" class="article-date">
+  <time datetime="2017-01-11T17:32:27.000Z" itemprop="datePublished">2017-01-11</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/spring/">spring</a>
+    <a class="article-category-link" href="/categories/mysql/">mysql</a>
   </div>
 
   </div>
@@ -90,7 +93,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      拦截器为什么是基于java反射的
+      mysql数据库连接池的配置
     </h1>
   
 
@@ -98,15 +101,52 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>标签（空格分隔）： spring</p>
-<hr>
-<p>拦截器 ：是在面向切面编程的就是在你的service或者一个方法，前调用一个方法，<br>或者在方法后调用一个方法比如动态代理就是拦截器的简单实现，在你调用方法前打<br>印出字符串（或者做其它业务逻辑的操作），也可以在你调用方法后打印出字符串，<br>甚至在你抛出异常的时候做业务逻辑的操作。</p>
-<p>连接拦截器和拦截器拦截到要执行的类，这两个类要联系，中间需要用到反射;</p>
-
+        <p>mysql数据库连接池c3p0的c3p0-config.xml文件配置;</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;c3p0-config&gt;
+&lt;named-config name=&quot;userApp&quot;&gt;
+&lt;property name=&quot;driverClass&quot;&gt;com.mysql.jdbc.Driver&lt;/property&gt;nm
+&lt;property name=&quot;jdbcUrl&quot;&gt;jdbc:mysql://localhost:3306/group8?characterEncoding=utf8&lt;/property&gt;
+&lt;property name=&quot;user&quot;&gt;root&lt;/property&gt;
+&lt;property name=&quot;password&quot;&gt;&lt;/property&gt;
+&lt;property name=&quot;acquireIncrement&quot;&gt;5&lt;/property&gt;
+&lt;property name=&quot;initialPoolSize&quot;&gt;5&lt;/property&gt;
+&lt;property name=&quot;minPoolSize&quot;&gt;5&lt;/property&gt;
+&lt;property name=&quot;maxPoolSize&quot;&gt;10&lt;/property&gt;&lt;!-- intergalactoApp adopts a different approach to
+configuring statement caching --&gt;
+&lt;property name=&quot;maxStatements&quot;&gt;0&lt;/property&gt;
+&lt;property name=&quot;maxStatementsPerConnection&quot;&gt;5&lt;/property&gt;
+&lt;!-- he&apos;s important, but there&apos;s only one of him --&gt;
+&lt;user-overrides user=&quot;master-of-the-universe&quot;&gt;
+&lt;property name=&quot;acquireIncrement&quot;&gt;1&lt;/property&gt;
+&lt;property name=&quot;initialPoolSize&quot;&gt;1&lt;/property&gt;
+&lt;property name=&quot;minPoolSize&quot;&gt;1&lt;/property&gt;
+&lt;property name=&quot;maxPoolSize&quot;&gt;5&lt;/property&gt;
+&lt;property name=&quot;maxStatementsPerConnection&quot;&gt;50&lt;/property&gt;
+&lt;/user-overrides&gt;
+&lt;/named-config&gt;
+&lt;/c3p0-config&gt;
+</code></pre><p>数据库中的baseDAO的配置代码:</p>
+<p>private static DataSource dataSource;<br>    static {<br>        dataSource = new ComboPooledDataSource(“userApp”);<br>    }</p>
+<pre><code>/**
+ * 获取一个可用的连接
+ * 
+ * @return
+ */
+public Connection getCon() {
+    Connection con = null;
+    try {
+        con = dataSource.getConnection();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return con;
+}
+</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/拦截器为什么是基于java反射的/" data-id="cixsr1j90000h50p82hrhs625" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/12/mysql数据库连接池的配置/" data-id="cixsr1j8s000750p8ike2zv8u" class="article-share-link">Share</a>
       
       
     </footer>
@@ -115,19 +155,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/12/29/过滤器和拦截器的区别/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          过滤器和拦截器的区别
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/12/29/过滤器是基于函数回调的/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/01/12/在linux系统的服务器下部署项目/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">过滤器是基于函数回调的</div>
+      <div class="article-nav-title">在linux系统的服务器下部署项目</div>
     </a>
   
 </nav>
