@@ -64,6 +64,53 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-jdbc获取刚刚添加的对象的主键" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/12/jdbc获取刚刚添加的对象的主键/" class="article-date">
+  <time datetime="2017-01-11T17:34:56.000Z" itemprop="datePublished">2017-01-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/jdbc/">jdbc</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/12/jdbc获取刚刚添加的对象的主键/">jdbc获取刚刚添加的对象的主键</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>/**</p>
+<ul>
+<li>执行sql语句并返回更改数据的主键</li>
+<li>@param sql</li>
+<li>@param args</li>
+<li>@return<br>*/<br>public int executeUpdateReturnPk(String sql, Object… args) {<br>int result = -1;<br>Connection con = null;<br>PreparedStatement pst = null;<br>ResultSet rs = null;<br>try {<br>con = getCon();<br>pst = con.prepareStatement(sql);<br>for (int i = 0; i &lt; args.length; i++) {<br>pst.setString((i + 1), args[i].toString());<br>}<br>pst.executeUpdate();<br>rs = pst.executeQuery(“SELECT @@identity AS id”);<br>if (rs.next())<br>result = rs.getInt(“id”);<br>} catch (Exception e) {<br>e.printStackTrace();<br>} finally {<br>closeAll(null, pst, con);<br>}<br>return result;<br>}</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://monsmile.github.io/2017/01/12/jdbc获取刚刚添加的对象的主键/" data-id="cixsr525a000a3cp8lyv4tqo1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-mysql数据库连接池的配置" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/01/12/mysql数据库连接池的配置/" class="article-date">
@@ -135,7 +182,7 @@ public Connection getCon() {
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/12/mysql数据库连接池的配置/" data-id="cixsr1j8s000750p8ike2zv8u" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/12/mysql数据库连接池的配置/" data-id="cixsr525f000g3cp8rc0l5h3c" class="article-share-link">Share</a>
       
       
     </footer>
@@ -176,7 +223,7 @@ public Connection getCon() {
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/12/在linux系统的服务器下部署项目/" data-id="cixsr1j91000j50p8h1ad2nj4" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/12/在linux系统的服务器下部署项目/" data-id="cixsr525l000p3cp89emee5so" class="article-share-link">Share</a>
       
       
     </footer>
@@ -217,7 +264,7 @@ public Connection getCon() {
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/a标签中的target属性/" data-id="cixsr1j8h000250p8ye4b0muu" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/a标签中的target属性/" data-id="cixsr525200053cp8mq2ljyyx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -265,7 +312,7 @@ insert into classInfo(className) values(#{className})
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/获取insert数据的主键/" data-id="cixsr1j93000m50p85toygcvk" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/获取insert数据的主键/" data-id="cixsr525t000w3cp8xn1c5xot" class="article-share-link">Share</a>
       
       
     </footer>
@@ -338,7 +385,7 @@ insert into classInfo(className) values(#{className})
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/springMVC常用注解/" data-id="cixsr1j94000o50p8px2gw9ta" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/springMVC常用注解/" data-id="cixsr525g000h3cp8yxevs0l3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -397,7 +444,7 @@ insert into classInfo(className) values(#{className})
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/MySQL修改root密码的多种方法/" data-id="cixsr1j8n000550p84zatth87" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/MySQL修改root密码的多种方法/" data-id="cixsr524v00013cp8yp3owmjl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -459,7 +506,7 @@ insert into classInfo(className) values(#{className})
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/mysql数据库备份与恢复操作/" data-id="cixsr1j8v000b50p8m4ci1g2h" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/mysql数据库备份与恢复操作/" data-id="cixsr525d000d3cp8ojds6kjl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -499,7 +546,7 @@ insert into classInfo(className) values(#{className})
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/springMVC过滤器中的url-pattern/" data-id="cixsr1j8y000e50p85krgqv60" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/springMVC过滤器中的url-pattern/" data-id="cixsr525n000r3cp80du3zrr9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -608,66 +655,7 @@ insert into classInfo(className) values(#{className})
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/spring-手动装配javabean的两种方式/" data-id="cixsr1j97000s50p8xyk6m8ko" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Spring-自动装配" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/01/05/Spring-自动装配/" class="article-date">
-  <time datetime="2017-01-04T16:24:31.000Z" itemprop="datePublished">2017-01-04</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/spring/">spring</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/05/Spring-自动装配/">Spring-自动装配</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>标签（空格分隔）： spring</p>
-<hr>
-<p>自动装配:spring IOC容器可以自动装配（autowire），相互协作的bean之间的依赖关系,可以自动让spring查找beanFactory中的内容，来替我们指定bean的协作者，也就是其他被依赖的bean，autowire可以在单个bean中进行配置，所以可以给有的bean配置，给有的bean不配置，autowire的好处是可以减少或者消除属性和构造器参数的个数,其实就是减少几个ref；</p>
-<p>当然,自动装配必须满足两点</p>
-<p>(1)bean里面的属性名字必须和applicationContext.xml里面对应的bean id的名字相同..</p>
-<p>(2)在申明里配置一个属性.default-autowire=”byName”(通过名字自动装配)</p>
-<p>配置文件为.</p>
-<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
-xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
-
-http://www.springframework.org/schema/beans/spring-beans-2.0.xsd&quot;
-default-autowire=&quot;byName&quot;&gt;
-
-default-autowire=&quot;x&quot;
-</code></pre><p>x有4个选择：byName,byType,constructor和autodetect</p>
-<p>autodetect：首先尝试使用construtor，然后使用byType方式;</p>
-<p>constructor:<br>试图在容器中寻找与需要自动装配的bean的构造函数参数一致的一个或多个bean，如果没找到则抛出异常;</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/Spring-自动装配/" data-id="cixsr1j8r000650p8uayd3qhr" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/spring-手动装配javabean的两种方式/" data-id="cixsr525h000k3cp8u1vv625t" class="article-share-link">Share</a>
       
       
     </footer>
@@ -690,7 +678,7 @@ default-autowire=&quot;x&quot;
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/html/">html</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mongodb/">mongodb</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mybatis/">mybatis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/">spring</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/html/">html</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/jdbc/">jdbc</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mongodb/">mongodb</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mybatis/">mybatis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/">spring</a></li></ul>
     </div>
   </div>
 
@@ -718,6 +706,10 @@ default-autowire=&quot;x&quot;
       <ul>
         
           <li>
+            <a href="/2017/01/12/jdbc获取刚刚添加的对象的主键/">jdbc获取刚刚添加的对象的主键</a>
+          </li>
+        
+          <li>
             <a href="/2017/01/12/mysql数据库连接池的配置/">mysql数据库连接池的配置</a>
           </li>
         
@@ -731,10 +723,6 @@ default-autowire=&quot;x&quot;
         
           <li>
             <a href="/2017/01/05/获取insert数据的主键/">mybatis获取insert数据的主键</a>
-          </li>
-        
-          <li>
-            <a href="/2017/01/05/springMVC常用注解/">springMVC常用注解</a>
           </li>
         
       </ul>

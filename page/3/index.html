@@ -64,6 +64,50 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-过滤策略" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/12/29/过滤策略/" class="article-date">
+  <time datetime="2016-12-28T17:06:35.000Z" itemprop="datePublished">2016-12-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/spring/">spring</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/29/过滤策略/">过滤策略</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>标签（空格分隔）： spring</p>
+<hr>
+<p>所有调用service的请求都会经过过滤器，但是在service请求内的转发也会经过过滤器，这样会产生死循环，<br>过滤策略可以解决这个问题：对于servlet2.4及以上，过滤器不会过滤service内部的请求，通过指定被过滤器过滤的资源被servlet容器调用的方式，来确定到底调不调用该过滤器，可以是request，include，forword，error之一，默认是request，用户可以设置多个dispatcher子元素用来指定Filter对资源的多种调用方式进行拦截；</p>
+<p>EQUEST：<br>当用户直接访问页面时，Web容器将会调用过滤器。如果目标资源是通过RequestDispatcher的include()或forward()方法访问或ERROR情况时，那么该过滤器就不会被调用。<br>INCLUDE：<br>如果目标资源是通过RequestDispatcher的include()方法访问时，那么该过滤器将被调用。除此之外，该过滤器不会被调用。<br>FORWARD：<br>如果目标资源是通过RequestDispatcher的forward()方法访问时，那么该过滤器将被调用，除此之外，该过滤器不会被调用。<br>ERROR：<br>如若在A.jsp页面page指令中指定了error属性=examError.jsp，那么A.jsp中若出现了异常，会跳转到examError.jsp中处理。而在跳转到examError.jsp时，若过滤器配置了ERROR的dispather那么则会拦截，否则不会拦截。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://monsmile.github.io/2016/12/29/过滤策略/" data-id="cixsr525y00153cp8qt6lkzfc" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-mongodb常用操作语法" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/12/29/mongodb常用操作语法/" class="article-date">
@@ -98,7 +142,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2016/12/29/mongodb常用操作语法/" data-id="cixsr1j8w000d50p86azkgc22" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2016/12/29/mongodb常用操作语法/" data-id="cixsr525c000c3cp8xcn0fmjc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -121,7 +165,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/html/">html</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mongodb/">mongodb</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mybatis/">mybatis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/">spring</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/html/">html</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/jdbc/">jdbc</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mongodb/">mongodb</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mybatis/">mybatis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/">spring</a></li></ul>
     </div>
   </div>
 
@@ -149,6 +193,10 @@
       <ul>
         
           <li>
+            <a href="/2017/01/12/jdbc获取刚刚添加的对象的主键/">jdbc获取刚刚添加的对象的主键</a>
+          </li>
+        
+          <li>
             <a href="/2017/01/12/mysql数据库连接池的配置/">mysql数据库连接池的配置</a>
           </li>
         
@@ -162,10 +210,6 @@
         
           <li>
             <a href="/2017/01/05/获取insert数据的主键/">mybatis获取insert数据的主键</a>
-          </li>
-        
-          <li>
-            <a href="/2017/01/05/springMVC常用注解/">springMVC常用注解</a>
           </li>
         
       </ul>

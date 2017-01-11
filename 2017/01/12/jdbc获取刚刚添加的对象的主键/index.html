@@ -3,42 +3,33 @@
 <head>
   <meta charset="utf-8">
   
-  <title>MySQL修改root密码的多种方法 | blog of Monsmile</title>
+  <title>jdbc获取刚刚添加的对象的主键 | blog of Monsmile</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="标签（空格分隔）： mysql
+  <meta name="description" content="/**
 
-方法1： 用SET PASSWORD命令
-mysql -u root
-mysql&amp;gt; SET PASSWORD FOR ‘root’@’localhost’ = PASSWORD(‘newpass’);
-方法2：用mysqladmin
-mysqladmin -u root password “newpass”
-如果root已经设置过密码，采用如下方法
-mysq">
+执行sql语句并返回更改数据的主键
+@param sql
+@param args
+@return*/public int executeUpdateReturnPk(String sql, Object… args) {int result = -1;Connection con = null;PreparedStatement pst = null;ResultSet rs = nul">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MySQL修改root密码的多种方法">
-<meta property="og:url" content="https://monsmile.github.io/2017/01/05/MySQL修改root密码的多种方法/index.html">
+<meta property="og:title" content="jdbc获取刚刚添加的对象的主键">
+<meta property="og:url" content="https://monsmile.github.io/2017/01/12/jdbc获取刚刚添加的对象的主键/index.html">
 <meta property="og:site_name" content="blog of Monsmile">
-<meta property="og:description" content="标签（空格分隔）： mysql
+<meta property="og:description" content="/**
 
-方法1： 用SET PASSWORD命令
-mysql -u root
-mysql&amp;gt; SET PASSWORD FOR ‘root’@’localhost’ = PASSWORD(‘newpass’);
-方法2：用mysqladmin
-mysqladmin -u root password “newpass”
-如果root已经设置过密码，采用如下方法
-mysq">
-<meta property="og:updated_time" content="2017-01-04T09:39:28.000Z">
+执行sql语句并返回更改数据的主键
+@param sql
+@param args
+@return*/public int executeUpdateReturnPk(String sql, Object… args) {int result = -1;Connection con = null;PreparedStatement pst = null;ResultSet rs = nul">
+<meta property="og:updated_time" content="2017-01-11T09:36:31.025Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MySQL修改root密码的多种方法">
-<meta name="twitter:description" content="标签（空格分隔）： mysql
+<meta name="twitter:title" content="jdbc获取刚刚添加的对象的主键">
+<meta name="twitter:description" content="/**
 
-方法1： 用SET PASSWORD命令
-mysql -u root
-mysql&amp;gt; SET PASSWORD FOR ‘root’@’localhost’ = PASSWORD(‘newpass’);
-方法2：用mysqladmin
-mysqladmin -u root password “newpass”
-如果root已经设置过密码，采用如下方法
-mysq">
+执行sql语句并返回更改数据的主键
+@param sql
+@param args
+@return*/public int executeUpdateReturnPk(String sql, Object… args) {int result = -1;Connection con = null;PreparedStatement pst = null;ResultSet rs = nul">
   
     <link rel="alternate" href="/atom.xml" title="blog of Monsmile" type="application/atom+xml">
   
@@ -87,14 +78,14 @@ mysq">
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-MySQL修改root密码的多种方法" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-jdbc获取刚刚添加的对象的主键" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/01/05/MySQL修改root密码的多种方法/" class="article-date">
-  <time datetime="2017-01-04T17:27:51.000Z" itemprop="datePublished">2017-01-04</time>
+    <a href="/2017/01/12/jdbc获取刚刚添加的对象的主键/" class="article-date">
+  <time datetime="2017-01-11T17:34:56.000Z" itemprop="datePublished">2017-01-11</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/mysql/">mysql</a>
+    <a class="article-category-link" href="/categories/jdbc/">jdbc</a>
   </div>
 
   </div>
@@ -105,7 +96,7 @@ mysq">
         
   
     <h1 class="article-title" itemprop="name">
-      MySQL修改root密码的多种方法
+      jdbc获取刚刚添加的对象的主键
     </h1>
   
 
@@ -113,30 +104,18 @@ mysq">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>标签（空格分隔）： mysql</p>
-<hr>
-<p>方法1： 用SET PASSWORD命令</p>
-<p>mysql -u root</p>
-<p>mysql&gt; SET PASSWORD FOR ‘root’@’localhost’ = PASSWORD(‘newpass’);</p>
-<p>方法2：用mysqladmin</p>
-<p>mysqladmin -u root password “newpass”</p>
-<p>如果root已经设置过密码，采用如下方法</p>
-<p>mysqladmin -u root password oldpass “newpass”</p>
-<p>方法3： 用UPDATE直接编辑user表</p>
-<p>mysql -u root</p>
-<p>mysql&gt; use mysql;</p>
-<p>mysql&gt; UPDATE user SET Password = PASSWORD(‘newpass’) WHERE user = ‘root’;</p>
-<p>mysql&gt; FLUSH PRIVILEGES;</p>
-<p>在丢失root密码的时候，可以这样</p>
-<p>mysqld_safe –skip-grant-tables&amp;</p>
-<p>mysql -u root mysql</p>
-<p>mysql&gt; UPDATE user SET password=PASSWORD(“new password”) WHERE user=’root’;</p>
-<p>mysql&gt; FLUSH PRIVILEGES;</p>
+        <p>/**</p>
+<ul>
+<li>执行sql语句并返回更改数据的主键</li>
+<li>@param sql</li>
+<li>@param args</li>
+<li>@return<br>*/<br>public int executeUpdateReturnPk(String sql, Object… args) {<br>int result = -1;<br>Connection con = null;<br>PreparedStatement pst = null;<br>ResultSet rs = null;<br>try {<br>con = getCon();<br>pst = con.prepareStatement(sql);<br>for (int i = 0; i &lt; args.length; i++) {<br>pst.setString((i + 1), args[i].toString());<br>}<br>pst.executeUpdate();<br>rs = pst.executeQuery(“SELECT @@identity AS id”);<br>if (rs.next())<br>result = rs.getInt(“id”);<br>} catch (Exception e) {<br>e.printStackTrace();<br>} finally {<br>closeAll(null, pst, con);<br>}<br>return result;<br>}</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/MySQL修改root密码的多种方法/" data-id="cixsr524v00013cp8yp3owmjl" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/12/jdbc获取刚刚添加的对象的主键/" data-id="cixsr525a000a3cp8lyv4tqo1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -145,19 +124,10 @@ mysq">
     
 <nav id="article-nav">
   
-    <a href="/2017/01/05/springMVC常用注解/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          springMVC常用注解
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/01/05/mysql数据库备份与恢复操作/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/01/12/mysql数据库连接池的配置/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">mysql数据库备份与恢复操作</div>
+      <div class="article-nav-title">mysql数据库连接池的配置</div>
     </a>
   
 </nav>
