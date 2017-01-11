@@ -64,6 +64,47 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-在linux系统的服务器下部署项目" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/12/在linux系统的服务器下部署项目/" class="article-date">
+  <time datetime="2017-01-11T17:28:03.000Z" itemprop="datePublished">2017-01-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/linux/">linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/12/在linux系统的服务器下部署项目/">在linux系统的服务器下部署项目</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.工具准备<br>首先，要部署项目到服务器你得有台服务器。假设你有台linux系统的服务器。<br>Shell命令工具：Xshell 5<br>2.搭建环境<br>服务器有了，控制服务器的工具有了，那么就需要配置环境了。<br>首先安装JDK，这里安装JDK1.8。linux安装软件的方式有很多，这里使用yum方式安装JDK.<br>2.1连接服务器<br>打开Xshell5, 创建新连接，连接名称随意写，协议选SSH，主机填服务器的IP地址，端口号22(linux)，确定，按提示输入用户名密码，登录成功。<br>2.2安装JDK1.8<br>输入yum -y list java<em> (shell命令下粘贴快捷键为shift+insert)查看yum库中的java资源文件，会出来许多跟java相关的资源，我们选择安装JDK1.8<br>输入yum -y install java-1.8.0-openjdk</em>，系统会自动将前缀为java-1.8.0-openjdk的文件安装到服务器上。等待安装。<br>显示complete意味着安装完成。输入java -version显示出相应的java版本信息则证明安装成功。<br>因为是使用yum安装，所以yum自动将java放到了/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.101-3.b13.el6_8.x86_64/<br>此时输入 cd /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.101-3.b13.el6_8.x86_64会跳转到java根目录，再输入ll(两个小写的L)，会显示当前文件夹下的所有子文件，看以看到bin、jre、lib等文件都在。<br>2.3安装tomcat(使用下载压缩包解压配置方式安装)<br>打开tomcat官网下载tomcat8.0压缩包(注意是tar.gz后缀的,linux默认不支持zip压缩方式)。<br>Xshell没有上传下载功能，输入yum install lrzsz安装rzsz上传下载文件。提示Is this ok，输入y。提示complete，安装成功。<br>输入cd usr/local跳转到该目录，输入rz,会出现上传文件窗口，选择下载的tomcat8.0压缩包，上传.<br>上传完成之后输入ll查看压缩包已经上传成功。<br>输入tar -zxv -f apache-tomcat-8.5.5.tar.gz解压缩tomcat压缩包。<br>输入mv apache-tomcat-8.5.5 tomcat将解压出来的文件夹改名成tomcat,以后使用路径的时候方便使用。<br>输入ll可以看出tomcat文件夹已经存在，可以跳转进去发现bin、lib文件夹都在.<br>输入/usr/local/tomcat/bin/startup.sh启动tomcat服务，浏览器地址栏输入ip地址:8080如果能打开tomcat页面就表示安装成功。<br>启动tomcat<br>输入/usr/local/tomcat/bin/startup.sh<br>关闭tomcat命令/usr/local/tomcat/bin/shutdown.sh<br>这里只为了演示用没有配置tomcat环境变量和设置tomcat服务开机自启动，这样的配置玩玩是可以的，但是真正的项目中是必须要一点一点好好配置的，不能服务器一重启还得手动一点一点去启动服务。想要配置的话自行百度，这里不做赘述。<br>2.4安装mysql<br>安装步骤选择2.2和2.3都可以，安装就是那回事，把该配置的配置好就行了。其实更推荐2.3的安装方式，如果使用yum安装，乍一看很方便，一键安装，yum会自动将安装软件所需要的所有依赖都自动下载好，但是，你不知道安装在哪，找的话会很麻烦，而且不想2.3那样解压出来所有文件就都在一个文件夹下，yum可能会将文件分成好几个路径。所以为了方便以后使用和控制，建议使用2.3安装方式。<br>3.导出、上传war包<br>在eclipse项目上右键&gt;&gt;export&gt;&gt;WAR file&gt;&gt;选择导出路径，导出。然后在xshell里跳转到tomcat中的webapps路径下，使用rz命令上传war包，重启tomcat(tomcat会自动解析war包)。在webapps路径下输入ll会发现项目已经解析出来了。<br>在浏览器中输入ip地址:8080/项目名就能访问了。<br>只是大概的找了个小白鼠服务器搞了搞，还有很多细节比如环境变量配置(可以从任何目录用快捷指令方便的对软件进行操控)、服务管理(服务自启动)、用户权限限制(mysql、ftp等用户不能随意访问)、tomcat端口号修改(tomcat默认端口号8080但是一般http访问的是80端口，而且linux限制非root用户程序是不能使用小于1024的端口的)、域名解析(让用户一点一点输入地址真的好么)等等都需要慢慢完善的。<br>以上只是一个linux小白自己捣鼓出来的，写的仓促，知识储备也不多，难免有错误，发现错误了请留言指出，灰常感谢！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://monsmile.github.io/2017/01/12/在linux系统的服务器下部署项目/" data-id="cixsqvqop000p7gp8slwxbbjo" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-a标签中的target属性" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/01/05/a标签中的target属性/" class="article-date">
@@ -95,7 +136,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/a标签中的target属性/" data-id="cixsqqv7o0009pkp8toxqbuom" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/a标签中的target属性/" data-id="cixsqvqoi000d7gp8law41p1c" class="article-share-link">Share</a>
       
       
     </footer>
@@ -143,7 +184,7 @@ insert into classInfo(className) values(#{className})
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/获取insert数据的主键/" data-id="cixsqqv83000lpkp8upo2dv6g" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/获取insert数据的主键/" data-id="cixsqvqox000x7gp8zum502jx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -216,7 +257,7 @@ insert into classInfo(className) values(#{className})
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/springMVC常用注解/" data-id="cixsqqv8c000wpkp84t8pmoyj" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/springMVC常用注解/" data-id="cixsqvqon000l7gp888v6hp72" class="article-share-link">Share</a>
       
       
     </footer>
@@ -275,7 +316,7 @@ insert into classInfo(className) values(#{className})
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/MySQL修改root密码的多种方法/" data-id="cixsqqv770000pkp81srv7y7f" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/MySQL修改root密码的多种方法/" data-id="cixsqvqo000007gp8wdvwcn9x" class="article-share-link">Share</a>
       
       
     </footer>
@@ -337,7 +378,7 @@ insert into classInfo(className) values(#{className})
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/mysql数据库备份与恢复操作/" data-id="cixsqqv7t000dpkp8jq1a9cez" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/mysql数据库备份与恢复操作/" data-id="cixsqvqoh000c7gp82s7vxbo2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -377,7 +418,7 @@ insert into classInfo(className) values(#{className})
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/springMVC过滤器中的url-pattern/" data-id="cixsqqv80000jpkp8rgljtzsk" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/springMVC过滤器中的url-pattern/" data-id="cixsqvqoo000n7gp8vi8lg5w2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -486,7 +527,7 @@ insert into classInfo(className) values(#{className})
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/spring-手动装配javabean的两种方式/" data-id="cixsqqv85000mpkp8b576lujn" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/spring-手动装配javabean的两种方式/" data-id="cixsqvqok000g7gp8cra8x2lj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -545,7 +586,7 @@ default-autowire=&quot;x&quot;
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/Spring-自动装配/" data-id="cixsqqv7b0001pkp85hy5t54m" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/Spring-自动装配/" data-id="cixsqvqo700047gp80vizo00c" class="article-share-link">Share</a>
       
       
     </footer>
@@ -595,95 +636,7 @@ default-autowire=&quot;x&quot;
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/Spring单例详解与线程安全问题/" data-id="cixsqqv7p000apkp84swkujyz" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Spring-依赖注入四种方式" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/01/05/Spring-依赖注入四种方式/" class="article-date">
-  <time datetime="2017-01-04T16:00:53.000Z" itemprop="datePublished">2017-01-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/05/Spring-依赖注入四种方式/">Spring-依赖注入四种方式</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>标签（空格分隔）： spring</p>
-<hr>
-<p>平常的java开发中，程序员在某个类中需要依赖其它类的方法，则通常是new一个依赖类再调用类实例的方法，这种开发存在的问题是new的类实例不好统一管理，spring提出了依赖注入的思想，即依赖类不由程序员实例化，而是通过spring容器帮我们new指定实例并且将实例注入到需要该对象的类中。依赖注入的另一种说法是“控制反转”，通俗的理解是：平常我们new一个实例，这个实例的控制权是我们程序员，而控制反转是指new实例工作不由我们程序员来做而是交给spring容器来做。</p>
-<p>spring有多种依赖注入的形式，下面仅介绍spring通过xml进行IOC配置的方式：<br>Set注入<br>这是最简单的注入方式，假设有一个SpringAction，类中需要实例化一个SpringDao对象，那么就可以定义一个private的SpringDao成员变量，然后创建SpringDao的set方法（这是ioc的注入入口）：<br>Java代码  收藏代码<br>package com.bless.springdemo.action;<br>public class SpringAction {<br>        //注入对象springDao<br>    private SpringDao springDao;<br>        //一定要写被注入对象的set方法<br>        public void setSpringDao(SpringDao springDao) {<br>        this.springDao = springDao;<br>    }<br>        public void ok(){<br>        springDao.ok();<br>    }<br>}</p>
-<p>随后编写spring的xml文件，<bean>中的name属性是class属性的一个别名，class属性指类的全名，因为在SpringAction中有一个公共属性Springdao，所以要在<bean>标签中创建一个<property>标签指定SpringDao。<property>标签中的name就是SpringAction类中的SpringDao属性名，ref指下面<bean name="springDao" ...="">，这样其实是spring将SpringDaoImpl对象实例化并且调用SpringAction的setSpringDao方法将SpringDao注入：<br>Java代码</bean></property></property></bean></bean></p>
-<pre><code>&lt;!--配置bean,配置后该类由spring管理--&gt;
-    &lt;bean name=&quot;springAction&quot; class=&quot;com.bless.springdemo.action.SpringAction&quot;&gt;
-        &lt;!--(1)依赖注入,配置当前类中相应的属性--&gt;
-        &lt;property name=&quot;springDao&quot; ref=&quot;springDao&quot;&gt;&lt;/property&gt;
-    &lt;/bean&gt;
-&lt;bean name=&quot;springDao&quot; class=&quot;com.bless.springdemo.dao.impl.SpringDaoImpl&quot;&gt;&lt;/bean&gt;
-</code></pre><p>构造器注入<br>这种方式的注入是指带有参数的构造函数注入，看下面的例子，我创建了两个成员变量SpringDao和User，但是并未设置对象的set方法，所以就不能支持第一种注入方式，这里的注入方式是在SpringAction的构造函数中注入，也就是说在创建SpringAction对象时要将SpringDao和User两个参数值传进来：<br>Java代码<br>public class SpringAction {<br>    //注入对象springDao<br>    private SpringDao springDao;<br>    private User user;<br>    public SpringAction(SpringDao springDao,User user){<br>        this.springDao = springDao;<br>        this.user = user;<br>        System.out.println(“构造方法调用springDao和user”);<br>    }<br>        public void save(){<br>        user.setName(“卡卡”);<br>        springDao.save(user);<br>    }<br>}</p>
-<p>在XML文件中同样不用<property>的形式，而是使用<constructor-arg>标签，ref属性同样指向其它<bean>标签的name属性：<br>Xml代码</bean></constructor-arg></property></p>
-<pre><code>&lt;!--配置bean,配置后该类由spring管理--&gt;
-    &lt;bean name=&quot;springAction&quot; class=&quot;com.bless.springdemo.action.SpringAction&quot;&gt;
-        &lt;!--(2)创建构造器注入,如果主类有带参的构造方法则需添加此配置--&gt;
-        &lt;constructor-arg ref=&quot;springDao&quot;&gt;&lt;/constructor-arg&gt;
-        &lt;constructor-arg ref=&quot;user&quot;&gt;&lt;/constructor-arg&gt;
-    &lt;/bean&gt;
-        &lt;bean name=&quot;springDao&quot; class=&quot;com.bless.springdemo.dao.impl.SpringDaoImpl&quot;&gt;&lt;/bean&gt;
-         &lt;bean name=&quot;user&quot; class=&quot;com.bless.springdemo.vo.User&quot;&gt;&lt;/bean&gt;
-</code></pre><p>  解决构造方法参数的不确定性，你可能会遇到构造方法传入的两参数都是同类型的，为了分清哪个该赋对应值，则需要进行一些小处理：<br>下面是设置index，就是参数位置：<br>Xml代码  收藏代码</p>
-<pre><code>&lt;bean name=&quot;springAction&quot; class=&quot;com.bless.springdemo.action.SpringAction&quot;&gt;
-        &lt;constructor-arg index=&quot;0&quot; ref=&quot;springDao&quot;&gt;&lt;/constructor-arg&gt;
-        &lt;constructor-arg index=&quot;1&quot; ref=&quot;user&quot;&gt;&lt;/constructor-arg&gt;
-    &lt;/bean&gt;
-  另一种是设置参数类型：
-Xml代码
-&lt;constructor-arg type=&quot;java.lang.String&quot; ref=&quot;&quot;/&gt;
-</code></pre><p>静态工厂的方法注入<br>静态工厂顾名思义，就是通过调用静态工厂的方法来获取自己需要的对象，为了让spring管理所有对象，我们不能直接通过”工程类.静态方法()”来获取对象，而是依然通过spring注入的形式获取：<br>Java代码  收藏代码<br>package com.bless.springdemo.factory;<br>import com.bless.springdemo.dao.FactoryDao;<br>import com.bless.springdemo.dao.impl.FactoryDaoImpl;<br>import com.bless.springdemo.dao.impl.StaticFacotryDaoImpl;<br>public class DaoFactory {<br>    //静态工厂<br>    public static final FactoryDao getStaticFactoryDaoImpl(){<br>        return new StaticFacotryDaoImpl();<br>    }<br>}</p>
-<p>同样看关键类，这里我需要注入一个FactoryDao对象，这里看起来跟第一种注入一模一样，但是看随后的xml会发现有很大差别:<br>Java代码<br> public class SpringAction {<br>        //注入对象<br>    private FactoryDao staticFactoryDao;<br>    public void staticFactoryOk(){<br>        staticFactoryDao.saveFactory();<br>    }<br>    //注入对象的set方法<br>    public void setStaticFactoryDao(FactoryDao staticFactoryDao) {<br>        this.staticFactoryDao = staticFactoryDao;<br>    }<br>}</p>
-<p>Spring的IOC配置文件，注意看<code>&lt;bean name=&quot;staticFactoryDao&quot;&gt;</code>指向的class并不是FactoryDao的实现类，而是指向静态工厂DaoFactory，并且配置 factory-method=”getStaticFactoryDaoImpl”指定调用哪个工厂方法：<br>Xml代码</p>
-<pre><code>&lt;!--配置bean,配置后该类由spring管理--&gt;
-    &lt;bean name=&quot;springAction&quot; class=&quot;com.bless.springdemo.action.SpringAction&quot; &gt;
-        &lt;!--(3)使用静态工厂的方法注入对象,对应下面的配置文件(3)--&gt;
-        &lt;property name=&quot;staticFactoryDao&quot; ref=&quot;staticFactoryDao&quot;&gt;&lt;/property&gt;
-                &lt;/property&gt;
-    &lt;/bean&gt;
-    &lt;!--(3)此处获取对象的方式是从工厂类中获取静态方法--&gt;
-    &lt;bean name=&quot;staticFactoryDao&quot; class=&quot;com.bless.springdemo.factory.DaoFactory&quot; factory-method=&quot;getStaticFactoryDaoImpl&quot;&gt;&lt;/bean&gt;
-</code></pre><p>实例工厂的方法注入<br>实例工厂的意思是获取对象实例的方法不是静态的，所以你需要首先new工厂类，再调用普通的实例方法：<br>Java代码<br>public class DaoFactory {<br>    //实例工厂<br>    public FactoryDao getFactoryDaoImpl(){<br>        return new FactoryDaoImpl();<br>    }<br>}<br>那么下面这个类没什么说的，跟前面也很相似，但是我们需要通过实例工厂类创建FactoryDao对象：<br>Java代码<br>public class SpringAction {<br>    //注入对象<br>    private FactoryDao factoryDao;<br>    public void factoryOk(){<br>        factoryDao.saveFactory();<br>    }<br>    public void setFactoryDao(FactoryDao factoryDao) {<br>        this.factoryDao = factoryDao;<br>    }<br>}</p>
-<p>最后看spring配置文件：<br>Xml代码</p>
-<pre><code>&lt;!--配置bean,配置后该类由spring管理--&gt;
-    &lt;bean name=&quot;springAction&quot; class=&quot;com.bless.springdemo.action.SpringAction&quot;&gt;
-        &lt;!--(4)使用实例工厂的方法注入对象,对应下面的配置文件(4)--&gt;
-        &lt;property name=&quot;factoryDao&quot; ref=&quot;factoryDao&quot;&gt;&lt;/property&gt;
-    &lt;/bean&gt;
-    &lt;!--(4)此处获取对象的方式是从工厂类中获取实例方法--&gt;
-    &lt;bean name=&quot;daoFactory&quot; class=&quot;com.bless.springdemo.factory.DaoFactory&quot;&gt;&lt;/bean&gt;
-    &lt;bean name=&quot;factoryDao&quot; factory-bean=&quot;daoFactory&quot; factory-method=&quot;getFactoryDaoImpl&quot;&gt;&lt;/bean&gt;
-</code></pre><p>总结<br>Spring IOC注入方式用得最多的是(1)(2)种，多谢多练就会非常熟练。<br>        另外注意：通过Spring创建的对象默认是单例的，如果需要创建多实例对象可以在<code>&lt;bean&gt;</code>标签后面添加一个属性：<br>Java代码</p>
-<pre><code>&lt;bean name=&quot;...&quot; class=&quot;...&quot; scope=&quot;prototype&quot;&gt;
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://monsmile.github.io/2017/01/05/Spring-依赖注入四种方式/" data-id="cixsqqv7e0003pkp88nst8r1q" class="article-share-link">Share</a>
+      <a data-url="https://monsmile.github.io/2017/01/05/Spring单例详解与线程安全问题/" data-id="cixsqvqo900057gp83l8qashx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -706,7 +659,7 @@ Xml代码
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/html/">html</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mongodb/">mongodb</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mybatis/">mybatis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/">spring</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/html/">html</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mongodb/">mongodb</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mybatis/">mybatis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/spring/">spring</a></li></ul>
     </div>
   </div>
 
@@ -734,6 +687,10 @@ Xml代码
       <ul>
         
           <li>
+            <a href="/2017/01/12/在linux系统的服务器下部署项目/">在linux系统的服务器下部署项目</a>
+          </li>
+        
+          <li>
             <a href="/2017/01/05/a标签中的target属性/">a标签中的target属性</a>
           </li>
         
@@ -747,10 +704,6 @@ Xml代码
         
           <li>
             <a href="/2017/01/05/MySQL修改root密码的多种方法/">MySQL修改root密码的多种方法</a>
-          </li>
-        
-          <li>
-            <a href="/2017/01/05/mysql数据库备份与恢复操作/">mysql数据库备份与恢复操作</a>
           </li>
         
       </ul>
